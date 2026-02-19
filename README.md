@@ -1,36 +1,76 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# VC Scout Intelligence
+
+A premium venture capital discovery interface with live AI enrichment, built for high-performance discovery workflows.
+
+## Features
+
+- **Discovery Engine**: Faceted search and filtering by industry, investment stage, and signal score.
+- **AI Enrichment**: Real-time website scraping and analysis using OpenAI to generate structured company insights.
+- **Workflow Automation**: Save complex searches and curated lists to your personal dashboard (persisted in `localStorage`).
+- **Global Command Search**: Quick navigation via `⌘K` command palette.
+- **Secure Authentication**: Email/password authentication using NextAuth and Neon (PostgreSQL).
+- **Data Export**: Export your curated lists as CSV or JSON for offline analysis.
+
+## Tech Stack
+
+- **Framework**: Next.js 14+ (App Router)
+- **Styling**: Tailwind CSS + Shadcn UI
+- **Database**: Neon (Postgres) + Drizzle ORM
+- **Authentication**: NextAuth.js
+- **AI**: OpenAI GPT-4 Turbo
+- **Type Safety**: TypeScript
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Node.js 18+
+- Neon PostgreSQL database
+- OpenAI API Key
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Installation
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Clone the repository:
+   ```bash
+   git clone <repo-url>
+   cd vc_internship
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-## Learn More
+3. Set up environment variables:
+   Create a `.env` file in the root directory:
+   ```env
+   DATABASE_URL="your-neon-db-url"
+   OPENAI_API_KEY="your-openai-api-key"
+   NEXTAUTH_SECRET="your-random-secret"
+   NEXTAUTH_URL="http://localhost:3000"
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+4. Push the database schema:
+   ```bash
+   npm run db:push
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+5. Generate the company data:
+   ```bash
+   node scripts/generate-data.js
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+6. Start the development server:
+   ```bash
+   npm run dev
+   ```
 
-## Deploy on Vercel
+## Development Commands
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- `npm run lint`: Check for code quality issues.
+- `npm run build`: Build the application for production.
+- `npm run dev`: Start development server.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## License
+
+MIT
