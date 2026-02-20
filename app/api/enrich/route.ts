@@ -1,5 +1,10 @@
 import { OpenAI } from "openai";
 import { NextResponse } from "next/server";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/auth";
+import { db } from "@/lib/db";
+import { users } from "@/lib/db/schema";
+import { eq } from "drizzle-orm";
 
 const openai = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY,
@@ -33,17 +38,32 @@ export async function POST(req: Request) {
             console.error("Scraping failed, falling back to model knowledge", e);
         }
 
+        // Fetch user thesis
+        const session = await getServerSession(authOptions);
+        let userThesis = "";
+        if (session?.user?.email) {
+            const user = await db.query.users.findFirst({
+                where: eq(users.email, session.user.email),
+            });
+            userThesis = user?.investmentThesis || "";
+        }
+
         const prompt = `
       You are a VC Discovery Agent. Analyze the following content from the website of a company (${website}):
       
       CONTENT:
       ${pageText || "No content could be scraped. Use your internal knowledge if the company is well-known, otherwise infer from the URL and company name."}
       
+      INVESTMENT THESIS (The Lens):
+      ${userThesis || "No specific thesis provided. Score based on general tech viability and growth potential."}
+
       Generate a structured JSON report with the following fields:
       - summary (1-2 sentences)
       - what_they_do (3-6 bullets)
       - keywords (5-10 words)
       - signals (2-4 inferred signals, e.g. "Hiring for AI roles", "Recent blog post", "New product launch")
+      - match_score (0-100, how well this company fits the INVESTMENT THESIS above)
+      - match_explanation (1-2 sentences explaining why the score was given based on the thesis)
       
       Respond only with valid JSON.
     `;

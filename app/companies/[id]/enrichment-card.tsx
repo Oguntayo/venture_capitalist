@@ -3,10 +3,11 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/components/ui/card";
-import { Sparkles, Loader2, CheckCircle2, AlertCircle, Clock, ExternalLink, Zap } from "lucide-react";
+import { Sparkles, Loader2, CheckCircle2, AlertCircle, Clock, ExternalLink, Zap, Lock } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { EnrichmentData } from "@/lib/types";
 import { cn } from "@/lib/utils";
+import { ThesisModal } from "@/components/thesis/thesis-modal";
 
 interface EnrichmentCardProps {
     companyId: string;
@@ -17,18 +18,36 @@ export function EnrichmentCard({ companyId, website }: EnrichmentCardProps) {
     const [data, setData] = useState<EnrichmentData | null>(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
+    const [userThesis, setUserThesis] = useState<string | null>(null);
+    const [thesisLoading, setThesisLoading] = useState(true);
+    const [isThesisModalOpen, setIsThesisModalOpen] = useState(false);
 
+    const fetchThesis = async () => {
+        try {
+            const res = await fetch("/api/user/thesis");
+            if (!res.ok) throw new Error("Failed to fetch thesis");
+            const d = await res.json();
+
+            setUserThesis(d.thesis || null);
+        } catch (err) {
+            console.error(err);
+            setUserThesis(null);
+        } finally {
+            setThesisLoading(false);
+        }
+    };
     useEffect(() => {
-        // Check localStorage for cached enrichment
         const cached = localStorage.getItem(`enrichment-${companyId}`);
         if (cached) {
-            try {
-                setData(JSON.parse(cached));
-            } catch (e) {
-                console.error("Failed to parse cached enrichment", e);
-            }
+            try { setData(JSON.parse(cached)); } catch { }
         }
+        fetchThesis();
     }, [companyId]);
+
+    const handleSaveThesis = (newThesis: string) => {
+        setUserThesis(newThesis);
+        setIsThesisModalOpen(false);
+    };
 
     const handleEnrich = async () => {
         setLoading(true);
@@ -45,13 +64,54 @@ export function EnrichmentCard({ companyId, website }: EnrichmentCardProps) {
 
             const enrichedData = await res.json();
             setData(enrichedData);
+
             localStorage.setItem(`enrichment-${companyId}`, JSON.stringify(enrichedData));
+            window.dispatchEvent(new StorageEvent("storage", {
+                key: `enrichment-${companyId}`,
+                newValue: JSON.stringify(enrichedData),
+            }));
         } catch (err: any) {
             setError(err.message);
         } finally {
             setLoading(false);
         }
     };
+
+    // No thesis — show locked state with inline modal trigger
+    if (!thesisLoading && !userThesis) {
+        return (
+            <>
+                <Card className="border-amber-100 bg-amber-50/30 overflow-hidden shadow-sm">
+                    <CardHeader className="text-center pt-8 pb-4">
+                        <div className="flex justify-center mb-4">
+                            <div className="rounded-full bg-amber-100 p-3 text-amber-600">
+                                <Lock className="h-6 w-6" />
+                            </div>
+                        </div>
+                        <CardTitle className="text-xl font-bold text-slate-900">Thesis Required</CardTitle>
+                        <p className="text-sm text-slate-500 max-w-[280px] mx-auto mt-2">
+                            Define your Investment Thesis to unlock AI Enrichment and get a personalised match score for this company.
+                        </p>
+                    </CardHeader>
+                    <CardContent className="pb-8 flex justify-center">
+                        <Button
+                            onClick={() => setIsThesisModalOpen(true)}
+                            className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold shadow-sm"
+                        >
+                            <Sparkles className="mr-2 h-4 w-4" />
+                            Set Up Your Thesis
+                        </Button>
+                    </CardContent>
+                </Card>
+                <ThesisModal
+                    isOpen={isThesisModalOpen}
+                    onClose={() => setIsThesisModalOpen(false)}
+                    currentThesis=""
+                    onSave={handleSaveThesis}
+                />
+            </>
+        );
+    }
 
     if (!data && !loading && !error) {
         return (
@@ -64,22 +124,22 @@ export function EnrichmentCard({ companyId, website }: EnrichmentCardProps) {
                     </div>
                     <CardTitle className="text-xl font-bold text-slate-900">Live AI Enrichment</CardTitle>
                     <p className="text-sm text-slate-500 max-w-[280px] mx-auto mt-2">
-                        Pull real-time insights, keywords, and business signals directly from the web.
+                        Pull real-time insights, keywords, and a thesis match score directly from the web.
                     </p>
                 </CardHeader>
                 <CardContent className="pb-8 flex justify-center">
-                    <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center gap-2">
                         <Button
                             onClick={handleEnrich}
                             disabled={loading}
-                            className="flex-1 mr-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold shadow-sm transition-all"
+                            className="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold shadow-sm transition-all"
                         >
                             {loading ? (
                                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                             ) : (
                                 <Zap className="mr-2 h-4 w-4" />
                             )}
-                            {data ? "Refresh Intelligence" : "Live AI Enrichment"}
+                            Run AI Enrichment
                         </Button>
                         <Button asChild variant="outline" className="border-slate-200">
                             <a href={website} target="_blank" rel="noopener noreferrer">
@@ -166,6 +226,25 @@ export function EnrichmentCard({ companyId, website }: EnrichmentCardProps) {
                                 ))}
                             </div>
                         </div>
+
+                        {data.match_score !== undefined && (
+                            <div className="pt-4 mt-2 border-t border-slate-100">
+                                <div className="flex items-center justify-between mb-3">
+                                    <h3 className="text-xs font-bold text-indigo-900 uppercase tracking-widest">Thesis Match Score</h3>
+                                    <Badge className={cn(
+                                        "font-bold px-3 py-1 rounded-full text-sm",
+                                        data.match_score > 80 ? "bg-indigo-600" : data.match_score > 50 ? "bg-amber-500" : "bg-slate-400"
+                                    )}>
+                                        {data.match_score}%
+                                    </Badge>
+                                </div>
+                                <div className="p-4 rounded-xl bg-indigo-50/50 border border-indigo-100">
+                                    <p className="text-sm text-indigo-900 font-medium leading-relaxed italic">
+                                        &ldquo;{data.match_explanation || "No explanation provided."}&rdquo;
+                                    </p>
+                                </div>
+                            </div>
+                        )}
                     </>
                 )}
             </CardContent>

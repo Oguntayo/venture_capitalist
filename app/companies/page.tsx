@@ -12,13 +12,6 @@ export default async function CompaniesPage() {
     return (
         <DashboardLayout>
             <div className="space-y-6">
-                <div>
-                    <h1 className="text-3xl font-bold tracking-tight text-slate-900">Discover Companies</h1>
-                    <p className="text-slate-500 mt-1">
-                        Surface high-signal opportunities across the venture ecosystem.
-                    </p>
-                </div>
-
                 <CompaniesClient initialCompanies={companies} />
             </div>
         </DashboardLayout>

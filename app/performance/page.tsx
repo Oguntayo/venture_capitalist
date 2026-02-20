@@ -16,7 +16,7 @@ import { cn } from "@/lib/utils";
 
 const stats = [
     {
-        name: "Total Companies Screened",
+        name: "Discovery Coverage",
         value: "1,284",
         change: "+12.5%",
         trend: "up",
@@ -25,29 +25,29 @@ const stats = [
         bg: "bg-blue-50"
     },
     {
-        name: "Active AI Enrichments",
-        value: "432",
-        change: "+28.2%",
+        name: "Thesis Alignment",
+        value: "84.2%",
+        change: "+5.1%",
         trend: "up",
         icon: Zap,
         color: "text-indigo-600",
         bg: "bg-indigo-50"
     },
     {
-        name: "Portfolio Coverage",
-        value: "84.2%",
-        change: "-2.4%",
-        trend: "down",
-        icon: Users,
+        name: "Proprietary Alpha",
+        value: "126",
+        change: "+14.2%",
+        trend: "up",
+        icon: Activity,
         color: "text-emerald-600",
         bg: "bg-emerald-50"
     },
     {
-        name: "Pipeline Velocity",
-        value: "12 days",
-        change: "+4.1%",
+        name: "Scouting Velocity",
+        value: "4.2d",
+        change: "-0.8d",
         trend: "up",
-        icon: TrendingUp,
+        icon: BarChart3,
         color: "text-amber-600",
         bg: "bg-amber-50"
     }

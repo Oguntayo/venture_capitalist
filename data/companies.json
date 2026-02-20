@@ -10,7 +10,72 @@
     "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=OpenAI",
     "funding": "13B",
     "founded": 2015,
-    "signal_score": 99
+    "signal_score": 99,
+    "founders": [
+      {
+        "name": "Sam Altman",
+        "linkedin": "https://linkedin.com/in/samaltman",
+        "bio": "CEO, formerly President of Y Combinator."
+      },
+      {
+        "name": "Greg Brockman",
+        "linkedin": "https://linkedin.com/in/gdb",
+        "bio": "President, formerly CTO of Stripe."
+      }
+    ],
+    "investors": [
+      {
+        "name": "Microsoft",
+        "logo": "https://api.dicebear.com/7.x/initials/svg?seed=MSFT"
+      },
+      {
+        "name": "Sequoia Capital",
+        "logo": "https://api.dicebear.com/7.x/initials/svg?seed=Sequoia"
+      },
+      {
+        "name": "Khosla Ventures",
+        "logo": "https://api.dicebear.com/7.x/initials/svg?seed=Khosla"
+      }
+    ],
+    "tags": [
+      "GenAI",
+      "LLM",
+      "Foundation Model",
+      "Unicorn"
+    ],
+    "funding_rounds": [
+      {
+        "stage": "Corporate Round",
+        "amount": "10B",
+        "date": "2023-01-23",
+        "lead_investor": "Microsoft"
+      },
+      {
+        "stage": "Secondary Market",
+        "amount": "300M",
+        "date": "2023-04-20",
+        "lead_investor": "Thrive Capital"
+      }
+    ],
+    "headcount": 700,
+    "headcount_growth": 140,
+    "social_links": {
+      "linkedin": "https://www.linkedin.com/company/openai",
+      "twitter": "https://twitter.com/openai",
+      "crunchbase": "https://www.crunchbase.com/organization/openai"
+    },
+    "signals": [
+      {
+        "type": "Hiring Velocity",
+        "value": "Exponential",
+        "importance": "high"
+      },
+      {
+        "type": "GitHub Influence",
+        "value": "Top 0.1%",
+        "importance": "high"
+      }
+    ]
   },
   {
     "id": "anthropic",
@@ -23,7 +88,68 @@
     "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Anthropic",
     "funding": "7.3B",
     "founded": 2021,
-    "signal_score": 98
+    "signal_score": 98,
+    "founders": [
+      {
+        "name": "Dario Amodei",
+        "linkedin": "https://linkedin.com/in/darioamodei",
+        "bio": "CEO, former VP of Research at OpenAI."
+      },
+      {
+        "name": "Daniela Amodei",
+        "linkedin": "https://linkedin.com/in/danielaamodei",
+        "bio": "President, former VP of Safety at OpenAI."
+      }
+    ],
+    "investors": [
+      {
+        "name": "Google",
+        "logo": "https://api.dicebear.com/7.x/initials/svg?seed=Google"
+      },
+      {
+        "name": "Amazon",
+        "logo": "https://api.dicebear.com/7.x/initials/svg?seed=Amazon"
+      }
+    ],
+    "tags": [
+      "AI Safety",
+      "GenAI",
+      "Clade",
+      "Constitutional AI"
+    ],
+    "funding_rounds": [
+      {
+        "stage": "Series C",
+        "amount": "450M",
+        "date": "2023-05-23",
+        "lead_investor": "Spark Capital"
+      },
+      {
+        "stage": "Strategic",
+        "amount": "4B",
+        "date": "2023-09-25",
+        "lead_investor": "Amazon"
+      }
+    ],
+    "headcount": 450,
+    "headcount_growth": 90,
+    "social_links": {
+      "linkedin": "https://www.linkedin.com/company/anthropic",
+      "twitter": "https://twitter.com/anthropic",
+      "crunchbase": "https://www.crunchbase.com/organization/anthropic"
+    },
+    "signals": [
+      {
+        "type": "Safety Ranking",
+        "value": "Top Tier",
+        "importance": "high"
+      },
+      {
+        "type": "Token Usage",
+        "value": "Growing",
+        "importance": "medium"
+      }
+    ]
   },
   {
     "id": "mistral-ai",
@@ -34,9 +160,65 @@
     "stage": "Series B",
     "location": "Palo Alto, CA",
     "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Mistral AI",
-    "funding": "500M",
+    "funding": "415M",
     "founded": 2023,
-    "signal_score": 96
+    "signal_score": 96,
+    "founders": [
+      {
+        "name": "Arthur Mensch",
+        "linkedin": "https://linkedin.com/in/arthurmensch",
+        "bio": "CEO, formerly DeepMind & Meta."
+      }
+    ],
+    "investors": [
+      {
+        "name": "Andreesen Horowitz",
+        "logo": "https://api.dicebear.com/7.x/initials/svg?seed=A16Z"
+      },
+      {
+        "name": "Lightspeed Venture Partners",
+        "logo": "https://api.dicebear.com/7.x/initials/svg?seed=Lightspeed"
+      }
+    ],
+    "tags": [
+      "Open Source",
+      "GenAI",
+      "European Tech",
+      "Efficient Models"
+    ],
+    "funding_rounds": [
+      {
+        "stage": "Seed",
+        "amount": "113M",
+        "date": "2023-06-13",
+        "lead_investor": "Lightspeed"
+      },
+      {
+        "stage": "Series A",
+        "amount": "415M",
+        "date": "2023-12-10",
+        "lead_investor": "A16Z"
+      }
+    ],
+    "headcount": 50,
+    "headcount_growth": 500,
+    "social_links": {
+      "linkedin": "https://www.linkedin.com/company/mistral-ai",
+      "twitter": "https://twitter.com/mistral_ai",
+      "crunchbase": "https://www.crunchbase.com/organization/mistral-ai"
+    },
+    "signals": [
+      {
+        "type": "Open Source Stars",
+        "value": "40k+",
+        "importance": "high"
+      },
+      {
+        "type": "Efficiency Score",
+        "value": "9/10",
+        "importance": "high"
+      }
+    ]
   },
   {
     "id": "stripe",
@@ -49,7 +231,66 @@
     "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Stripe",
     "funding": "9B",
     "founded": 2010,
-    "signal_score": 95
+    "signal_score": 95,
+    "founders": [
+      {
+        "name": "Patrick Collison",
+        "linkedin": "https://linkedin.com/in/patrickcollison",
+        "bio": "CEO, co-founder. Irish entrepreneur."
+      },
+      {
+        "name": "John Collison",
+        "linkedin": "https://linkedin.com/in/johncollison",
+        "bio": "President, co-founder."
+      }
+    ],
+    "investors": [
+      {
+        "name": "Sequoia Capital",
+        "logo": "https://api.dicebear.com/7.x/initials/svg?seed=Sequoia"
+      },
+      {
+        "name": "Andreessen Horowitz",
+        "logo": "https://api.dicebear.com/7.x/initials/svg?seed=A16Z"
+      },
+      {
+        "name": "Tiger Global",
+        "logo": "https://api.dicebear.com/7.x/initials/svg?seed=Tiger"
+      }
+    ],
+    "tags": [
+      "Payments",
+      "Fintech",
+      "Decacorn",
+      "Developer First"
+    ],
+    "funding_rounds": [
+      {
+        "stage": "Series I",
+        "amount": "6.5B",
+        "date": "2023-03-15",
+        "lead_investor": "GIC"
+      }
+    ],
+    "headcount": 8000,
+    "headcount_growth": 5,
+    "social_links": {
+      "linkedin": "https://www.linkedin.com/company/stripe",
+      "twitter": "https://twitter.com/stripe",
+      "crunchbase": "https://www.crunchbase.com/organization/stripe"
+    },
+    "signals": [
+      {
+        "type": "Market Dominance",
+        "value": "High",
+        "importance": "high"
+      },
+      {
+        "type": "Developer NPS",
+        "value": "95/100",
+        "importance": "high"
+      }
+    ]
   },
   {
     "id": "vercel",
@@ -62,267 +303,57 @@
     "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Vercel",
     "funding": "313M",
     "founded": 2015,
-    "signal_score": 92
-  },
-  {
-    "id": "ramp",
-    "name": "Ramp",
-    "website": "https://ramp.com",
-    "description": "Leading Fintech company specializing in growth operations and global innovation.",
-    "industry": "Fintech",
-    "stage": "Growth",
-    "location": "Berlin, Germany",
-    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Ramp",
-    "funding": "1.7B",
-    "founded": 2019,
-    "signal_score": 94
-  },
-  {
-    "id": "linear",
-    "name": "Linear",
-    "website": "https://linear.app",
-    "description": "Leading SaaS company specializing in series b operations and global innovation.",
-    "industry": "SaaS",
-    "stage": "Series B",
-    "location": "Austin, TX",
-    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Linear",
-    "funding": "50M",
-    "founded": 2019,
-    "signal_score": 90
-  },
-  {
-    "id": "retool",
-    "name": "Retool",
-    "website": "https://retool.com",
-    "description": "Leading DevTools company specializing in series c operations and global innovation.",
-    "industry": "DevTools",
-    "stage": "Series C",
-    "location": "Singapore",
-    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Retool",
-    "funding": "127M",
-    "founded": 2017,
-    "signal_score": 89
-  },
-  {
-    "id": "plaid",
-    "name": "Plaid",
-    "website": "https://plaid.com",
-    "description": "Leading Fintech company specializing in growth operations and global innovation.",
-    "industry": "Fintech",
-    "stage": "Growth",
-    "location": "Tel Aviv, Israel",
-    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Plaid",
-    "funding": "734M",
-    "founded": 2013,
-    "signal_score": 91
-  },
-  {
-    "id": "scale-ai",
-    "name": "Scale AI",
-    "website": "https://scale.com",
-    "description": "Leading AI/ML company specializing in growth operations and global innovation.",
-    "industry": "AI/ML",
-    "stage": "Growth",
-    "location": "Austin, TX",
-    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Scale AI",
-    "funding": "600M",
-    "founded": 2016,
-    "signal_score": 93
-  },
-  {
-    "id": "comp-11",
-    "name": "Cloud Point",
-    "website": "https://cloudpoint.io",
-    "description": "A fast-growing AI/ML startup focusing on series a scalability and market disruption.",
-    "industry": "AI/ML",
-    "stage": "Series A",
-    "location": "Berlin, Germany",
-    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Cloud Point",
-    "funding": "5.9M",
-    "founded": 2022,
-    "signal_score": 84
-  },
-  {
-    "id": "comp-12",
-    "name": "Cloud Scale",
-    "website": "https://cloudscale.io",
-    "description": "A fast-growing Web3 startup focusing on growth scalability and market disruption.",
-    "industry": "Web3",
-    "stage": "Growth",
-    "location": "Austin, TX",
-    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Cloud Scale",
-    "funding": "7.9M",
-    "founded": 2021,
-    "signal_score": 61
-  },
-  {
-    "id": "comp-13",
-    "name": "Flux Technologies",
-    "website": "https://fluxtechnologies.io",
-    "description": "A fast-growing SaaS startup focusing on growth scalability and market disruption.",
-    "industry": "SaaS",
-    "stage": "Growth",
-    "location": "London, UK",
-    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Flux Technologies",
-    "funding": "3.7M",
-    "founded": 2022,
-    "signal_score": 51
-  },
-  {
-    "id": "comp-14",
-    "name": "Cloud Finance",
-    "website": "https://cloudfinance.io",
-    "description": "A fast-growing Fintech startup focusing on seed scalability and market disruption.",
-    "industry": "Fintech",
-    "stage": "Seed",
-    "location": "Palo Alto, CA",
-    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Cloud Finance",
-    "funding": "11.6M",
-    "founded": 2021,
-    "signal_score": 39
-  },
-  {
-    "id": "comp-15",
-    "name": "Cloud Core",
-    "website": "https://cloudcore.io",
-    "description": "A fast-growing SaaS startup focusing on growth scalability and market disruption.",
-    "industry": "SaaS",
-    "stage": "Growth",
-    "location": "Palo Alto, CA",
-    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Cloud Core",
-    "funding": "11.6M",
-    "founded": 2020,
-    "signal_score": 67
-  },
-  {
-    "id": "comp-16",
-    "name": "Echo Stack",
-    "website": "https://echostack.io",
-    "description": "A fast-growing SaaS startup focusing on growth scalability and market disruption.",
-    "industry": "SaaS",
-    "stage": "Growth",
-    "location": "Palo Alto, CA",
-    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Echo Stack",
-    "funding": "6.9M",
-    "founded": 2022,
-    "signal_score": 88
-  },
-  {
-    "id": "comp-17",
-    "name": "Flow Networks",
-    "website": "https://flownetworks.io",
-    "description": "A fast-growing Fintech startup focusing on series b scalability and market disruption.",
-    "industry": "Fintech",
-    "stage": "Series B",
-    "location": "London, UK",
-    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Flow Networks",
-    "funding": "12.2M",
-    "founded": 2023,
-    "signal_score": 53
-  },
-  {
-    "id": "comp-18",
-    "name": "Aether Core",
-    "website": "https://aethercore.io",
-    "description": "A fast-growing Web3 startup focusing on growth scalability and market disruption.",
-    "industry": "Web3",
-    "stage": "Growth",
-    "location": "Berlin, Germany",
-    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Aether Core",
-    "funding": "17.5M",
-    "founded": 2023,
-    "signal_score": 57
-  },
-  {
-    "id": "comp-19",
-    "name": "Solar Systems",
-    "website": "https://solarsystems.io",
-    "description": "A fast-growing DevTools startup focusing on growth scalability and market disruption.",
-    "industry": "DevTools",
-    "stage": "Growth",
-    "location": "Berlin, Germany",
-    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Solar Systems",
-    "funding": "18.0M",
-    "founded": 2023,
-    "signal_score": 84
-  },
-  {
-    "id": "comp-20",
-    "name": "Apex Finance",
-    "website": "https://apexfinance.io",
-    "description": "A fast-growing ClimateTech startup focusing on series b scalability and market disruption.",
-    "industry": "ClimateTech",
-    "stage": "Series B",
-    "location": "London, UK",
-    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Apex Finance",
-    "funding": "6.2M",
-    "founded": 2023,
-    "signal_score": 33
-  },
-  {
-    "id": "comp-21",
-    "name": "Solar Labs",
-    "website": "https://solarlabs.io",
-    "description": "A fast-growing SaaS startup focusing on series b scalability and market disruption.",
-    "industry": "SaaS",
-    "stage": "Series B",
-    "location": "Austin, TX",
-    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Solar Labs",
-    "funding": "5.1M",
-    "founded": 2023,
-    "signal_score": 72
-  },
-  {
-    "id": "comp-22",
-    "name": "Flow Dynamics",
-    "website": "https://flowdynamics.io",
-    "description": "A fast-growing ClimateTech startup focusing on pre-seed scalability and market disruption.",
-    "industry": "ClimateTech",
-    "stage": "Pre-seed",
-    "location": "San Francisco, CA",
-    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Flow Dynamics",
-    "funding": "19.3M",
-    "founded": 2022,
-    "signal_score": 55
-  },
-  {
-    "id": "comp-23",
-    "name": "Prism Analytics",
-    "website": "https://prismanalytics.io",
-    "description": "A fast-growing AI/ML startup focusing on series a scalability and market disruption.",
-    "industry": "AI/ML",
-    "stage": "Series A",
-    "location": "Austin, TX",
-    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Prism Analytics",
-    "funding": "19.7M",
-    "founded": 2023,
-    "signal_score": 78
-  },
-  {
-    "id": "comp-24",
-    "name": "Nexus Scale",
-    "website": "https://nexusscale.io",
-    "description": "A fast-growing ClimateTech startup focusing on seed scalability and market disruption.",
-    "industry": "ClimateTech",
-    "stage": "Seed",
-    "location": "New York, NY",
-    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Nexus Scale",
-    "funding": "20.0M",
-    "founded": 2022,
-    "signal_score": 55
-  },
-  {
-    "id": "comp-25",
-    "name": "Lumen Dynamics",
-    "website": "https://lumendynamics.io",
-    "description": "A fast-growing ClimateTech startup focusing on series b scalability and market disruption.",
-    "industry": "ClimateTech",
-    "stage": "Series B",
-    "location": "San Francisco, CA",
-    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Lumen Dynamics",
-    "funding": "16.2M",
-    "founded": 2021,
-    "signal_score": 72
+    "signal_score": 92,
+    "founders": [
+      {
+        "name": "Guillermo Rauch",
+        "linkedin": "https://linkedin.com/in/guillermorauch",
+        "bio": "CEO, creator of Socket.io and Mongoose."
+      }
+    ],
+    "investors": [
+      {
+        "name": "Accel",
+        "logo": "https://api.dicebear.com/7.x/initials/svg?seed=Accel"
+      },
+      {
+        "name": "CRV",
+        "logo": "https://api.dicebear.com/7.x/initials/svg?seed=CRV"
+      }
+    ],
+    "tags": [
+      "Frontend",
+      "Next.js",
+      "Cloud",
+      "Developer Experience"
+    ],
+    "funding_rounds": [
+      {
+        "stage": "Series D",
+        "amount": "150M",
+        "date": "2021-11-23",
+        "lead_investor": "GGV Capital"
+      }
+    ],
+    "headcount": 500,
+    "headcount_growth": 25,
+    "social_links": {
+      "linkedin": "https://www.linkedin.com/company/vercel",
+      "twitter": "https://twitter.com/vercel",
+      "crunchbase": "https://www.crunchbase.com/organization/vercel"
+    },
+    "signals": [
+      {
+        "type": "Framework Adoption",
+        "value": "Hyper-growth",
+        "importance": "high"
+      },
+      {
+        "type": "Cloud Retention",
+        "value": "98%",
+        "importance": "high"
+      }
+    ]
   },
   {
     "id": "comp-26",
@@ -335,33 +366,45 @@
     "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Flow Technologies",
     "funding": "19.3M",
     "founded": 2021,
-    "signal_score": 86
-  },
-  {
-    "id": "comp-27",
-    "name": "Nexus Health",
-    "website": "https://nexushealth.io",
-    "description": "A fast-growing DevTools startup focusing on growth scalability and market disruption.",
-    "industry": "DevTools",
-    "stage": "Growth",
-    "location": "London, UK",
-    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Nexus Health",
-    "funding": "15.1M",
-    "founded": 2021,
-    "signal_score": 87
-  },
-  {
-    "id": "comp-28",
-    "name": "Apex Finance",
-    "website": "https://apexfinance.io",
-    "description": "A fast-growing DevTools startup focusing on pre-seed scalability and market disruption.",
-    "industry": "DevTools",
-    "stage": "Pre-seed",
-    "location": "San Francisco, CA",
-    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Apex Finance",
-    "funding": "17.0M",
-    "founded": 2022,
-    "signal_score": 72
+    "signal_score": 86,
+    "founders": [
+      {
+        "name": "Lei Jun",
+        "bio": "Advisory Founder, logistics expert."
+      }
+    ],
+    "investors": [
+      {
+        "name": "Temasek",
+        "logo": "https://api.dicebear.com/7.x/initials/svg?seed=Temasek"
+      }
+    ],
+    "tags": [
+      "Retail",
+      "Last-mile"
+    ],
+    "funding_rounds": [
+      {
+        "stage": "Series A",
+        "amount": "19.3M",
+        "date": "2022-05-12",
+        "lead_investor": "Temasek"
+      }
+    ],
+    "headcount": 124,
+    "headcount_growth": 45,
+    "social_links": {
+      "linkedin": "https://linkedin.com/company/flow-tech",
+      "twitter": "https://twitter.com/flowtech",
+      "crunchbase": "https://crunchbase.com/organization/flow-tech"
+    },
+    "signals": [
+      {
+        "type": "Hiring Velocity",
+        "value": "High",
+        "importance": "medium"
+      }
+    ]
   },
   {
     "id": "comp-29",
@@ -374,20 +417,45 @@
     "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Quantum Scale",
     "funding": "5.2M",
     "founded": 2021,
-    "signal_score": 36
-  },
-  {
-    "id": "comp-30",
-    "name": "Echo Dynamics",
-    "website": "https://echodynamics.io",
-    "description": "A fast-growing Cybersecurity startup focusing on series b scalability and market disruption.",
-    "industry": "Cybersecurity",
-    "stage": "Series B",
-    "location": "Berlin, Germany",
-    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Echo Dynamics",
-    "funding": "17.1M",
-    "founded": 2022,
-    "signal_score": 64
+    "signal_score": 36,
+    "founders": [
+      {
+        "name": "Max Planck",
+        "bio": "CTO, theoretical physicist."
+      }
+    ],
+    "investors": [
+      {
+        "name": "Earlybird",
+        "logo": "https://api.dicebear.com/7.x/initials/svg?seed=Early"
+      }
+    ],
+    "tags": [
+      "Fusion",
+      "Grid"
+    ],
+    "funding_rounds": [
+      {
+        "stage": "Seed",
+        "amount": "5.2M",
+        "date": "2021-11-20",
+        "lead_investor": "Earlybird"
+      }
+    ],
+    "headcount": 14,
+    "headcount_growth": 20,
+    "social_links": {
+      "linkedin": "https://linkedin.com/company/quantum-scale",
+      "twitter": "https://twitter.com/quantum_scale",
+      "crunchbase": "https://crunchbase.com/organization/quantum-scale"
+    },
+    "signals": [
+      {
+        "type": "Patent Velocity",
+        "value": "High",
+        "importance": "high"
+      }
+    ]
   },
   {
     "id": "comp-31",
@@ -400,20 +468,45 @@
     "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Echo Health",
     "funding": "2.9M",
     "founded": 2021,
-    "signal_score": 74
-  },
-  {
-    "id": "comp-32",
-    "name": "Quantum Scale",
-    "website": "https://quantumscale.io",
-    "description": "A fast-growing DevTools startup focusing on series a scalability and market disruption.",
-    "industry": "DevTools",
-    "stage": "Series A",
-    "location": "Berlin, Germany",
-    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Quantum Scale",
-    "funding": "20.3M",
-    "founded": 2023,
-    "signal_score": 83
+    "signal_score": 74,
+    "founders": [
+      {
+        "name": "Linus Torvalds",
+        "bio": "Advisor, creator of Git."
+      }
+    ],
+    "investors": [
+      {
+        "name": "GIC",
+        "logo": "https://api.dicebear.com/7.x/initials/svg?seed=GIC"
+      }
+    ],
+    "tags": [
+      "DevOps",
+      "Tracing"
+    ],
+    "funding_rounds": [
+      {
+        "stage": "Pre-seed",
+        "amount": "2.9M",
+        "date": "2021-09-15",
+        "lead_investor": "GIC"
+      }
+    ],
+    "headcount": 8,
+    "headcount_growth": 100,
+    "social_links": {
+      "linkedin": "https://linkedin.com/company/echo-health",
+      "twitter": "https://twitter.com/echo_health",
+      "crunchbase": "https://crunchbase.com/organization/echo-health"
+    },
+    "signals": [
+      {
+        "type": "Hiring Velocity",
+        "value": "Normal",
+        "importance": "low"
+      }
+    ]
   },
   {
     "id": "comp-33",
@@ -426,20 +519,45 @@
     "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Solar Health",
     "funding": "6.9M",
     "founded": 2021,
-    "signal_score": 47
-  },
-  {
-    "id": "comp-34",
-    "name": "Cyber Dynamics",
-    "website": "https://cyberdynamics.io",
-    "description": "A fast-growing Healthtech startup focusing on seed scalability and market disruption.",
-    "industry": "Healthtech",
-    "stage": "Seed",
-    "location": "Berlin, Germany",
-    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Cyber Dynamics",
-    "funding": "3.5M",
-    "founded": 2023,
-    "signal_score": 69
+    "signal_score": 47,
+    "founders": [
+      {
+        "name": "Vitalik Buterin",
+        "bio": "Advisory Founder."
+      }
+    ],
+    "investors": [
+      {
+        "name": "Paradigm",
+        "logo": "https://api.dicebear.com/7.x/initials/svg?seed=Paradigm"
+      }
+    ],
+    "tags": [
+      "Identity",
+      "Storage"
+    ],
+    "funding_rounds": [
+      {
+        "stage": "Seed",
+        "amount": "6.9M",
+        "date": "2022-01-10",
+        "lead_investor": "Paradigm"
+      }
+    ],
+    "headcount": 22,
+    "headcount_growth": 15,
+    "social_links": {
+      "linkedin": "https://linkedin.com/company/solar-health",
+      "twitter": "https://twitter.com/solar_health",
+      "crunchbase": "https://crunchbase.com/organization/solar-health"
+    },
+    "signals": [
+      {
+        "type": "Token Usage",
+        "value": "Growing",
+        "importance": "medium"
+      }
+    ]
   },
   {
     "id": "comp-35",
@@ -452,46 +570,96 @@
     "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Nexus Technologies",
     "funding": "1.3M",
     "founded": 2021,
-    "signal_score": 43
-  },
-  {
-    "id": "comp-36",
-    "name": "Apex Health",
-    "website": "https://apexhealth.io",
-    "description": "A fast-growing Web3 startup focusing on pre-seed scalability and market disruption.",
-    "industry": "Web3",
-    "stage": "Pre-seed",
-    "location": "New York, NY",
-    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Apex Health",
-    "funding": "17.6M",
-    "founded": 2023,
-    "signal_score": 56
+    "signal_score": 43,
+    "founders": [
+      {
+        "name": "Jack Dorsey",
+        "bio": "Advisory Founder."
+      }
+    ],
+    "investors": [
+      {
+        "name": "Square Ventures",
+        "logo": "https://api.dicebear.com/7.x/initials/svg?seed=Square"
+      }
+    ],
+    "tags": [
+      "Payments",
+      "B2B"
+    ],
+    "funding_rounds": [
+      {
+        "stage": "Seed",
+        "amount": "1.3M",
+        "date": "2021-08-22",
+        "lead_investor": "Square Ventures"
+      }
+    ],
+    "headcount": 6,
+    "headcount_growth": 50,
+    "social_links": {
+      "linkedin": "https://linkedin.com/company/nexus-tech",
+      "twitter": "https://twitter.com/nexustech",
+      "crunchbase": "https://crunchbase.com/organization/nexus-tech"
+    },
+    "signals": [
+      {
+        "type": "Transaction Volume",
+        "value": "Stable",
+        "importance": "low"
+      }
+    ]
   },
   {
     "id": "comp-37",
     "name": "Echo Core",
     "website": "https://echocore.io",
-    "description": "A fast-growing ClimateTech startup focusing on seed scalability and market disruption.",
-    "industry": "ClimateTech",
-    "stage": "Seed",
-    "location": "London, UK",
+    "description": "A fast-growing Cybersecurity startup focusing on series a scalability and market disruption.",
+    "industry": "Cybersecurity",
+    "stage": "Series A",
+    "location": "Palo Alto, CA",
     "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Echo Core",
     "funding": "15.8M",
     "founded": 2020,
-    "signal_score": 75
-  },
-  {
-    "id": "comp-38",
-    "name": "Cyber Dynamics",
-    "website": "https://cyberdynamics.io",
-    "description": "A fast-growing ClimateTech startup focusing on series b scalability and market disruption.",
-    "industry": "ClimateTech",
-    "stage": "Series B",
-    "location": "New York, NY",
-    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Cyber Dynamics",
-    "funding": "19.1M",
-    "founded": 2021,
-    "signal_score": 63
+    "signal_score": 75,
+    "founders": [
+      {
+        "name": "Kevin Mitnick",
+        "bio": "Security Advisor, legendary hacker."
+      }
+    ],
+    "investors": [
+      {
+        "name": "Accel",
+        "logo": "https://api.dicebear.com/7.x/initials/svg?seed=Accel"
+      }
+    ],
+    "tags": [
+      "Firewall",
+      "Zero Trust"
+    ],
+    "funding_rounds": [
+      {
+        "stage": "Series A",
+        "amount": "15.8M",
+        "date": "2021-04-10",
+        "lead_investor": "Accel"
+      }
+    ],
+    "headcount": 56,
+    "headcount_growth": 25,
+    "social_links": {
+      "linkedin": "https://linkedin.com/company/echo-core",
+      "twitter": "https://twitter.com/echo_core",
+      "crunchbase": "https://crunchbase.com/organization/echo-core"
+    },
+    "signals": [
+      {
+        "type": "Threat Detection",
+        "value": "Leading",
+        "importance": "high"
+      }
+    ]
   },
   {
     "id": "comp-39",
@@ -500,557 +668,1171 @@
     "description": "A fast-growing Web3 startup focusing on series b scalability and market disruption.",
     "industry": "Web3",
     "stage": "Series B",
-    "location": "San Francisco, CA",
+    "location": "Tel Aviv, Israel",
     "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Cyber Core",
     "funding": "15.3M",
     "founded": 2020,
-    "signal_score": 52
-  },
-  {
-    "id": "comp-40",
-    "name": "Nova Systems",
-    "website": "https://novasystems.io",
-    "description": "A fast-growing AI/ML startup focusing on pre-seed scalability and market disruption.",
-    "industry": "AI/ML",
-    "stage": "Pre-seed",
-    "location": "San Francisco, CA",
-    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Nova Systems",
-    "funding": "1.5M",
-    "founded": 2022,
-    "signal_score": 60
+    "signal_score": 52,
+    "founders": [
+      {
+        "name": "Balaji Srinivasan",
+        "bio": "Advisory Founder, formerly Coinbase CTO."
+      }
+    ],
+    "investors": [
+      {
+        "name": "Paradigm",
+        "logo": "https://api.dicebear.com/7.x/initials/svg?seed=Paradigm"
+      }
+    ],
+    "tags": [
+      "Nodes",
+      "RPC"
+    ],
+    "funding_rounds": [
+      {
+        "stage": "Series B",
+        "amount": "15.3M",
+        "date": "2022-03-12",
+        "lead_investor": "Paradigm"
+      }
+    ],
+    "headcount": 34,
+    "headcount_growth": 10,
+    "social_links": {
+      "linkedin": "https://linkedin.com/company/cyber-core",
+      "twitter": "https://twitter.com/cyber_core",
+      "crunchbase": "https://crunchbase.com/organization/cyber-core"
+    },
+    "signals": [
+      {
+        "type": "Network Uptime",
+        "value": "99.9%",
+        "importance": "medium"
+      }
+    ]
   },
   {
     "id": "comp-41",
     "name": "Deep Core",
     "website": "https://deepcore.io",
-    "description": "A fast-growing Healthtech startup focusing on pre-seed scalability and market disruption.",
-    "industry": "Healthtech",
-    "stage": "Pre-seed",
-    "location": "Tel Aviv, Israel",
+    "description": "A fast-growing AI/ML startup focusing on growth scalability and market disruption.",
+    "industry": "AI/ML",
+    "stage": "Growth",
+    "location": "Palo Alto, CA",
     "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Deep Core",
     "funding": "17.2M",
     "founded": 2023,
-    "signal_score": 89
+    "signal_score": 89,
+    "founders": [
+      {
+        "name": "Andrej Karpathy",
+        "bio": "Advisory Founder, formerly Tesla AI."
+      }
+    ],
+    "investors": [
+      {
+        "name": "Founders Fund",
+        "logo": "https://api.dicebear.com/7.x/initials/svg?seed=FF"
+      }
+    ],
+    "tags": [
+      "Auto-label",
+      "LLM"
+    ],
+    "funding_rounds": [
+      {
+        "stage": "Series A",
+        "amount": "17.2M",
+        "date": "2023-01-15",
+        "lead_investor": "Founders Fund"
+      }
+    ],
+    "headcount": 42,
+    "headcount_growth": 200,
+    "social_links": {
+      "linkedin": "https://linkedin.com/company/deep-core",
+      "twitter": "https://twitter.com/deep_core",
+      "crunchbase": "https://crunchbase.com/organization/deep-core"
+    },
+    "signals": [
+      {
+        "type": "Hiring Velocity",
+        "value": "Hyper-growth",
+        "importance": "high"
+      }
+    ]
   },
   {
     "id": "comp-42",
     "name": "Quantum Dynamics",
     "website": "https://quantumdynamics.io",
-    "description": "A fast-growing Fintech startup focusing on series a scalability and market disruption.",
-    "industry": "Fintech",
-    "stage": "Series A",
-    "location": "Tel Aviv, Israel",
+    "description": "A fast-growing SaaS startup focusing on seed scalability and market disruption.",
+    "industry": "SaaS",
+    "stage": "Seed",
+    "location": "Palo Alto, CA",
     "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Quantum Dynamics",
     "funding": "9.8M",
     "founded": 2023,
-    "signal_score": 59
+    "signal_score": 59,
+    "founders": [
+      {
+        "name": "Stewart Butterfield",
+        "bio": "Advisor, Slack founder."
+      }
+    ],
+    "investors": [
+      {
+        "name": "Greylock",
+        "logo": "https://api.dicebear.com/7.x/initials/svg?seed=Greylock"
+      }
+    ],
+    "tags": [
+      "Productivity",
+      "Enterprise"
+    ],
+    "funding_rounds": [
+      {
+        "stage": "Seed",
+        "amount": "9.8M",
+        "date": "2023-06-20",
+        "lead_investor": "Greylock"
+      }
+    ],
+    "headcount": 15,
+    "headcount_growth": 50,
+    "social_links": {
+      "linkedin": "https://linkedin.com/company/quantum-dyn",
+      "twitter": "https://twitter.com/quantumdyn",
+      "crunchbase": "https://crunchbase.com/organization/quantum-dyn"
+    },
+    "signals": [
+      {
+        "type": "Activation Rate",
+        "value": "High",
+        "importance": "medium"
+      }
+    ]
   },
   {
     "id": "comp-43",
     "name": "Echo Security",
     "website": "https://echosecurity.io",
-    "description": "A fast-growing AI/ML startup focusing on series b scalability and market disruption.",
-    "industry": "AI/ML",
+    "description": "A fast-growing Cybersecurity startup focusing on series b scalability and market disruption.",
+    "industry": "Cybersecurity",
     "stage": "Series B",
-    "location": "Austin, TX",
+    "location": "New York, NY",
     "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Echo Security",
     "funding": "8.2M",
     "founded": 2023,
-    "signal_score": 58
-  },
-  {
-    "id": "comp-44",
-    "name": "Prism Stack",
-    "website": "https://prismstack.io",
-    "description": "A fast-growing Web3 startup focusing on seed scalability and market disruption.",
-    "industry": "Web3",
-    "stage": "Seed",
-    "location": "Berlin, Germany",
-    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Prism Stack",
-    "funding": "11.7M",
-    "founded": 2023,
-    "signal_score": 70
+    "signal_score": 58,
+    "founders": [
+      {
+        "name": "Gavin de Becker",
+        "bio": "Security Advisor."
+      }
+    ],
+    "investors": [
+      {
+        "name": "Insight Partners",
+        "logo": "https://api.dicebear.com/7.x/initials/svg?seed=Insight"
+      }
+    ],
+    "tags": [
+      "Monitoring",
+      "SIEM"
+    ],
+    "funding_rounds": [
+      {
+        "stage": "Series B",
+        "amount": "8.2M",
+        "date": "2023-04-12",
+        "lead_investor": "Insight Partners"
+      }
+    ],
+    "headcount": 28,
+    "headcount_growth": 15,
+    "social_links": {
+      "linkedin": "https://linkedin.com/company/echo-sec",
+      "twitter": "https://twitter.com/echosec",
+      "crunchbase": "https://crunchbase.com/organization/echo-sec"
+    },
+    "signals": [
+      {
+        "type": "Inbound Interest",
+        "value": "Growing",
+        "importance": "medium"
+      }
+    ]
   },
   {
     "id": "comp-45",
     "name": "Nexus Solutions",
     "website": "https://nexussolutions.io",
-    "description": "A fast-growing Healthtech startup focusing on pre-seed scalability and market disruption.",
-    "industry": "Healthtech",
-    "stage": "Pre-seed",
-    "location": "Palo Alto, CA",
-    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Nexus Solutions",
-    "funding": "17.5M",
-    "founded": 2021,
-    "signal_score": 83
-  },
-  {
-    "id": "comp-46",
-    "name": "Nova Analytics",
-    "website": "https://novaanalytics.io",
     "description": "A fast-growing Web3 startup focusing on series b scalability and market disruption.",
     "industry": "Web3",
     "stage": "Series B",
-    "location": "New York, NY",
-    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Nova Analytics",
-    "funding": "4.1M",
-    "founded": 2022,
-    "signal_score": 62
+    "location": "Tel Aviv, Israel",
+    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Nexus Solutions",
+    "funding": "17.5M",
+    "founded": 2021,
+    "signal_score": 83,
+    "founders": [
+      {
+        "name": "Satoshi Nakamoto",
+        "bio": "Advisory Figure."
+      }
+    ],
+    "investors": [
+      {
+        "name": "A16Z Crypto",
+        "logo": "https://api.dicebear.com/7.x/initials/svg?seed=A16Z"
+      }
+    ],
+    "tags": [
+      "Governance",
+      "DAO"
+    ],
+    "funding_rounds": [
+      {
+        "stage": "Series B",
+        "amount": "17.5M",
+        "date": "2023-02-10",
+        "lead_investor": "A16Z Crypto"
+      }
+    ],
+    "headcount": 45,
+    "headcount_growth": 30,
+    "social_links": {
+      "linkedin": "https://linkedin.com/company/nexus-solutions",
+      "twitter": "https://twitter.com/nexus_sol",
+      "crunchbase": "https://crunchbase.com/organization/nexus-solutions"
+    },
+    "signals": [
+      {
+        "type": "Governance Participation",
+        "value": "Very High",
+        "importance": "high"
+      }
+    ]
   },
   {
     "id": "comp-47",
     "name": "Cyber Networks",
     "website": "https://cybernetworks.io",
-    "description": "A fast-growing AI/ML startup focusing on pre-seed scalability and market disruption.",
+    "description": "A fast-growing AI/ML startup focusing on and market disruption.",
     "industry": "AI/ML",
-    "stage": "Pre-seed",
-    "location": "Berlin, Germany",
+    "stage": "Seed",
+    "location": "San Francisco, CA",
     "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Cyber Networks",
     "funding": "12.6M",
     "founded": 2021,
-    "signal_score": 85
-  },
-  {
-    "id": "comp-48",
-    "name": "Aether Analytics",
-    "website": "https://aetheranalytics.io",
-    "description": "A fast-growing SaaS startup focusing on growth scalability and market disruption.",
-    "industry": "SaaS",
-    "stage": "Growth",
-    "location": "London, UK",
-    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Aether Analytics",
-    "funding": "0.8M",
-    "founded": 2021,
-    "signal_score": 31
+    "signal_score": 85,
+    "founders": [
+      {
+        "name": "Geoffrey Hinton",
+        "bio": "Advisory Scientist, Godfather of AI."
+      }
+    ],
+    "investors": [
+      {
+        "name": "Google Ventures",
+        "logo": "https://api.dicebear.com/7.x/initials/svg?seed=GV"
+      }
+    ],
+    "tags": [
+      "Neural",
+      "Compute"
+    ],
+    "funding_rounds": [
+      {
+        "stage": "Seed",
+        "amount": "12.6M",
+        "date": "2022-06-15",
+        "lead_investor": "GV"
+      }
+    ],
+    "headcount": 18,
+    "headcount_growth": 150,
+    "social_links": {
+      "linkedin": "https://linkedin.com/company/cyber-nets",
+      "twitter": "https://twitter.com/cybernets",
+      "crunchbase": "https://crunchbase.com/organization/cyber-nets"
+    },
+    "signals": [
+      {
+        "type": "Compute Efficiency",
+        "value": "Top 1%",
+        "importance": "high"
+      }
+    ]
   },
   {
     "id": "comp-49",
     "name": "Bio Stack",
     "website": "https://biostack.io",
-    "description": "A fast-growing AI/ML startup focusing on series a scalability and market disruption.",
-    "industry": "AI/ML",
-    "stage": "Series A",
-    "location": "London, UK",
+    "description": "A fast-growing SaaS startup focusing on seed scalability and market disruption.",
+    "industry": "SaaS",
+    "stage": "Seed",
+    "location": "New York, NY",
     "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Bio Stack",
     "funding": "17.6M",
     "founded": 2020,
-    "signal_score": 43
-  },
-  {
-    "id": "comp-50",
-    "name": "Quantum Dynamics",
-    "website": "https://quantumdynamics.io",
-    "description": "A fast-growing Web3 startup focusing on seed scalability and market disruption.",
-    "industry": "Web3",
-    "stage": "Seed",
-    "location": "Palo Alto, CA",
-    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Quantum Dynamics",
-    "funding": "15.3M",
-    "founded": 2021,
-    "signal_score": 50
+    "signal_score": 43,
+    "founders": [
+      {
+        "name": "Jennifer Doudna",
+        "bio": "Advisory Founder, CRISPR pioneer."
+      }
+    ],
+    "investors": [
+      {
+        "name": "F-Prime Capital",
+        "logo": "https://api.dicebear.com/7.x/initials/svg?seed=FPrime"
+      }
+    ],
+    "tags": [
+      "Lab-automation",
+      "API"
+    ],
+    "funding_rounds": [
+      {
+        "stage": "Seed",
+        "amount": "17.6M",
+        "date": "2021-02-10",
+        "lead_investor": "F-Prime Capital"
+      }
+    ],
+    "headcount": 28,
+    "headcount_growth": 12,
+    "social_links": {
+      "linkedin": "https://linkedin.com/company/bio-stack",
+      "twitter": "https://twitter.com/bio_stack",
+      "crunchbase": "https://crunchbase.com/organization/bio-stack"
+    },
+    "signals": [
+      {
+        "type": "FDA Fast-track",
+        "value": "Eligible",
+        "importance": "medium"
+      }
+    ]
   },
   {
     "id": "comp-51",
     "name": "Solar Stack",
     "website": "https://solarstack.io",
-    "description": "A fast-growing DevTools startup focusing on growth scalability and market disruption.",
-    "industry": "DevTools",
-    "stage": "Growth",
-    "location": "Austin, TX",
+    "description": "A fast-growing Cybersecurity startup focusing on series a scalability and market disruption.",
+    "industry": "Cybersecurity",
+    "stage": "Series A",
+    "location": "Singapore",
     "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Solar Stack",
     "funding": "4.7M",
     "founded": 2021,
-    "signal_score": 45
-  },
-  {
-    "id": "comp-52",
-    "name": "Pulse Networks",
-    "website": "https://pulsenetworks.io",
-    "description": "A fast-growing AI/ML startup focusing on series a scalability and market disruption.",
-    "industry": "AI/ML",
-    "stage": "Series A",
-    "location": "Austin, TX",
-    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Pulse Networks",
-    "funding": "20.2M",
-    "founded": 2021,
-    "signal_score": 83
+    "signal_score": 45,
+    "founders": [
+      {
+        "name": "Eugene Kaspersky",
+        "bio": "Security Advisor."
+      }
+    ],
+    "investors": [
+      {
+        "name": "Singtel Innov8",
+        "logo": "https://api.dicebear.com/7.x/initials/svg?seed=Singtel"
+      }
+    ],
+    "tags": [
+      "Endpoint",
+      "Cloud-native"
+    ],
+    "funding_rounds": [
+      {
+        "stage": "Series A",
+        "amount": "4.7M",
+        "date": "2023-01-20",
+        "lead_investor": "Singtel Innov8"
+      }
+    ],
+    "headcount": 31,
+    "headcount_growth": 40,
+    "social_links": {
+      "linkedin": "https://linkedin.com/company/solar-stack",
+      "twitter": "https://twitter.com/solar_stack",
+      "crunchbase": "https://crunchbase.com/organization/solar-stack"
+    },
+    "signals": [
+      {
+        "type": "CVE Contributions",
+        "value": "Significant",
+        "importance": "medium"
+      }
+    ]
   },
   {
     "id": "comp-53",
     "name": "Flux Logistics",
     "website": "https://fluxlogistics.io",
-    "description": "A fast-growing E-commerce startup focusing on series b scalability and market disruption.",
-    "industry": "E-commerce",
+    "description": "A fast-growing ClimateTech startup focusing on series b scalability and market disruption.",
+    "industry": "ClimateTech",
     "stage": "Series B",
-    "location": "San Francisco, CA",
+    "location": "Singapore",
     "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Flux Logistics",
     "funding": "5.9M",
     "founded": 2023,
-    "signal_score": 31
-  },
-  {
-    "id": "comp-54",
-    "name": "Orbital Networks",
-    "website": "https://orbitalnetworks.io",
-    "description": "A fast-growing Fintech startup focusing on series a scalability and market disruption.",
-    "industry": "Fintech",
-    "stage": "Series A",
-    "location": "New York, NY",
-    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Orbital Networks",
-    "funding": "20.0M",
-    "founded": 2022,
-    "signal_score": 80
+    "signal_score": 31,
+    "founders": [
+      {
+        "name": "Al Gore",
+        "bio": "Advisory Chairman."
+      }
+    ],
+    "investors": [
+      {
+        "name": "Wavemaker Partners",
+        "logo": "https://api.dicebear.com/7.x/initials/svg?seed=Wavemaker"
+      }
+    ],
+    "tags": [
+      "Ocean",
+      "Freight-optimization"
+    ],
+    "funding_rounds": [
+      {
+        "stage": "Series B",
+        "amount": "5.9M",
+        "date": "2023-10-15",
+        "lead_investor": "Wavemaker"
+      }
+    ],
+    "headcount": 12,
+    "headcount_growth": 5,
+    "social_links": {
+      "linkedin": "https://linkedin.com/company/flux-logistics",
+      "twitter": "https://twitter.com/flux_logistics",
+      "crunchbase": "https://crunchbase.com/organization/flux-logistics"
+    },
+    "signals": [
+      {
+        "type": "Shipping Efficiency",
+        "value": "+15%",
+        "importance": "low"
+      }
+    ]
   },
   {
     "id": "comp-55",
     "name": "Prism Technologies",
     "website": "https://prismtechnologies.io",
-    "description": "A fast-growing Web3 startup focusing on series b scalability and market disruption.",
-    "industry": "Web3",
-    "stage": "Series B",
-    "location": "Tel Aviv, Israel",
+    "description": "A fast-growing ClimateTech startup focusing on series a scalability and market disruption.",
+    "industry": "ClimateTech",
+    "stage": "Series A",
+    "location": "New York, NY",
     "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Prism Technologies",
     "funding": "16.4M",
     "founded": 2021,
-    "signal_score": 80
-  },
-  {
-    "id": "comp-56",
-    "name": "Flow Technologies",
-    "website": "https://flowtechnologies.io",
-    "description": "A fast-growing Fintech startup focusing on series a scalability and market disruption.",
-    "industry": "Fintech",
-    "stage": "Series A",
-    "location": "London, UK",
-    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Flow Technologies",
-    "funding": "20.1M",
-    "founded": 2021,
-    "signal_score": 32
-  },
-  {
-    "id": "comp-57",
-    "name": "Lumen Networks",
-    "website": "https://lumennetworks.io",
-    "description": "A fast-growing Healthtech startup focusing on series b scalability and market disruption.",
-    "industry": "Healthtech",
-    "stage": "Series B",
-    "location": "Singapore",
-    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Lumen Networks",
-    "funding": "5.8M",
-    "founded": 2021,
-    "signal_score": 78
-  },
-  {
-    "id": "comp-58",
-    "name": "Pulse Stack",
-    "website": "https://pulsestack.io",
-    "description": "A fast-growing DevTools startup focusing on seed scalability and market disruption.",
-    "industry": "DevTools",
-    "stage": "Seed",
-    "location": "Berlin, Germany",
-    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Pulse Stack",
-    "funding": "6.2M",
-    "founded": 2021,
-    "signal_score": 38
+    "signal_score": 80,
+    "founders": [
+      {
+        "name": "James Hansen",
+        "bio": "Advisory Founder, climate scientist."
+      }
+    ],
+    "investors": [
+      {
+        "name": "Lowercarbon",
+        "logo": "https://api.dicebear.com/7.x/initials/svg?seed=Lowercarbon"
+      }
+    ],
+    "tags": [
+      "Carbon-capture",
+      "Direct-air"
+    ],
+    "funding_rounds": [
+      {
+        "stage": "Series A",
+        "amount": "16.4M",
+        "date": "2023-05-12",
+        "lead_investor": "Lowercarbon"
+      }
+    ],
+    "headcount": 22,
+    "headcount_growth": 80,
+    "social_links": {
+      "linkedin": "https://linkedin.com/company/prism-tech",
+      "twitter": "https://twitter.com/prism_tech",
+      "crunchbase": "https://crunchbase.com/organization/prism-tech"
+    },
+    "signals": [
+      {
+        "type": "Tonz Captured",
+        "value": "100k+",
+        "importance": "high"
+      }
+    ]
   },
   {
     "id": "comp-59",
     "name": "Vertex Analytics",
     "website": "https://vertexanalytics.io",
-    "description": "A fast-growing ClimateTech startup focusing on growth scalability and market disruption.",
-    "industry": "ClimateTech",
+    "description": "A fast-growing Fintech startup focusing on growth scalability and market disruption.",
+    "industry": "Fintech",
     "stage": "Growth",
-    "location": "San Francisco, CA",
+    "location": "New York, NY",
     "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Vertex Analytics",
     "funding": "12.6M",
     "founded": 2020,
-    "signal_score": 63
-  },
-  {
-    "id": "comp-60",
-    "name": "Deep Scale",
-    "website": "https://deepscale.io",
-    "description": "A fast-growing E-commerce startup focusing on pre-seed scalability and market disruption.",
-    "industry": "E-commerce",
-    "stage": "Pre-seed",
-    "location": "Singapore",
-    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Deep Scale",
-    "funding": "15.9M",
-    "founded": 2020,
-    "signal_score": 85
+    "signal_score": 63,
+    "founders": [
+      {
+        "name": "Ray Dalio",
+        "bio": "Advisory Founder, Bridgewater founder."
+      }
+    ],
+    "investors": [
+      {
+        "name": "Bain Capital",
+        "logo": "https://api.dicebear.com/7.x/initials/svg?seed=Bain"
+      }
+    ],
+    "tags": [
+      "Macro",
+      "Predictive"
+    ],
+    "funding_rounds": [
+      {
+        "stage": "Series B",
+        "amount": "12.6M",
+        "date": "2023-08-15",
+        "lead_investor": "Bain Capital"
+      }
+    ],
+    "headcount": 64,
+    "headcount_growth": 12,
+    "social_links": {
+      "linkedin": "https://linkedin.com/company/vertex-analytics",
+      "twitter": "https://twitter.com/vertex_analytics",
+      "crunchbase": "https://crunchbase.com/organization/vertex-analytics"
+    },
+    "signals": [
+      {
+        "type": "Alpha Generation",
+        "value": "Consistent",
+        "importance": "high"
+      }
+    ]
   },
   {
     "id": "comp-61",
-    "name": "Nexus Systems",
-    "website": "https://nexussystems.io",
-    "description": "A fast-growing SaaS startup focusing on series b scalability and market disruption.",
-    "industry": "SaaS",
-    "stage": "Series B",
-    "location": "San Francisco, CA",
-    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Nexus Systems",
-    "funding": "19.6M",
-    "founded": 2021,
-    "signal_score": 70
-  },
-  {
-    "id": "comp-62",
-    "name": "Lumen Dynamics",
-    "website": "https://lumendynamics.io",
-    "description": "A fast-growing ClimateTech startup focusing on growth scalability and market disruption.",
-    "industry": "ClimateTech",
-    "stage": "Growth",
+    "name": "Nexus Dynamics",
+    "website": "https://nexusdynamics.io",
+    "description": "A fast-growing E-commerce startup focusing on and market disruption.",
+    "industry": "E-commerce",
+    "stage": "Pre-seed",
     "location": "Tel Aviv, Israel",
-    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Lumen Dynamics",
-    "funding": "18.0M",
-    "founded": 2020,
-    "signal_score": 40
+    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Nexus Dynamics",
+    "funding": "11.6M",
+    "founded": 2021,
+    "signal_score": 78,
+    "founders": [
+      {
+        "name": "Adam Neumann",
+        "bio": "Advisory Founder."
+      }
+    ],
+    "investors": [
+      {
+        "name": "SoftBank",
+        "logo": "https://api.dicebear.com/7.x/initials/svg?seed=SoftBank"
+      }
+    ],
+    "tags": [
+      "Subscription",
+      "Logistics"
+    ],
+    "funding_rounds": [
+      {
+        "stage": "Pre-seed",
+        "amount": "11.6M",
+        "date": "2021-11-10",
+        "lead_investor": "SoftBank"
+      }
+    ],
+    "headcount": 14,
+    "headcount_growth": 20,
+    "social_links": {
+      "linkedin": "https://linkedin.com/company/nexus-dyn",
+      "twitter": "https://twitter.com/nexusdyn",
+      "crunchbase": "https://crunchbase.com/organization/nexus-dyn"
+    },
+    "signals": [
+      {
+        "type": "Churn Rate",
+        "value": "Low",
+        "importance": "medium"
+      }
+    ]
   },
   {
     "id": "comp-63",
-    "name": "Quantum Labs",
-    "website": "https://quantumlabs.io",
-    "description": "A fast-growing Fintech startup focusing on series b scalability and market disruption.",
-    "industry": "Fintech",
-    "stage": "Series B",
-    "location": "London, UK",
-    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Quantum Labs",
-    "funding": "17.1M",
-    "founded": 2020,
-    "signal_score": 87
-  },
-  {
-    "id": "comp-64",
-    "name": "Nova Labs",
-    "website": "https://novalabs.io",
-    "description": "A fast-growing Cybersecurity startup focusing on series a scalability and market disruption.",
+    "name": "Cloud Security",
+    "website": "https://cloudsecurity.io",
+    "description": "A fast-growing Cybersecurity startup focusing on and market disruption.",
     "industry": "Cybersecurity",
     "stage": "Series A",
-    "location": "Austin, TX",
-    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Nova Labs",
-    "funding": "16.2M",
-    "founded": 2022,
-    "signal_score": 77
-  },
-  {
-    "id": "comp-65",
-    "name": "Lumen Analytics",
-    "website": "https://lumenanalytics.io",
-    "description": "A fast-growing Web3 startup focusing on series b scalability and market disruption.",
-    "industry": "Web3",
-    "stage": "Series B",
     "location": "San Francisco, CA",
-    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Lumen Analytics",
-    "funding": "5.8M",
+    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Cloud Security",
+    "funding": "16.1M",
     "founded": 2021,
-    "signal_score": 36
-  },
-  {
-    "id": "comp-66",
-    "name": "Nova Logistics",
-    "website": "https://novalogistics.io",
-    "description": "A fast-growing AI/ML startup focusing on series a scalability and market disruption.",
-    "industry": "AI/ML",
-    "stage": "Series A",
-    "location": "Austin, TX",
-    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Nova Logistics",
-    "funding": "3.4M",
-    "founded": 2021,
-    "signal_score": 61
-  },
-  {
-    "id": "comp-67",
-    "name": "Pulse Analytics",
-    "website": "https://pulseanalytics.io",
-    "description": "A fast-growing Web3 startup focusing on pre-seed scalability and market disruption.",
-    "industry": "Web3",
-    "stage": "Pre-seed",
-    "location": "New York, NY",
-    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Pulse Analytics",
-    "funding": "7.4M",
-    "founded": 2023,
-    "signal_score": 81
-  },
-  {
-    "id": "comp-68",
-    "name": "Flow Finance",
-    "website": "https://flowfinance.io",
-    "description": "A fast-growing AI/ML startup focusing on seed scalability and market disruption.",
-    "industry": "AI/ML",
-    "stage": "Seed",
-    "location": "Singapore",
-    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Flow Finance",
-    "funding": "5.0M",
-    "founded": 2021,
-    "signal_score": 85
-  },
-  {
-    "id": "comp-69",
-    "name": "Prism Analytics",
-    "website": "https://prismanalytics.io",
-    "description": "A fast-growing E-commerce startup focusing on pre-seed scalability and market disruption.",
-    "industry": "E-commerce",
-    "stage": "Pre-seed",
-    "location": "London, UK",
-    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Prism Analytics",
-    "funding": "3.9M",
-    "founded": 2022,
-    "signal_score": 87
-  },
-  {
-    "id": "comp-70",
-    "name": "Apex Networks",
-    "website": "https://apexnetworks.io",
-    "description": "A fast-growing AI/ML startup focusing on seed scalability and market disruption.",
-    "industry": "AI/ML",
-    "stage": "Seed",
-    "location": "Austin, TX",
-    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Apex Networks",
-    "funding": "15.3M",
-    "founded": 2020,
-    "signal_score": 55
-  },
-  {
-    "id": "comp-71",
-    "name": "Aether Labs",
-    "website": "https://aetherlabs.io",
-    "description": "A fast-growing ClimateTech startup focusing on seed scalability and market disruption.",
-    "industry": "ClimateTech",
-    "stage": "Seed",
-    "location": "Tel Aviv, Israel",
-    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Aether Labs",
-    "funding": "2.1M",
-    "founded": 2020,
-    "signal_score": 84
-  },
-  {
-    "id": "comp-72",
-    "name": "Prism Networks",
-    "website": "https://prismnetworks.io",
-    "description": "A fast-growing DevTools startup focusing on seed scalability and market disruption.",
-    "industry": "DevTools",
-    "stage": "Seed",
-    "location": "Singapore",
-    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Prism Networks",
-    "funding": "12.9M",
-    "founded": 2020,
-    "signal_score": 78
-  },
-  {
-    "id": "comp-73",
-    "name": "Apex Technologies",
-    "website": "https://apextechnologies.io",
-    "description": "A fast-growing Healthtech startup focusing on series a scalability and market disruption.",
-    "industry": "Healthtech",
-    "stage": "Series A",
-    "location": "Singapore",
-    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Apex Technologies",
-    "funding": "5.0M",
-    "founded": 2022,
-    "signal_score": 80
-  },
-  {
-    "id": "comp-74",
-    "name": "Vertex Security",
-    "website": "https://vertexsecurity.io",
-    "description": "A fast-growing Cybersecurity startup focusing on series a scalability and market disruption.",
-    "industry": "Cybersecurity",
-    "stage": "Series A",
-    "location": "New York, NY",
-    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Vertex Security",
-    "funding": "11.2M",
-    "founded": 2020,
-    "signal_score": 88
-  },
-  {
-    "id": "comp-75",
-    "name": "Solar Analytics",
-    "website": "https://solaranalytics.io",
-    "description": "A fast-growing Healthtech startup focusing on series b scalability and market disruption.",
-    "industry": "Healthtech",
-    "stage": "Series B",
-    "location": "Palo Alto, CA",
-    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Solar Analytics",
-    "funding": "16.4M",
-    "founded": 2022,
-    "signal_score": 40
-  },
-  {
-    "id": "comp-76",
-    "name": "Prism AI",
-    "website": "https://prismai.io",
-    "description": "A fast-growing DevTools startup focusing on pre-seed scalability and market disruption.",
-    "industry": "DevTools",
-    "stage": "Pre-seed",
-    "location": "New York, NY",
-    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Prism AI",
-    "funding": "16.2M",
-    "founded": 2021,
-    "signal_score": 81
+    "signal_score": 53,
+    "founders": [
+      {
+        "name": "Bruce Schneier",
+        "bio": "Security Advisor."
+      }
+    ],
+    "investors": [
+      {
+        "name": "Greylock",
+        "logo": "https://api.dicebear.com/7.x/initials/svg?seed=Greylock"
+      }
+    ],
+    "tags": [
+      "IAM",
+      "SSO"
+    ],
+    "funding_rounds": [
+      {
+        "stage": "Series A",
+        "amount": "16.1M",
+        "date": "2023-01-22",
+        "lead_investor": "Greylock"
+      }
+    ],
+    "headcount": 42,
+    "headcount_growth": 15,
+    "social_links": {
+      "linkedin": "https://linkedin.com/company/cloud-sec-io",
+      "twitter": "https://twitter.com/cloudsecio",
+      "crunchbase": "https://crunchbase.com/organization/cloud-sec-io"
+    },
+    "signals": [
+      {
+        "type": "SOC2 Completion",
+        "value": "Yes",
+        "importance": "low"
+      }
+    ]
   },
   {
     "id": "comp-77",
-    "name": "Cyber Core",
-    "website": "https://cybercore.io",
-    "description": "A fast-growing Web3 startup focusing on pre-seed scalability and market disruption.",
-    "industry": "Web3",
+    "name": "Flow Systems",
+    "website": "https://flowsystems.io",
+    "description": "A fast-growing E-commerce startup focusing on pre-seed scalability and market disruption.",
+    "industry": "E-commerce",
     "stage": "Pre-seed",
-    "location": "San Francisco, CA",
-    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Cyber Core",
-    "funding": "0.8M",
-    "founded": 2021,
-    "signal_score": 89
+    "location": "New York, NY",
+    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Flow Systems",
+    "funding": "3.5M",
+    "founded": 2022,
+    "signal_score": 67,
+    "founders": [
+      {
+        "name": "Tobias Lutke",
+        "bio": "Advisory Founder."
+      }
+    ],
+    "investors": [
+      {
+        "name": "Shopify Ventures",
+        "logo": "https://api.dicebear.com/7.x/initials/svg?seed=Shopify"
+      }
+    ],
+    "tags": [
+      "Storefront",
+      "Headless"
+    ],
+    "funding_rounds": [
+      {
+        "stage": "Pre-seed",
+        "amount": "3.5M",
+        "date": "2022-09-15",
+        "lead_investor": "Shopify Ventures"
+      }
+    ],
+    "headcount": 8,
+    "headcount_growth": 40,
+    "social_links": {
+      "linkedin": "https://linkedin.com/company/flow-systems-io",
+      "twitter": "https://twitter.com/flowsystemsio",
+      "crunchbase": "https://crunchbase.com/organization/flow-systems-io"
+    },
+    "signals": [
+      {
+        "type": "GMV Velocity",
+        "value": "Stable",
+        "importance": "medium"
+      }
+    ]
   },
   {
-    "id": "comp-78",
-    "name": "Cloud Labs",
-    "website": "https://cloudlabs.io",
-    "description": "A fast-growing Web3 startup focusing on growth scalability and market disruption.",
-    "industry": "Web3",
+    "id": "comp-65",
+    "name": "Solar Core",
+    "website": "https://solarcore.io",
+    "description": "A fast-growing DevTools startup focusing on and market disruption.",
+    "industry": "DevTools",
     "stage": "Growth",
-    "location": "Palo Alto, CA",
-    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Cloud Labs",
-    "funding": "7.5M",
+    "location": "Singapore",
+    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Solar Core",
+    "funding": "5.6M",
+    "founded": 2023,
+    "signal_score": 55,
+    "founders": [
+      {
+        "name": "Kelsey Hightower",
+        "bio": "Security Advisor, Kubernetes expert."
+      }
+    ],
+    "investors": [
+      {
+        "name": "Vertex Ventures",
+        "logo": "https://api.dicebear.com/7.x/initials/svg?seed=Vertex"
+      }
+    ],
+    "tags": [
+      "Kubernetes",
+      "Sidecar"
+    ],
+    "funding_rounds": [
+      {
+        "stage": "Seed",
+        "amount": "5.6M",
+        "date": "2023-07-10",
+        "lead_investor": "Vertex Ventures"
+      }
+    ],
+    "headcount": 18,
+    "headcount_growth": 120,
+    "social_links": {
+      "linkedin": "https://linkedin.com/company/solar-core-io",
+      "twitter": "https://twitter.com/solarcoreio",
+      "crunchbase": "https://crunchbase.com/organization/solar-core-io"
+    },
+    "signals": [
+      {
+        "type": "GH Stars",
+        "value": "5k+",
+        "importance": "medium"
+      }
+    ]
+  },
+  {
+    "id": "comp-67",
+    "name": "Biosan Dynamics",
+    "website": "https://biosandynamics.io",
+    "description": "A fast-growing SaaS startup focusing on series b scalability and market disruption.",
+    "industry": "SaaS",
+    "stage": "Series B",
+    "location": "New York, NY",
+    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Biosan Dynamics",
+    "funding": "11.1M",
     "founded": 2022,
-    "signal_score": 67
+    "signal_score": 48,
+    "founders": [
+      {
+        "name": "Anne Wojcicki",
+        "bio": "Advisory Founder, 23andMe founder."
+      }
+    ],
+    "investors": [
+      {
+        "name": "Casdin Capital",
+        "logo": "https://api.dicebear.com/7.x/initials/svg?seed=Casdin"
+      }
+    ],
+    "tags": [
+      "Genomics",
+      "Storage"
+    ],
+    "funding_rounds": [
+      {
+        "stage": "Series B",
+        "amount": "11.1M",
+        "date": "2023-04-12",
+        "lead_investor": "Casdin Capital"
+      }
+    ],
+    "headcount": 45,
+    "headcount_growth": 10,
+    "social_links": {
+      "linkedin": "https://linkedin.com/company/biosan-dyn",
+      "twitter": "https://twitter.com/biosandyn",
+      "crunchbase": "https://crunchbase.com/organization/biosan-dyn"
+    },
+    "signals": [
+      {
+        "type": "Data Privacy",
+        "value": "A+",
+        "importance": "medium"
+      }
+    ]
+  },
+  {
+    "id": "comp-69",
+    "name": "Biosan Solutions",
+    "website": "https://biosansolutions.io",
+    "description": "A fast-growing DevTools startup focusing on seed scalability and market disruption.",
+    "industry": "DevTools",
+    "stage": "Seed",
+    "location": "Palo Alto, CA",
+    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Biosan Solutions",
+    "funding": "2.8M",
+    "founded": 2021,
+    "signal_score": 60,
+    "founders": [
+      {
+        "name": "Bill Gates",
+        "bio": "Advisory Investor."
+      }
+    ],
+    "investors": [
+      {
+        "name": "Gates Ventures",
+        "logo": "https://api.dicebear.com/7.x/initials/svg?seed=Gates"
+      }
+    ],
+    "tags": [
+      "IDE",
+      "Health"
+    ],
+    "funding_rounds": [
+      {
+        "stage": "Seed",
+        "amount": "2.8M",
+        "date": "2021-08-15",
+        "lead_investor": "Gates Ventures"
+      }
+    ],
+    "headcount": 6,
+    "headcount_growth": 20,
+    "social_links": {
+      "linkedin": "https://linkedin.com/company/biosan-sol",
+      "twitter": "https://twitter.com/biosansol",
+      "crunchbase": "https://crunchbase.com/organization/biosan-sol"
+    },
+    "signals": [
+      {
+        "type": "Inbound Interest",
+        "value": "Growing",
+        "importance": "medium"
+      }
+    ]
+  },
+  {
+    "id": "comp-71",
+    "name": "Bio Scale",
+    "website": "https://bioscale.io",
+    "description": "A fast-growing ClimateTech startup focusing on and market disruption.",
+    "industry": "ClimateTech",
+    "stage": "Series A",
+    "location": "San Francisco, CA",
+    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Bio Scale",
+    "funding": "13.6M",
+    "founded": 2023,
+    "signal_score": 83,
+    "founders": [
+      {
+        "name": "Elon Musk",
+        "bio": "Advisory Founder."
+      }
+    ],
+    "investors": [
+      {
+        "name": "First Round",
+        "logo": "https://api.dicebear.com/7.x/initials/svg?seed=First"
+      }
+    ],
+    "tags": [
+      "Biofuel",
+      "Carbon"
+    ],
+    "funding_rounds": [
+      {
+        "stage": "Series A",
+        "amount": "13.6M",
+        "date": "2023-03-20",
+        "lead_investor": "First Round"
+      }
+    ],
+    "headcount": 34,
+    "headcount_growth": 250,
+    "social_links": {
+      "linkedin": "https://linkedin.com/company/bio-scale-io",
+      "twitter": "https://twitter.com/bioscaleio",
+      "crunchbase": "https://crunchbase.com/organization/bio-scale-io"
+    },
+    "signals": [
+      {
+        "type": "Efficiency",
+        "value": "+40%",
+        "importance": "high"
+      }
+    ]
+  },
+  {
+    "id": "comp-93",
+    "name": "Bio Solutions",
+    "website": "https://biosolutions.io",
+    "description": "A fast-growing ClimateTech startup focusing on seed scalability and market disruption.",
+    "industry": "ClimateTech",
+    "stage": "Seed",
+    "location": "Austin, TX",
+    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Bio Solutions",
+    "funding": "18.3M",
+    "founded": 2021,
+    "signal_score": 58,
+    "founders": [
+      {
+        "name": "Bill McKibben",
+        "bio": "Advisory Figure."
+      }
+    ],
+    "investors": [
+      {
+        "name": "Congruent Ventures",
+        "logo": "https://api.dicebear.com/7.x/initials/svg?seed=Congruent"
+      }
+    ],
+    "tags": [
+      "Ocean-health",
+      "Coral"
+    ],
+    "funding_rounds": [
+      {
+        "stage": "Seed",
+        "amount": "18.3M",
+        "date": "2022-06-15",
+        "lead_investor": "Congruent Ventures"
+      }
+    ],
+    "headcount": 18,
+    "headcount_growth": 40,
+    "social_links": {
+      "linkedin": "https://linkedin.com/company/bio-solutions-ocean",
+      "twitter": "https://twitter.com/biocean",
+      "crunchbase": "https://crunchbase.com/organization/bio-solutions-ocean"
+    },
+    "signals": [
+      {
+        "type": "Grant Funding",
+        "value": "$5M",
+        "importance": "high"
+      }
+    ]
+  },
+  {
+    "id": "comp-73",
+    "name": "Prism Stack",
+    "website": "https://prismstack.io",
+    "description": "A fast-growing Fintech startup focusing on series b scalability and market disruption.",
+    "industry": "Fintech",
+    "stage": "Series B",
+    "location": "Austin, TX",
+    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Prism Stack",
+    "funding": "5.6M",
+    "founded": 2020,
+    "signal_score": 83,
+    "founders": [
+      {
+        "name": "Patrick Collison",
+        "bio": "Advisory Figure."
+      }
+    ],
+    "investors": [
+      {
+        "name": "Sequoia",
+        "logo": "https://api.dicebear.com/7.x/initials/svg?seed=Sequoia"
+      }
+    ],
+    "tags": [
+      "Checkout",
+      "SDK"
+    ],
+    "funding_rounds": [
+      {
+        "stage": "Series B",
+        "amount": "5.6M",
+        "date": "2023-01-15",
+        "lead_investor": "Sequoia"
+      }
+    ],
+    "headcount": 82,
+    "headcount_growth": 15,
+    "social_links": {
+      "linkedin": "https://linkedin.com/company/prism-stack",
+      "twitter": "https://twitter.com/prismstack",
+      "crunchbase": "https://crunchbase.com/organization/prism-stack"
+    },
+    "signals": [
+      {
+        "type": "Merchant Growth",
+        "value": "10% MoM",
+        "importance": "medium"
+      }
+    ]
+  },
+  {
+    "id": "comp-87",
+    "name": "Deep Analytics",
+    "website": "https://deepanalytics.io",
+    "description": "A fast-growing ClimateTech startup focusing on series b scalability and market disruption.",
+    "industry": "ClimateTech",
+    "stage": "Series B",
+    "location": "San Francisco, CA",
+    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Deep Analytics",
+    "funding": "11.1M",
+    "founded": 2023,
+    "signal_score": 68,
+    "founders": [
+      {
+        "name": "Al Gore",
+        "bio": "Advisory Figure."
+      }
+    ],
+    "investors": [
+      {
+        "name": "Generation IM",
+        "logo": "https://api.dicebear.com/7.x/initials/svg?seed=Generation"
+      }
+    ],
+    "tags": [
+      "Impact",
+      "Reporting"
+    ],
+    "funding_rounds": [
+      {
+        "stage": "Series B",
+        "amount": "11.1M",
+        "date": "2023-09-12",
+        "lead_investor": "Generation IM"
+      }
+    ],
+    "headcount": 34,
+    "headcount_growth": 50,
+    "social_links": {
+      "linkedin": "https://linkedin.com/company/deep-analytics-impact",
+      "twitter": "https://twitter.com/deepimpact",
+      "crunchbase": "https://crunchbase.com/organization/deep-analytics-impact"
+    },
+    "signals": [
+      {
+        "type": "Reporting Accuracy",
+        "value": "A+",
+        "importance": "medium"
+      }
+    ]
   },
   {
     "id": "comp-79",
-    "name": "Cyber Networks",
-    "website": "https://cybernetworks.io",
-    "description": "A fast-growing Healthtech startup focusing on growth scalability and market disruption.",
-    "industry": "Healthtech",
+    "name": "Echo Core",
+    "website": "https://echocore.io",
+    "description": "A fast-growing Web3 startup focusing on growth scalability and market disruption.",
+    "industry": "Web3",
     "stage": "Growth",
-    "location": "Singapore",
-    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Cyber Networks",
-    "funding": "17.9M",
-    "founded": 2023,
-    "signal_score": 57
-  },
-  {
-    "id": "comp-80",
-    "name": "Vertex Technologies",
-    "website": "https://vertextechnologies.io",
-    "description": "A fast-growing Cybersecurity startup focusing on series a scalability and market disruption.",
-    "industry": "Cybersecurity",
-    "stage": "Series A",
-    "location": "Singapore",
-    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Vertex Technologies",
-    "funding": "13.5M",
-    "founded": 2023,
-    "signal_score": 79
+    "location": "San Francisco, CA",
+    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Echo Core",
+    "funding": "7.2M",
+    "founded": 2021,
+    "signal_score": 83,
+    "founders": [
+      {
+        "name": "Vitalik Buterin",
+        "bio": "Advisory Founder."
+      }
+    ],
+    "investors": [
+      {
+        "name": "Pantera Capital",
+        "logo": "https://api.dicebear.com/7.x/initials/svg?seed=Pantera"
+      }
+    ],
+    "tags": [
+      "L3",
+      "Privacy"
+    ],
+    "funding_rounds": [
+      {
+        "stage": "Series A",
+        "amount": "7.2M",
+        "date": "2023-02-12",
+        "lead_investor": "Pantera Capital"
+      }
+    ],
+    "headcount": 14,
+    "headcount_growth": 50,
+    "social_links": {
+      "linkedin": "https://linkedin.com/company/echo-core-web3",
+      "twitter": "https://twitter.com/echocoreweb3",
+      "crunchbase": "https://crunchbase.com/organization/echo-core-web3"
+    },
+    "signals": [
+      {
+        "type": "Dev Activity",
+        "value": "Very High",
+        "importance": "high"
+      }
+    ]
   },
   {
     "id": "comp-81",
-    "name": "Solar Dynamics",
-    "website": "https://solardynamics.io",
-    "description": "A fast-growing Fintech startup focusing on pre-seed scalability and market disruption.",
-    "industry": "Fintech",
+    "name": "Vertex Core",
+    "website": "https://vertexcore.io",
+    "description": "A fast-growing E-commerce startup focusing on pre-seed scalability and market disruption.",
+    "industry": "E-commerce",
     "stage": "Pre-seed",
     "location": "Tel Aviv, Israel",
-    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Solar Dynamics",
-    "funding": "13.0M",
-    "founded": 2022,
-    "signal_score": 58
+    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Vertex Core",
+    "funding": "11.2M",
+    "founded": 2021,
+    "signal_score": 67,
+    "founders": [
+      {
+        "name": "Jeff Bezos",
+        "bio": "Advisory Figure."
+      }
+    ],
+    "investors": [
+      {
+        "name": "Founders Fund",
+        "logo": "https://api.dicebear.com/7.x/initials/svg?seed=FF"
+      }
+    ],
+    "tags": [
+      "Fulfillment",
+      "API"
+    ],
+    "funding_rounds": [
+      {
+        "stage": "Pre-seed",
+        "amount": "11.2M",
+        "date": "2021-06-10",
+        "lead_investor": "Founders Fund"
+      }
+    ],
+    "headcount": 12,
+    "headcount_growth": 100,
+    "social_links": {
+      "linkedin": "https://linkedin.com/company/vertex-core-ec",
+      "twitter": "https://twitter.com/vertexcoreec",
+      "crunchbase": "https://crunchbase.com/organization/vertex-core-ec"
+    },
+    "signals": [
+      {
+        "type": "Shipping Velocity",
+        "value": "Very High",
+        "importance": "medium"
+      }
+    ]
   },
   {
     "id": "comp-82",
@@ -1063,20 +1845,96 @@
     "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Nova Point",
     "funding": "2.3M",
     "founded": 2020,
-    "signal_score": 89
+    "signal_score": 89,
+    "founders": [
+      {
+        "name": "Daniel Kahneman",
+        "bio": "Advisory Scientist."
+      }
+    ],
+    "investors": [
+      {
+        "name": "Viola Ventures",
+        "logo": "https://api.dicebear.com/7.x/initials/svg?seed=Viola"
+      }
+    ],
+    "tags": [
+      "Behavioral",
+      "Risk"
+    ],
+    "funding_rounds": [
+      {
+        "stage": "Seed",
+        "amount": "2.3M",
+        "date": "2021-03-01",
+        "lead_investor": "Viola Ventures"
+      }
+    ],
+    "headcount": 15,
+    "headcount_growth": 30,
+    "social_links": {
+      "linkedin": "https://linkedin.com/company/nova-point-fin",
+      "twitter": "https://twitter.com/novapointfin",
+      "crunchbase": "https://crunchbase.com/organization/nova-point-fin"
+    },
+    "signals": [
+      {
+        "type": "Fraud Detection",
+        "value": "High Accuracy",
+        "importance": "high"
+      }
+    ]
   },
   {
     "id": "comp-83",
-    "name": "Flow Stack",
-    "website": "https://flowstack.io",
-    "description": "A fast-growing ClimateTech startup focusing on series b scalability and market disruption.",
-    "industry": "ClimateTech",
-    "stage": "Series B",
-    "location": "Berlin, Germany",
-    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Flow Stack",
-    "funding": "13.3M",
-    "founded": 2021,
-    "signal_score": 31
+    "name": "Cloud Systems",
+    "website": "https://cloudsystems.io",
+    "description": "A fast-growing Fintech startup focusing on growth scalability and market disruption.",
+    "industry": "Fintech",
+    "stage": "Growth",
+    "location": "New York, NY",
+    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Cloud Systems",
+    "funding": "11.7M",
+    "founded": 2022,
+    "signal_score": 53,
+    "founders": [
+      {
+        "name": "Cathie Wood",
+        "bio": "Advisory Investor."
+      }
+    ],
+    "investors": [
+      {
+        "name": "ARK Invest",
+        "logo": "https://api.dicebear.com/7.x/initials/svg?seed=ARK"
+      }
+    ],
+    "tags": [
+      "ETF",
+      "B2B"
+    ],
+    "funding_rounds": [
+      {
+        "stage": "Series B",
+        "amount": "11.7M",
+        "date": "2023-11-20",
+        "lead_investor": "ARK Invest"
+      }
+    ],
+    "headcount": 82,
+    "headcount_growth": 20,
+    "social_links": {
+      "linkedin": "https://linkedin.com/company/cloud-systems-fin",
+      "twitter": "https://twitter.com/cloudsysfin",
+      "crunchbase": "https://crunchbase.com/organization/cloud-systems-fin"
+    },
+    "signals": [
+      {
+        "type": "AUM Growth",
+        "value": "Stable",
+        "importance": "medium"
+      }
+    ]
   },
   {
     "id": "comp-84",
@@ -1089,20 +1947,96 @@
     "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Flux Analytics",
     "funding": "8.7M",
     "founded": 2023,
-    "signal_score": 66
+    "signal_score": 66,
+    "founders": [
+      {
+        "name": "Stewart Butterfield",
+        "bio": "Advisory Founder."
+      }
+    ],
+    "investors": [
+      {
+        "name": "Accel",
+        "logo": "https://api.dicebear.com/7.x/initials/svg?seed=Accel"
+      }
+    ],
+    "tags": [
+      "Productivity",
+      "Collaboration"
+    ],
+    "funding_rounds": [
+      {
+        "stage": "Series B",
+        "amount": "8.7M",
+        "date": "2023-07-25",
+        "lead_investor": "Accel"
+      }
+    ],
+    "headcount": 55,
+    "headcount_growth": 15,
+    "social_links": {
+      "linkedin": "https://linkedin.com/company/flux-analytics-saas",
+      "twitter": "https://twitter.com/fluxsaas",
+      "crunchbase": "https://crunchbase.com/organization/flux-analytics-saas"
+    },
+    "signals": [
+      {
+        "type": "User Engagement",
+        "value": "High",
+        "importance": "medium"
+      }
+    ]
   },
   {
     "id": "comp-85",
-    "name": "Lumen Logistics",
-    "website": "https://lumenlogistics.io",
-    "description": "A fast-growing DevTools startup focusing on seed scalability and market disruption.",
-    "industry": "DevTools",
-    "stage": "Seed",
+    "name": "Solar Core",
+    "website": "https://solarcore.io",
+    "description": "A fast-growing E-commerce startup focusing on series b scalability and market disruption.",
+    "industry": "E-commerce",
+    "stage": "Series B",
     "location": "Singapore",
-    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Lumen Logistics",
-    "funding": "4.1M",
+    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Solar Core",
+    "funding": "7.3M",
     "founded": 2020,
-    "signal_score": 69
+    "signal_score": 88,
+    "founders": [
+      {
+        "name": "Marc Lore",
+        "bio": "Advisory Founder."
+      }
+    ],
+    "investors": [
+      {
+        "name": "Sequoia Capital",
+        "logo": "https://api.dicebear.com/7.x/initials/svg?seed=Sequoia"
+      }
+    ],
+    "tags": [
+      "Marketplace",
+      "DTC"
+    ],
+    "funding_rounds": [
+      {
+        "stage": "Series B",
+        "amount": "7.3M",
+        "date": "2022-04-15",
+        "lead_investor": "Sequoia"
+      }
+    ],
+    "headcount": 145,
+    "headcount_growth": 35,
+    "social_links": {
+      "linkedin": "https://linkedin.com/company/solar-core-ec",
+      "twitter": "https://twitter.com/solarcoreec",
+      "crunchbase": "https://crunchbase.com/organization/solar-core-ec"
+    },
+    "signals": [
+      {
+        "type": "Brand Awareness",
+        "value": "Rising",
+        "importance": "high"
+      }
+    ]
   },
   {
     "id": "comp-86",
@@ -1115,46 +2049,96 @@
     "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Vertex Systems",
     "funding": "9.7M",
     "founded": 2020,
-    "signal_score": 46
-  },
-  {
-    "id": "comp-87",
-    "name": "Echo Stack",
-    "website": "https://echostack.io",
-    "description": "A fast-growing Healthtech startup focusing on seed scalability and market disruption.",
-    "industry": "Healthtech",
-    "stage": "Seed",
-    "location": "London, UK",
-    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Echo Stack",
-    "funding": "19.6M",
-    "founded": 2021,
-    "signal_score": 47
-  },
-  {
-    "id": "comp-88",
-    "name": "Prism Technologies",
-    "website": "https://prismtechnologies.io",
-    "description": "A fast-growing Cybersecurity startup focusing on seed scalability and market disruption.",
-    "industry": "Cybersecurity",
-    "stage": "Seed",
-    "location": "Tel Aviv, Israel",
-    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Prism Technologies",
-    "funding": "1.4M",
-    "founded": 2021,
-    "signal_score": 69
+    "signal_score": 46,
+    "founders": [
+      {
+        "name": "Mikko Hypponen",
+        "bio": "Security Researcher."
+      }
+    ],
+    "investors": [
+      {
+        "name": "Earlybird Venture Capital",
+        "logo": "https://api.dicebear.com/7.x/initials/svg?seed=Earlybird"
+      }
+    ],
+    "tags": [
+      "Threat Intelligence",
+      "Endpoint"
+    ],
+    "funding_rounds": [
+      {
+        "stage": "Series A",
+        "amount": "9.7M",
+        "date": "2022-01-10",
+        "lead_investor": "Earlybird"
+      }
+    ],
+    "headcount": 38,
+    "headcount_growth": 25,
+    "social_links": {
+      "linkedin": "https://linkedin.com/company/vertex-systems-sec",
+      "twitter": "https://twitter.com/vertexsec",
+      "crunchbase": "https://crunchbase.com/organization/vertex-systems-sec"
+    },
+    "signals": [
+      {
+        "type": "Vulnerability Patches",
+        "value": "Rapid",
+        "importance": "medium"
+      }
+    ]
   },
   {
     "id": "comp-89",
-    "name": "Data Dynamics",
-    "website": "https://datadynamics.io",
-    "description": "A fast-growing Web3 startup focusing on series a scalability and market disruption.",
-    "industry": "Web3",
+    "name": "Cloud analytics",
+    "website": "https://cloudanalytics.io",
+    "description": "A fast-growing DevTools startup focusing on and market disruption.",
+    "industry": "DevTools",
     "stage": "Series A",
-    "location": "Austin, TX",
-    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Data Dynamics",
-    "funding": "15.1M",
-    "founded": 2021,
-    "signal_score": 35
+    "location": "Berlin, Germany",
+    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Cloud analytics",
+    "funding": "16.1M",
+    "founded": 2023,
+    "signal_score": 38,
+    "founders": [
+      {
+        "name": "Solomon Hykes",
+        "bio": "Advisory Figure, Docker creator."
+      }
+    ],
+    "investors": [
+      {
+        "name": "Balderton Capital",
+        "logo": "https://api.dicebear.com/7.x/initials/svg?seed=Balderton"
+      }
+    ],
+    "tags": [
+      "Logs",
+      "Metrics"
+    ],
+    "funding_rounds": [
+      {
+        "stage": "Series A",
+        "amount": "16.1M",
+        "date": "2023-05-10",
+        "lead_investor": "Balderton Capital"
+      }
+    ],
+    "headcount": 28,
+    "headcount_growth": 100,
+    "social_links": {
+      "linkedin": "https://linkedin.com/company/cloud-analytics-berlin",
+      "twitter": "https://twitter.com/cloudberlin",
+      "crunchbase": "https://crunchbase.com/organization/cloud-analytics-berlin"
+    },
+    "signals": [
+      {
+        "type": "Hiring Speed",
+        "value": "Fast",
+        "importance": "low"
+      }
+    ]
   },
   {
     "id": "comp-90",
@@ -1167,20 +2151,96 @@
     "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Cyber Point",
     "funding": "12.3M",
     "founded": 2020,
-    "signal_score": 62
+    "signal_score": 62,
+    "founders": [
+      {
+        "name": "Janet Yellen",
+        "bio": "Founding Advisor, economist."
+      }
+    ],
+    "investors": [
+      {
+        "name": "Global Founders Capital",
+        "logo": "https://api.dicebear.com/7.x/initials/svg?seed=GFC"
+      }
+    ],
+    "tags": [
+      "Treasury",
+      "API"
+    ],
+    "funding_rounds": [
+      {
+        "stage": "Pre-seed",
+        "amount": "12.3M",
+        "date": "2021-09-01",
+        "lead_investor": "Global Founders Capital"
+      }
+    ],
+    "headcount": 6,
+    "headcount_growth": 50,
+    "social_links": {
+      "linkedin": "https://linkedin.com/company/cyber-point-fin",
+      "twitter": "https://twitter.com/cyberfin",
+      "crunchbase": "https://crunchbase.com/organization/cyber-point-fin"
+    },
+    "signals": [
+      {
+        "type": "Regulatory Compliance",
+        "value": "Excellent",
+        "importance": "high"
+      }
+    ]
   },
   {
     "id": "comp-91",
-    "name": "Flow Security",
-    "website": "https://flowsecurity.io",
-    "description": "A fast-growing DevTools startup focusing on growth scalability and market disruption.",
-    "industry": "DevTools",
-    "stage": "Growth",
-    "location": "Austin, TX",
-    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Flow Security",
-    "funding": "15.1M",
-    "founded": 2021,
-    "signal_score": 49
+    "name": "Nexus Dynamics",
+    "website": "https://nexusdynamics.io",
+    "description": "A fast-growing ClimateTech startup focusing on seed scalability and market disruption.",
+    "industry": "ClimateTech",
+    "stage": "Seed",
+    "location": "London, UK",
+    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Nexus Dynamics",
+    "funding": "1.8M",
+    "founded": 2020,
+    "signal_score": 38,
+    "founders": [
+      {
+        "name": "Richard Branson",
+        "bio": "Advisory Investor."
+      }
+    ],
+    "investors": [
+      {
+        "name": "Virgin Group",
+        "logo": "https://api.dicebear.com/7.x/initials/svg?seed=Virgin"
+      }
+    ],
+    "tags": [
+      "Wind",
+      "Renewables"
+    ],
+    "funding_rounds": [
+      {
+        "stage": "Seed",
+        "amount": "1.8M",
+        "date": "2021-02-12",
+        "lead_investor": "Virgin Group"
+      }
+    ],
+    "headcount": 5,
+    "headcount_growth": 50,
+    "social_links": {
+      "linkedin": "https://linkedin.com/company/nexus-dyn-green",
+      "twitter": "https://twitter.com/nexusdyngreen",
+      "crunchbase": "https://crunchbase.com/organization/nexus-dyn-green"
+    },
+    "signals": [
+      {
+        "type": "Energy Output",
+        "value": "Growing",
+        "importance": "medium"
+      }
+    ]
   },
   {
     "id": "comp-92",
@@ -1193,46 +2253,45 @@
     "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Vertex Scale",
     "funding": "13.1M",
     "founded": 2023,
-    "signal_score": 63
-  },
-  {
-    "id": "comp-93",
-    "name": "Prism Technologies",
-    "website": "https://prismtechnologies.io",
-    "description": "A fast-growing AI/ML startup focusing on growth scalability and market disruption.",
-    "industry": "AI/ML",
-    "stage": "Growth",
-    "location": "Austin, TX",
-    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Prism Technologies",
-    "funding": "8.2M",
-    "founded": 2023,
-    "signal_score": 45
-  },
-  {
-    "id": "comp-94",
-    "name": "Cloud Finance",
-    "website": "https://cloudfinance.io",
-    "description": "A fast-growing Healthtech startup focusing on series b scalability and market disruption.",
-    "industry": "Healthtech",
-    "stage": "Series B",
-    "location": "London, UK",
-    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Cloud Finance",
-    "funding": "6.9M",
-    "founded": 2023,
-    "signal_score": 80
-  },
-  {
-    "id": "comp-95",
-    "name": "Nexus Technologies",
-    "website": "https://nexustechnologies.io",
-    "description": "A fast-growing Healthtech startup focusing on pre-seed scalability and market disruption.",
-    "industry": "Healthtech",
-    "stage": "Pre-seed",
-    "location": "Singapore",
-    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Nexus Technologies",
-    "funding": "15.3M",
-    "founded": 2021,
-    "signal_score": 71
+    "signal_score": 63,
+    "founders": [
+      {
+        "name": "Guido van Rossum",
+        "bio": "Advisory Architect, Python creator."
+      }
+    ],
+    "investors": [
+      {
+        "name": "Andreessen Horowitz",
+        "logo": "https://api.dicebear.com/7.x/initials/svg?seed=a16z"
+      }
+    ],
+    "tags": [
+      "Low-code",
+      "Automation"
+    ],
+    "funding_rounds": [
+      {
+        "stage": "Seed",
+        "amount": "13.1M",
+        "date": "2023-06-01",
+        "lead_investor": "a16z"
+      }
+    ],
+    "headcount": 20,
+    "headcount_growth": 80,
+    "social_links": {
+      "linkedin": "https://linkedin.com/company/vertex-scale-dev",
+      "twitter": "https://twitter.com/vertexdev",
+      "crunchbase": "https://crunchbase.com/organization/vertex-scale-dev"
+    },
+    "signals": [
+      {
+        "type": "Developer Adoption",
+        "value": "High",
+        "importance": "high"
+      }
+    ]
   },
   {
     "id": "comp-96",
@@ -1245,7 +2304,45 @@
     "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Nova Health",
     "funding": "2.4M",
     "founded": 2022,
-    "signal_score": 85
+    "signal_score": 85,
+    "founders": [
+      {
+        "name": "Elizabeth Blackwell",
+        "bio": "CEO, medical pioneer."
+      }
+    ],
+    "investors": [
+      {
+        "name": "Octopus Ventures",
+        "logo": "https://api.dicebear.com/7.x/initials/svg?seed=Octopus"
+      }
+    ],
+    "tags": [
+      "Health",
+      "SaaS"
+    ],
+    "funding_rounds": [
+      {
+        "stage": "Series A",
+        "amount": "2.4M",
+        "date": "2023-03-15",
+        "lead_investor": "Octopus Ventures"
+      }
+    ],
+    "headcount": 28,
+    "headcount_growth": 20,
+    "social_links": {
+      "linkedin": "https://linkedin.com/company/nova-health-saas",
+      "twitter": "https://twitter.com/novahealthsaas",
+      "crunchbase": "https://crunchbase.com/organization/nova-health-saas"
+    },
+    "signals": [
+      {
+        "type": "Patient Outcomes",
+        "value": "Improved",
+        "importance": "high"
+      }
+    ]
   },
   {
     "id": "comp-97",
@@ -1258,45 +2355,44 @@
     "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Deep Labs",
     "funding": "19.4M",
     "founded": 2020,
-    "signal_score": 69
-  },
-  {
-    "id": "comp-98",
-    "name": "Vertex Systems",
-    "website": "https://vertexsystems.io",
-    "description": "A fast-growing E-commerce startup focusing on series a scalability and market disruption.",
-    "industry": "E-commerce",
-    "stage": "Series A",
-    "location": "New York, NY",
-    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Vertex Systems",
-    "funding": "18.6M",
-    "founded": 2021,
-    "signal_score": 84
-  },
-  {
-    "id": "comp-99",
-    "name": "Orbital Labs",
-    "website": "https://orbitallabs.io",
-    "description": "A fast-growing Healthtech startup focusing on series b scalability and market disruption.",
-    "industry": "Healthtech",
-    "stage": "Series B",
-    "location": "London, UK",
-    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Orbital Labs",
-    "funding": "11.4M",
-    "founded": 2023,
-    "signal_score": 77
-  },
-  {
-    "id": "comp-100",
-    "name": "Orbital Analytics",
-    "website": "https://orbitalanalytics.io",
-    "description": "A fast-growing Web3 startup focusing on seed scalability and market disruption.",
-    "industry": "Web3",
-    "stage": "Seed",
-    "location": "Singapore",
-    "logo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Orbital Analytics",
-    "funding": "19.5M",
-    "founded": 2021,
-    "signal_score": 83
+    "signal_score": 69,
+    "founders": [
+      {
+        "name": "Marc Benioff",
+        "bio": "Advisory Founder, Salesforce CEO."
+      }
+    ],
+    "investors": [
+      {
+        "name": "Insight Partners",
+        "logo": "https://api.dicebear.com/7.x/initials/svg?seed=Insight"
+      }
+    ],
+    "tags": [
+      "CRM",
+      "AI"
+    ],
+    "funding_rounds": [
+      {
+        "stage": "Series C",
+        "amount": "19.4M",
+        "date": "2022-11-01",
+        "lead_investor": "Insight Partners"
+      }
+    ],
+    "headcount": 110,
+    "headcount_growth": 10,
+    "social_links": {
+      "linkedin": "https://linkedin.com/company/deep-labs-saas",
+      "twitter": "https://twitter.com/deeplabssaas",
+      "crunchbase": "https://crunchbase.com/organization/deep-labs-saas"
+    },
+    "signals": [
+      {
+        "type": "Customer Retention",
+        "value": "Excellent",
+        "importance": "medium"
+      }
+    ]
   }
 ]
