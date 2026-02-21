@@ -23,6 +23,7 @@ export async function POST(req: Request) {
             (async () => {
                 try {
                     const response = await fetch(website, {
+                        signal: AbortSignal.timeout(5000),
                         headers: {
                             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
                         },
@@ -35,9 +36,12 @@ export async function POST(req: Request) {
                     }
                 } catch (e: any) {
                     console.error("Standard scraping failed, attempting TLS-resilient fallback...", e.message);
+                    if (e.message.includes('ENOTFOUND') || (e.cause && e.cause.code === 'ENOTFOUND')) {
+                        console.error("Domain not found, skipping TLS fallback.");
+                        return "";
+                    }
 
-
-                    if (e.message.includes('certificate') || e.message.includes('fetch failed')) {
+                    if (e.message.includes('certificate') || e.message.includes('fetch failed') || e.name === 'TimeoutError' || e.message.includes('timeout') || e.message.includes('aborted')) {
                         try {
                             const https = await import('https');
                             const agent = new https.Agent({ rejectUnauthorized: false });
