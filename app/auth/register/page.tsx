@@ -49,9 +49,9 @@ export default function RegisterPage() {
                             <Activity className="h-6 w-6" />
                         </div>
                     </div>
-                    <CardTitle className="text-2xl font-bold tracking-tight">Create an account</CardTitle>
-                    <CardDescription>
-                        Join VC Scout to start tracking high-signal companies
+                    <CardTitle className="text-2xl font-black tracking-tight uppercase italic text-slate-900">Create Account</CardTitle>
+                    <CardDescription className="text-xs font-bold uppercase tracking-widest text-slate-400">
+                        Join the Institutional Network
                     </CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -78,8 +78,8 @@ export default function RegisterPage() {
                             />
                         </div>
                         {error && <p className="text-sm font-medium text-rose-500">{error}</p>}
-                        <Button className="w-full bg-indigo-600 hover:bg-indigo-700 h-10 shadow-md shadow-indigo-100" type="submit" disabled={loading}>
-                            {loading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : "Sign Up"}
+                        <Button className="w-full bg-slate-900 hover:bg-black text-white h-12 rounded-2xl font-black uppercase tracking-widest text-xs shadow-xl transition-all active:scale-95" type="submit" disabled={loading}>
+                            {loading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : "Initialize Identity"}
                         </Button>
                     </form>
                 </CardContent>

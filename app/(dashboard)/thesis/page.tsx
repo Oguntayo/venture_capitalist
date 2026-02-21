@@ -63,9 +63,9 @@ export default function ThesisPage() {
                     <div className="space-y-1">
                         <div className="flex items-center gap-2">
                             <Target className="h-5 w-5 text-indigo-600" />
-                            <h1 className="text-3xl font-extrabold text-slate-900 tracking-tight">Investment Thesis</h1>
+                            <h1 className="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight uppercase italic">Investment Thesis</h1>
                         </div>
-                        <p className="text-slate-500 font-medium">Define your strategy to unlock personalized AI matching and discovery.</p>
+                        <p className="text-xs md:text-sm text-slate-500 font-medium leading-relaxed italic">Define your strategy to unlock personalized AI matching and discovery.</p>
                     </div>
 
                     <div className="flex items-center gap-3">
@@ -92,14 +92,14 @@ export default function ThesisPage() {
                                 <CardTitle className="text-xl font-bold text-slate-900">Thesis Editor</CardTitle>
                                 <CardDescription>Craft your high-fidelity investment lens here.</CardDescription>
                             </CardHeader>
-                            <CardContent>
+                            <CardContent className="p-4 md:p-6">
                                 <Textarea
                                     value={thesis}
                                     onChange={(e) => setThesis(e.target.value)}
-                                    placeholder="We invest in early-stage B2B SaaS companies focusing on workflow automation and AI-driven productivity tools..."
-                                    className="min-h-[400px] text-lg font-medium border-slate-100 focus:ring-2 focus:ring-indigo-500 rounded-3xl p-8 bg-slate-50/30 resize-none transition-all shadow-inner"
+                                    placeholder="We invest in..."
+                                    className="min-h-[300px] md:min-h-[400px] text-base md:text-lg font-medium border-slate-100 focus:ring-2 focus:ring-indigo-500 rounded-2xl md:rounded-3xl p-6 md:p-8 bg-slate-50/30 resize-none transition-all shadow-inner"
                                 />
-                                <div className="mt-4 flex items-center justify-between text-[11px] font-bold text-slate-400 uppercase tracking-widest px-2">
+                                <div className="mt-4 flex flex-col sm:flex-row items-center justify-between text-[10px] md:text-[11px] font-bold text-slate-400 uppercase tracking-widest px-2 gap-2">
                                     <span>Character count: {thesis.length}</span>
                                     <span className="flex items-center gap-1.5 text-indigo-500">
                                         <Sparkles className="h-3 w-3" />
@@ -119,18 +119,18 @@ export default function ThesisPage() {
                                 <CardTitle className="text-xl font-bold">Best Practices</CardTitle>
                                 <CardDescription className="text-indigo-100">Maximize AI Precision</CardDescription>
                             </CardHeader>
-                            <CardContent className="space-y-4 pt-4">
-                                <div className="flex gap-3 bg-white/10 p-4 rounded-2xl backdrop-blur-sm border border-white/10 hover:bg-white/15 transition-colors group">
-                                    <div className="h-6 w-6 rounded-full bg-white/20 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">1</div>
-                                    <p className="text-sm font-medium leading-relaxed">Be specific about **stages** (e.g., Pre-seed to Series A only).</p>
+                            <CardContent className="space-y-3 md:space-y-4 pt-4 px-4 md:px-6">
+                                <div className="flex gap-2 bg-white/10 p-4 rounded-xl md:rounded-2xl backdrop-blur-sm border border-white/10 hover:bg-white/15 transition-colors group">
+                                    <div className="h-5 w-5 md:h-6 md:w-6 rounded-full bg-white/20 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform text-[10px] md:text-xs">1</div>
+                                    <p className="text-[11px] md:text-sm font-medium leading-relaxed">Be specific about **stages** (e.g., Pre-seed to Series A only).</p>
                                 </div>
-                                <div className="flex gap-3 bg-white/10 p-4 rounded-2xl backdrop-blur-sm border border-white/10 hover:bg-white/15 transition-colors group">
-                                    <div className="h-6 w-6 rounded-full bg-white/20 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">2</div>
-                                    <p className="text-sm font-medium leading-relaxed">Mention mandatory **tech stacks** or **business models** (e.g. usage-based SaaS).</p>
+                                <div className="flex gap-2 bg-white/10 p-4 rounded-xl md:rounded-2xl backdrop-blur-sm border border-white/10 hover:bg-white/15 transition-colors group">
+                                    <div className="h-5 w-5 md:h-6 md:w-6 rounded-full bg-white/20 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform text-[10px] md:text-xs">2</div>
+                                    <p className="text-[11px] md:text-sm font-medium leading-relaxed">Mention mandatory **tech stacks** or **business models** (e.g. SaaS).</p>
                                 </div>
-                                <div className="flex gap-3 bg-white/10 p-4 rounded-2xl backdrop-blur-sm border border-white/10 hover:bg-white/15 transition-colors group">
-                                    <div className="h-6 w-6 rounded-full bg-white/20 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">3</div>
-                                    <p className="text-sm font-medium leading-relaxed">Highlight **unfavorable traits** to exclude non-matches automatically.</p>
+                                <div className="flex gap-2 bg-white/10 p-4 rounded-xl md:rounded-2xl backdrop-blur-sm border border-white/10 hover:bg-white/15 transition-colors group">
+                                    <div className="h-5 w-5 md:h-6 md:w-6 rounded-full bg-white/20 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform text-[10px] md:text-xs">3</div>
+                                    <p className="text-[11px] md:text-sm font-medium leading-relaxed">Highlight **unfavorable traits** to exclude non-matches.</p>
                                 </div>
                             </CardContent>
                         </Card>

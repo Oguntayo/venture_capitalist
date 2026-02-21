@@ -9,7 +9,6 @@ const companySuffixes = ["AI", "Labs", "Systems", "Finance", "Technologies", "He
 
 const companies = [];
 
-// Real-ish industry leaders
 const leaders = [
     { name: "OpenAI", website: "https://openai.com", industry: "AI/ML", stage: "Growth", funding: "13B", founded: 2015, score: 99 },
     { name: "Anthropic", website: "https://anthropic.com", industry: "AI/ML", stage: "Series C", funding: "7.3B", founded: 2021, score: 98 },
@@ -58,7 +57,7 @@ for (let i = 1; i <= 90; i++) {
         logo_url: `https://api.dicebear.com/7.x/initials/svg?seed=${name}`,
         funding: `${(Math.random() * 20 + 0.5).toFixed(1)}M`,
         founded: 2020 + Math.floor(Math.random() * 4),
-        signal_score: Math.floor(Math.random() * 60) + 30, // 30-90
+        signal_score: Math.floor(Math.random() * 60) + 30,
     });
 }
 

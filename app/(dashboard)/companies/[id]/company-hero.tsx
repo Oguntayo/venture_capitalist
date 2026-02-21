@@ -81,7 +81,6 @@ export function CompanyHero({ company }: CompanyHeroProps) {
 
     return (
         <div className="relative overflow-hidden rounded-[2.5rem] bg-slate-950 border border-white/5 shadow-2xl group min-h-[460px] flex items-center isolate will-change-transform transform-gpu">
-            {/* Ultra-Premium Background Layer */}
             <div className="absolute inset-0 z-0">
                 <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-indigo-600/20 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/4 animate-pulse" />
                 <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-emerald-600/10 blur-[100px] rounded-full translate-y-1/2 -translate-x-1/4" />
@@ -90,7 +89,6 @@ export function CompanyHero({ company }: CompanyHeroProps) {
 
             <div className="relative z-10 p-10 lg:p-14 w-full h-full flex flex-col justify-between gap-12">
                 <div className="flex flex-col lg:flex-row gap-12 items-center justify-between h-full">
-                    {/* Brand & Narrative Section */}
                     <div className="flex-1 space-y-8 max-w-2xl">
                         <div className="flex items-center gap-6">
                             <div className="relative">
@@ -146,12 +144,10 @@ export function CompanyHero({ company }: CompanyHeroProps) {
                         </div>
                     </div>
 
-                    {/* Precision AI Gauge Section */}
                     <div className="flex flex-col items-center justify-center p-10 rounded-[2.5rem] bg-white/[0.03] border border-white/10 backdrop-blur-3xl shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] min-w-[340px] relative overflow-hidden group/gauge self-center">
-                        <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-transparent opacity-0 group-hover/gauge:opacity-100 transition-all duration-1000" />
+                        <div className="absolute inset-0 bg-gradient-to-br from-indigo-50/40 to-transparent opacity-0 group-hover/gauge:opacity-100 transition-all duration-1000" />
 
                         <div className="relative h-56 w-56 flex items-center justify-center mb-6">
-                            {/* Static Background Ring */}
                             <svg className="absolute inset-0 h-full w-full" viewBox="0 0 100 100">
                                 <circle className="text-white/[0.05]" strokeWidth="8" fill="transparent" r="42" cx="50" cy="50" />
                                 <circle
@@ -213,7 +209,6 @@ export function CompanyHero({ company }: CompanyHeroProps) {
                     </div>
                 </div>
 
-                {/* Fixed position Footer Actions */}
                 <div className="flex items-center justify-between pt-10 border-t border-white/10 mt-auto">
                     <div className="flex gap-4">
                         <SaveToListButton companyId={company.id} companyName={company.name} />

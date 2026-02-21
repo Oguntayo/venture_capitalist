@@ -47,7 +47,6 @@ export function IntelligenceReport({ companyId, website }: IntelligenceReportPro
             .finally(() => setThesisLoading(false));
     }, [companyId]);
 
-    // Status message cycling effect
     useEffect(() => {
         if (!loading) return;
 
@@ -153,11 +152,11 @@ export function IntelligenceReport({ companyId, website }: IntelligenceReportPro
             </div>
 
             {loading && !data ? (
-                <div className="flex flex-col items-center justify-center py-24 border border-slate-100 border-dashed rounded-[3rem] bg-slate-50/50 animate-in fade-in duration-500">
-                    <div className="relative h-20 w-20 mb-8">
-                        <div className="absolute inset-0 border-4 border-indigo-100 rounded-[2rem]"></div>
-                        <div className="absolute inset-0 border-4 border-indigo-600 border-t-transparent rounded-[2rem] animate-spin"></div>
-                        <Sparkles className="absolute inset-0 m-auto h-10 w-10 text-indigo-600 animate-pulse" />
+                <div className="flex flex-col items-center justify-center py-12 md:py-24 border border-slate-100 border-dashed rounded-[2rem] md:rounded-[3rem] bg-slate-50/50 animate-in fade-in duration-500">
+                    <div className="relative h-16 w-16 md:h-20 md:w-20 mb-6 md:mb-8">
+                        <div className="absolute inset-0 border-4 border-indigo-100 rounded-[1.5rem] md:rounded-[2rem]"></div>
+                        <div className="absolute inset-0 border-4 border-indigo-600 border-t-transparent rounded-[1.5rem] md:rounded-[2rem] animate-spin"></div>
+                        <Sparkles className="absolute inset-0 m-auto h-8 w-8 md:h-10 md:w-10 text-indigo-600 animate-pulse" />
                     </div>
                     <div className="space-y-3 text-center">
                         <p className="text-sm font-black text-slate-900 uppercase tracking-widest animate-pulse">{statusMessage}</p>
@@ -172,9 +171,9 @@ export function IntelligenceReport({ companyId, website }: IntelligenceReportPro
                                 <ChevronRight className="h-3 w-3 text-indigo-500" />
                                 Strategic Summary
                             </h4>
-                            <div className="p-8 bg-slate-950 rounded-[2.5rem] shadow-2xl relative overflow-hidden group">
+                            <div className="p-6 md:p-8 bg-slate-950 rounded-2xl md:rounded-[2.5rem] shadow-2xl relative overflow-hidden group">
                                 <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/5 rounded-full -mr-16 -mt-16 blur-2xl" />
-                                <p className="text-lg text-slate-200 leading-relaxed font-medium italic opacity-95 relative z-10">
+                                <p className="text-base md:text-lg text-slate-200 leading-relaxed font-medium italic opacity-95 relative z-10">
                                     &ldquo;{data.summary}&rdquo;
                                 </p>
                             </div>
@@ -197,17 +196,17 @@ export function IntelligenceReport({ companyId, website }: IntelligenceReportPro
                     </div>
 
                     <div className="space-y-8">
-                        <section className="space-y-6 p-8 bg-indigo-50/50 border border-indigo-100 rounded-[2.5rem] flex flex-col items-center text-center shadow-lg transform-gpu transition-all hover:-translate-y-1">
+                        <section className="space-y-6 p-6 md:p-8 bg-indigo-50/50 border border-indigo-100 rounded-2xl md:rounded-[2.5rem] flex flex-col items-center text-center shadow-lg transform-gpu transition-all hover:-translate-y-1">
                             <div className="space-y-1">
                                 <h4 className="text-[10px] font-black text-indigo-400 uppercase tracking-[0.3em] italic">Match Logic</h4>
-                                <div className="text-6xl font-black text-indigo-950 italic">{data.match_score}%</div>
+                                <div className="text-4xl md:text-6xl font-black text-indigo-950 italic">{data.match_score}%</div>
                             </div>
-                            <p className="text-xs text-indigo-900/70 font-bold leading-relaxed italic max-w-xs">
+                            <p className="text-[11px] md:text-xs text-indigo-900/70 font-bold leading-relaxed italic max-w-xs">
                                 {data.match_explanation}
                             </p>
                             <div className="flex items-center gap-2 mt-2 px-4 py-2 bg-indigo-100/50 rounded-full border border-indigo-200">
                                 <ShieldCheck className="h-3.5 w-3.5 text-indigo-600" />
-                                <span className="text-[10px] font-black text-indigo-600 uppercase tracking-widest italic">High Confidence Signal</span>
+                                <span className="text-[9px] md:text-[10px] font-black text-indigo-600 uppercase tracking-widest italic whitespace-nowrap">High Confidence Signal</span>
                             </div>
                         </section>
 
@@ -231,13 +230,13 @@ export function IntelligenceReport({ companyId, website }: IntelligenceReportPro
                     </div>
                 </div>
             ) : (
-                <div className="flex flex-col items-center justify-center py-24 border border-slate-100 border-dashed rounded-[3rem] bg-slate-50/50 group transition-all hover:bg-slate-50">
-                    <div className="h-20 w-20 rounded-[2.5rem] bg-white shadow-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
-                        <Lock className="h-8 w-8 text-slate-300" />
+                <div className="flex flex-col items-center justify-center py-12 md:py-24 border border-slate-100 border-dashed rounded-[2rem] md:rounded-[3rem] bg-slate-50/50 group transition-all hover:bg-slate-50 px-6">
+                    <div className="h-16 w-16 md:h-20 md:w-20 rounded-[1.5rem] md:rounded-[2.5rem] bg-white shadow-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
+                        <Lock className="h-6 w-6 md:h-8 md:w-8 text-slate-300" />
                     </div>
-                    <h3 className="text-sm font-black text-slate-900 uppercase tracking-widest mb-2">Institutional Lockdown</h3>
-                    <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest mb-8">Intelligence Synthesis Required</p>
-                    <Button onClick={handleEnrich} className="bg-slate-900 hover:bg-indigo-600 text-white h-12 px-8 rounded-2xl font-black uppercase tracking-widest text-xs shadow-2xl transition-all active:scale-95">
+                    <h3 className="text-xs md:text-sm font-black text-slate-900 uppercase tracking-widest mb-2 text-center">Institutional Lockdown</h3>
+                    <p className="text-[9px] md:text-[10px] text-slate-400 font-bold uppercase tracking-widest mb-8 text-center">Intelligence Synthesis Required</p>
+                    <Button onClick={handleEnrich} className="bg-slate-900 hover:bg-indigo-600 text-white h-12 px-6 md:px-8 rounded-2xl font-black uppercase tracking-widest text-[10px] md:text-xs shadow-2xl transition-all active:scale-95">
                         <Zap className="h-4 w-4 mr-2" />
                         Execute Strategic Scan
                     </Button>

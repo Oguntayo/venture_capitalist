@@ -12,6 +12,7 @@ import {
     Sparkles,
     ChevronDown,
     ChevronRight,
+    X,
 } from "lucide-react";
 import { signOut } from "next-auth/react";
 import { Button } from "@/components/ui/button";
@@ -25,13 +26,12 @@ const mainItems = [
     { name: "Saved Searches", href: "/saved", icon: Bookmark },
 ];
 
-export function Sidebar() {
+export function Sidebar({ onClose }: { onClose?: () => void }) {
     const pathname = usePathname();
     const router = useRouter();
     const [isDiscoveryOpen, setIsDiscoveryOpen] = useState(true);
     const [navigatingHref, setNavigatingHref] = useState<string | null>(null);
 
-    // Reset navigating state when pathname changes (navigation finished)
     useEffect(() => {
         setNavigatingHref(null);
     }, [pathname]);
@@ -43,18 +43,27 @@ export function Sidebar() {
     };
 
     return (
-        <div className="flex h-screen w-64 flex-col border-r bg-white shadow-xl shadow-slate-200/50 z-20">
-            <div className="flex h-16 items-center px-6 border-b bg-slate-50/30">
+        <div className="flex h-screen w-64 flex-col border-r bg-white shadow-xl shadow-slate-200/50 z-20 relative">
+            <div className="flex h-16 items-center px-6 border-b bg-slate-50/30 justify-between">
                 <div className="flex items-center gap-2">
                     <div className="h-8 w-8 bg-indigo-600 rounded-xl flex items-center justify-center shadow-lg shadow-indigo-200">
                         <Activity className="h-5 w-5 text-white" />
                     </div>
                     <span className="text-xl font-bold text-slate-900 tracking-tight">VC Scout</span>
                 </div>
+                {onClose && (
+                    <Button
+                        variant="ghost"
+                        size="icon"
+                        className="md:hidden text-slate-400 h-8 w-8"
+                        onClick={onClose}
+                    >
+                        <X className="h-5 w-5" />
+                    </Button>
+                )}
             </div>
 
             <div className="flex-1 overflow-y-auto pt-6 px-4 space-y-6">
-                {/* Discovery Section */}
                 <div className="space-y-1">
                     <button
                         onClick={() => setIsDiscoveryOpen(!isDiscoveryOpen)}
@@ -96,7 +105,7 @@ export function Sidebar() {
                     )}
                 </div>
 
-                {/* Strategy Section */}
+
                 <div className="space-y-1">
                     <div className="px-3 mb-2 text-xs font-bold text-slate-400 uppercase tracking-widest">
                         Strategy

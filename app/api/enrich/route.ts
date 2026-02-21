@@ -18,11 +18,10 @@ export async function POST(req: Request) {
             return NextResponse.json({ error: "Website URL is required" }, { status: 400 });
         }
 
-        // Run scraping and thesis fetching in parallel to reduce latency
+
         const [pageTextResult, userThesisResult] = await Promise.all([
             (async () => {
                 try {
-                    // Try standard fetch first
                     const response = await fetch(website, {
                         headers: {
                             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
@@ -37,7 +36,7 @@ export async function POST(req: Request) {
                 } catch (e: any) {
                     console.error("Standard scraping failed, attempting TLS-resilient fallback...", e.message);
 
-                    // Fallback for TLS errors (common for startups with misconfigured SSL)
+
                     if (e.message.includes('certificate') || e.message.includes('fetch failed')) {
                         try {
                             const https = await import('https');

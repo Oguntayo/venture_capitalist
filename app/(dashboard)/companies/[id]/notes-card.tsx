@@ -108,7 +108,7 @@ export function NotesCard({ companyId }: NotesCardProps) {
                     onChange={(e) => {
                         const val = e.target.value;
                         setNotes(val);
-                        // Sync to localStorage immediately for export
+
                         localStorage.setItem(`notes-${companyId}`, val);
                         window.dispatchEvent(new StorageEvent("storage", {
                             key: `notes-${companyId}`,

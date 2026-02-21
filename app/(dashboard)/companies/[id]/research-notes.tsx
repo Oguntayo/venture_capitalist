@@ -62,7 +62,7 @@ export function ResearchNotes({ companyId }: ResearchNotesProps) {
 
 
     return (
-        <section className="space-y-6 pt-12 border-t border-slate-100">
+        <section className="space-y-6 pt-8 md:pt-12 border-t border-slate-100">
             {loading ? (
                 <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
@@ -74,9 +74,9 @@ export function ResearchNotes({ companyId }: ResearchNotesProps) {
                     </div>
                 </div>
             ) : (
-                <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                        <div className="h-10 w-10 rounded-xl bg-slate-100 text-slate-900 flex items-center justify-center">
+                <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <div className="flex items-center gap-3 w-full sm:w-auto">
+                        <div className="h-10 w-10 rounded-xl bg-slate-100 text-slate-900 flex items-center justify-center shrink-0">
                             <PenLine className="h-5 w-5" />
                         </div>
                         <div>
@@ -85,7 +85,7 @@ export function ResearchNotes({ companyId }: ResearchNotesProps) {
                         </div>
                     </div>
 
-                    <div className="flex items-center gap-4">
+                    <div className="flex items-center justify-between sm:justify-end gap-4 w-full sm:w-auto">
                         {justSaved && (
                             <div className="flex items-center gap-2 px-3 py-1 bg-emerald-50 text-emerald-600 rounded-full border border-emerald-100 animate-in fade-in slide-in-from-right-4">
                                 <CheckCircle2 className="h-3 w-3" />
@@ -95,7 +95,7 @@ export function ResearchNotes({ companyId }: ResearchNotesProps) {
                         <Button
                             onClick={handleSave}
                             disabled={isSaving}
-                            className="bg-slate-900 hover:bg-black text-white h-10 px-6 rounded-xl font-black uppercase tracking-widest text-[10px] transition-all transform-gpu active:scale-95"
+                            className="bg-slate-900 hover:bg-black text-white h-10 px-6 rounded-xl font-black uppercase tracking-widest text-[10px] transition-all transform-gpu active:scale-95 flex-1 sm:flex-none"
                         >
                             {isSaving ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <>Save Observations</>}
                         </Button>
@@ -110,7 +110,7 @@ export function ResearchNotes({ companyId }: ResearchNotesProps) {
                     <>
                         <div className="absolute -inset-1 bg-gradient-to-br from-indigo-500/10 to-emerald-500/10 rounded-[2.5rem] blur-xl opacity-0 group-focus-within:opacity-100 transition-opacity" />
                         <Textarea
-                            placeholder="Document distinct observations, market signals, and investment rationale..."
+                            placeholder="Document distinct observations..."
                             value={notes}
                             onChange={(e) => {
                                 const val = e.target.value;
@@ -121,7 +121,7 @@ export function ResearchNotes({ companyId }: ResearchNotesProps) {
                                     newValue: val,
                                 }));
                             }}
-                            className="min-h-[300px] w-full bg-slate-50 border-slate-100 rounded-[2.5rem] p-10 text-slate-700 font-medium leading-relaxed italic text-lg focus-visible:ring-slate-200 focus-visible:bg-white transition-all resize-none shadow-sm relative z-10"
+                            className="min-h-[200px] md:min-h-[300px] w-full bg-slate-50 border-slate-100 rounded-2xl md:rounded-[2.5rem] p-6 md:p-10 text-slate-700 font-medium leading-relaxed italic text-base md:text-lg focus-visible:ring-slate-200 focus-visible:bg-white transition-all resize-none shadow-sm relative z-10"
                             onKeyDown={(e) => {
                                 if (e.key === 's' && (e.metaKey || e.ctrlKey)) {
                                     e.preventDefault();

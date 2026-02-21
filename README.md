@@ -1,65 +1,64 @@
 # VC Scout - Portfolio Intelligence Platform
 
-VC Scout is a premium "Precision AI Scout" for venture firms, designed to transform institutional discovery into an intelligence-driven experience.
+VC Scout is a premium "Precision AI Scout" for venture firms, designed to transform institutional discovery into an intelligence-driven experience. Built for the modern investor, it combines high-fidelity market data with personalized AI reasoning.
 
-## Features
+## Core Capabilities
 
-- **Precision AI Discovery**: Semantic search and thesis-based company matching.
-- **Match Intelligence**: Explainable AI scores aligned with your investment thesis.
-- **Signal Pulse**: Real-time momentum tracking and growth signal extraction.
-- **Enterprise Persistence**: Move beyond static JSON to a fully persistent PostgreSQL-backed data layer.
-- **Venture Analytics**: Export curated portfolio data directly to Excel for deep-dive analysis.
+- **Institutional Design System**: A "Venture-Black" aesthetic featuring bold typography, glassmorphism, and dynamic micro-animations.
+- **Precision AI Discovery**: Semantic search and thesis-based company matching that learns from your strategic lens.
+- **Responsive Architecture**: Fully optimized for mobile, tablet, and desktop viewports, featuring an adaptive sidebar and mobile-first navigation.
+- **Match Intelligence**: Explainable AI scores (0-100%) that provide transparent rationale aligned with your investment thesis.
+- **Deep Wealth Extraction**: Real-time web-scouring to enrich company dossiers with founder backgrounds, investor history, and strategic summaries.
+- **Portfolio Export Protocol**: Download curated research and lists directly to Excel, JSON, or CSV for internal reporting.
 
 ## Local Setup Guide
 
 ### 1. Prerequisites
-- **Node.js**: v18+ 
+- **Node.js**: v20+ (recommended)
 - **PostgreSQL**: A running instance (local or hosted like Neon.tech)
 
-### 2. Installation
-Clone the repository and install dependencies:
+### 2. Physical Installation
 ```bash
-git clone <repo-url>
-cd vc_internship
+git clone https://github.com/Oguntayo/venture_capitalist.git
+cd venture_capitalist
 npm install
 ```
 
 ### 3. Environment Configuration
-Copy the example environment file and populate it with your credentials:
+Create a `.env` file in the root directory:
 ```bash
-cp .env.example .env
+DATABASE_URL="postgres://..."
+OPENAI_API_KEY="sk-..."
+NEXTAUTH_SECRET="your-secret-here"
+NEXTAUTH_URL="http://localhost:3000"
 ```
-Ensure you provide:
-- `DATABASE_URL`: Your PostgreSQL connection string.
-- `OPENAI_API_KEY`: For AI enrichment and semantic search.
-- `NEXTAUTH_SECRET`: For session security.
 
-### 4. Database Setup & Seeding
-Apply the database schema and seed the initial company data:
+### 4. Database Initialization
+Deploy the schema and seed the institutional dataset:
 ```bash
 # Push schema to database
 npx drizzle-kit push
 
-# Seed company data from JSON
+# Seed company data
 npx tsx scripts/seed-companies.ts
 ```
 
-### 5. Start Development Server
+### 5. Launch Protocol
 ```bash
 npm run dev
 ```
-Open [http://localhost:3000](http://localhost:3000) to view the platform.
+Access the platform at [http://localhost:3000](http://localhost:3000).
 
-## Key Workflows
+## Institutional Workflows
 
-- **Thesis Alignment**: Set your investment thesis in the dashboard banner to unlock personalized match scores.
-- **Deep Scan**: Click on any company to trigger a real-time "Deep Scan" AI enrichment pull from the web.
-- **Portfolio Export**: Use the "Export to Excel" button on the Discovery page to download your filtered research.
+- **Thesis Alignment**: Define your strategy in the "Thesis" section to activate personalized matching across the entire repository.
+- **Intelligence Cycling**: Trigger "Deep Scans" on individual company dossiers to refresh real-time web intelligence.
+- **Thematic Collections**: Use "Lists" to group companies by sector, momentum, or deal-flow stage.
 
-## Tech Stack
+## Technical Foundation
 
 - **Framework**: Next.js 15 (App Router)
-- **Database**: PostgreSQL with Drizzle ORM
-- **Styling**: Tailwind CSS + Shadcn UI
-- **AI**: OpenAI GPT-4o
-- **Auth**: NextAuth.js
+- **Database**: PostgreSQL + Drizzle ORM
+- **Styling**: Vanilla CSS + Tailwind CSS + Shadcn UI
+- **Intelligence**: OpenAI GPT-4o
+- **Security**: NextAuth.js (Session Persistence)

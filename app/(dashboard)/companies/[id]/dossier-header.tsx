@@ -66,7 +66,7 @@ export function DossierHeader({ company }: DossierHeaderProps) {
     };
 
     return (
-        <div className="bg-white border-b border-slate-100 p-12">
+        <div className="bg-white border-b border-slate-100 p-6 md:p-12">
             <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
                 <div className="space-y-6 flex-1">
                     <div className="flex items-center gap-4">
@@ -74,7 +74,7 @@ export function DossierHeader({ company }: DossierHeaderProps) {
                             <img src={company.logo_url} alt={company.name} className="max-h-full max-w-full object-contain" />
                         </div>
                         <div className="space-y-1">
-                            <h1 className="text-4xl font-black text-slate-900 tracking-tight leading-none uppercase italic">
+                            <h1 className="text-2xl md:text-4xl font-black text-slate-900 tracking-tight leading-tight uppercase italic">
                                 {company.name}
                             </h1>
                             <div className="flex items-center gap-3">
@@ -89,7 +89,7 @@ export function DossierHeader({ company }: DossierHeaderProps) {
                         </div>
                     </div>
 
-                    <p className="text-xl text-slate-600 max-w-3xl font-medium leading-relaxed italic">
+                    <p className="text-base md:text-xl text-slate-600 max-w-3xl font-medium leading-relaxed italic">
                         &ldquo;{company.description}&rdquo;
                     </p>
 
@@ -109,9 +109,9 @@ export function DossierHeader({ company }: DossierHeaderProps) {
                     </div>
                 </div>
 
-                <div className="flex items-center gap-4 lg:pb-2 ">
+                <div className="flex flex-wrap items-center gap-3 md:gap-4 lg:pb-2">
                     <AddToListDropdown companyId={company.id}>
-                        <Button variant="outline" className="border-slate-200 text-slate-600 hover:text-indigo-600 hover:border-indigo-100 h-14 px-6 rounded-2xl font-black uppercase tracking-[0.1em] text-xs transition-all shadow-sm">
+                        <Button variant="outline" className="border-slate-200 text-slate-600 hover:text-indigo-600 hover:border-indigo-100 h-12 md:h-14 px-4 md:px-6 rounded-2xl font-black uppercase tracking-[0.1em] text-[10px] md:text-xs transition-all shadow-sm flex-1 md:flex-none">
                             <Plus className="mr-2 h-4 w-4 text-slate-400 group-hover:text-indigo-600 transition-colors" />
                             Add to List
                         </Button>
@@ -119,9 +119,10 @@ export function DossierHeader({ company }: DossierHeaderProps) {
 
                     <DropdownMenu>
                         <DropdownMenuTrigger asChild>
-                            <Button className="bg-slate-900 hover:bg-black text-white px-8 h-14 rounded-2xl font-black uppercase tracking-[0.15em] text-xs shadow-xl transition-all">
-                                <Download className="mr-3 h-5 w-5" />
-                                Export Dossier
+                            <Button className="bg-slate-900 hover:bg-black text-white px-4 md:px-8 h-12 md:h-14 rounded-2xl font-black uppercase tracking-[0.15em] text-[10px] md:text-xs shadow-xl transition-all flex-1 md:flex-none">
+                                <Download className="mr-2 md:mr-3 h-4 md:h-5 w-4 md:w-5" />
+                                <span className="hidden xs:inline">Export Dossier</span>
+                                <span className="xs:hidden">Export</span>
                             </Button>
                         </DropdownMenuTrigger>
                         <DropdownMenuContent align="end" className="w-64 rounded-2xl p-2 border-slate-100 shadow-2xl bg-white/95 backdrop-blur-xl">

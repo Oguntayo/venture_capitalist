@@ -64,7 +64,7 @@ export default function PerformancePage() {
                     </p>
                 </div>
 
-                {/* Stats Grid */}
+
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     {stats.map((stat) => (
                         <Card key={stat.name} className="border-slate-200 shadow-sm overflow-hidden group hover:shadow-md transition-shadow">
@@ -91,7 +91,7 @@ export default function PerformancePage() {
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                    {/* Activity Chart Placeholder */}
+
                     <Card className="lg:col-span-2 border-slate-200 shadow-sm">
                         <CardHeader className="flex flex-row items-center justify-between pb-2">
                             <CardTitle className="text-lg font-bold text-slate-900 flex items-center">
@@ -105,7 +105,7 @@ export default function PerformancePage() {
                         </CardHeader>
                         <CardContent className="pt-6">
                             <div className="h-[300px] w-full bg-slate-50 rounded-xl relative flex items-end p-6 gap-2 border border-slate-100 overflow-hidden">
-                                {/* Simple CSS-based Bar Chart */}
+
                                 {[45, 60, 40, 75, 90, 65, 55, 80, 70, 85, 95, 100].map((h, i) => (
                                     <div
                                         key={i}
@@ -128,7 +128,7 @@ export default function PerformancePage() {
                         </CardContent>
                     </Card>
 
-                    {/* Sector Distribution */}
+
                     <Card className="border-slate-200 shadow-sm">
                         <CardHeader className="pb-2">
                             <CardTitle className="text-lg font-bold text-slate-900 flex items-center">

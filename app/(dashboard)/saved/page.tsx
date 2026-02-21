@@ -25,7 +25,6 @@ export default function SavedSearchesPage() {
     useEffect(() => {
         const saved = localStorage.getItem("vc-scout-saved-searches");
         if (saved) {
-            // eslint-disable-next-line react-hooks/set-state-in-effect
             setSavedSearches(JSON.parse(saved));
         }
     }, []);

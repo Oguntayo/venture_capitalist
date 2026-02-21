@@ -10,13 +10,12 @@ export interface Company {
     funding: string;
     founded: number;
     signal_score: number;
-    // Harmonic-Grade Expansion
     founders?: { name: string; linkedin?: string; bio?: string }[];
     investors?: { name: string; logo?: string }[];
     tags?: string[];
     funding_rounds?: { stage: string; amount: string; date: string; lead_investor?: string }[];
     headcount?: number;
-    headcount_growth?: number; // percentage
+    headcount_growth?: number;
     social_links?: { linkedin?: string; twitter?: string; crunchbase?: string };
     signals?: { type: string; value: string; importance: "high" | "medium" | "low" }[];
     userNotes?: string;

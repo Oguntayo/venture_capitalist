@@ -85,11 +85,9 @@ export function CompaniesClient({ initialCompanies }: CompaniesClientProps) {
     const [isSaving, setIsSaving] = useState(false);
     const [isAiSearching, setIsAiSearching] = useState(false);
 
-    // Per-company enriched scores — only populated after explicit enrichment
     const [enrichedScores, setEnrichedScores] = useState<Record<string, number>>({});
     const [pagingDirection, setPagingDirection] = useState<"prev" | "next" | "reset" | null>(null);
 
-    // Load enriched scores from localStorage on mount
     useEffect(() => {
         const scores: Record<string, number> = {};
         initialCompanies.forEach(c => {
@@ -106,7 +104,6 @@ export function CompaniesClient({ initialCompanies }: CompaniesClientProps) {
         setEnrichedScores(scores);
     }, [initialCompanies]);
 
-    // Listen for new enrichments from company detail pages
     useEffect(() => {
         const handleStorage = (e: StorageEvent) => {
             if (e.key?.startsWith("enrichment-") && e.newValue) {
@@ -134,9 +131,8 @@ export function CompaniesClient({ initialCompanies }: CompaniesClientProps) {
         router.replace(`/companies${queryString ? `?${queryString}` : ""}`, { scroll: false });
     }, [router]);
 
-    // URL sync for filters and standard search (AI search requires Enter)
     useEffect(() => {
-        if (aiSearch) return; // Dedicated Enter handler for AI mode
+        if (aiSearch) return;
 
         const timer = setTimeout(() => {
             updateUrl(search, selectedStages, selectedIndustries, aiSearch);
@@ -190,7 +186,6 @@ export function CompaniesClient({ initialCompanies }: CompaniesClientProps) {
                 return matchesSearch && matchesStage && matchesIndustry && matchesSignal && matchesHeadcount;
             })
             .sort((a, b) => {
-                // ...
                 if (!sortConfig) return 0;
                 const { key, direction } = sortConfig;
                 const valA = (a as any)[key];
@@ -211,12 +206,11 @@ export function CompaniesClient({ initialCompanies }: CompaniesClientProps) {
     const handleSearchKeyDown = (e: React.KeyboardEvent) => {
         if (e.key === "Enter" && aiSearch) {
             if (!search) {
-                // Empty box + Enter in AI mode → reset to full results
                 setCommittedSearch("");
-                updateUrl("", selectedStages, selectedIndustries);
+                updateUrl("", selectedStages, selectedIndustries, aiSearch);
             } else {
                 setIsAiSearching(true);
-                setCommittedSearch(""); // Clear results during loading
+                setCommittedSearch("");
                 setTimeout(() => {
                     setIsAiSearching(false);
                     setCommittedSearch(search);
@@ -265,8 +259,7 @@ export function CompaniesClient({ initialCompanies }: CompaniesClientProps) {
     return (
         <TooltipProvider>
             <div className="space-y-6 animate-in fade-in duration-700">
-                {/* Header Section */}
-                <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 px-4">
+                <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 px-4 md:px-0">
                     <div className="space-y-1">
                         <div className="flex items-center gap-2">
                             <h1 className="text-3xl font-extrabold text-slate-900 tracking-tight uppercase">Discovery</h1>
@@ -307,25 +300,24 @@ export function CompaniesClient({ initialCompanies }: CompaniesClientProps) {
 
                 </div>
 
-                {/* Discovery Toolbar */}
+
                 <div className="relative group/toolbar">
                     <div className={cn(
                         "absolute -inset-1 bg-gradient-to-r from-indigo-500/20 via-violet-500/20 to-indigo-500/20 rounded-[2rem] blur-xl opacity-0 transition-opacity duration-1000",
                         aiSearch && search && "opacity-100"
                     )}></div>
-                    <div className="relative bg-white/80 backdrop-blur-md border border-white p-3 rounded-[2rem] shadow-2xl shadow-slate-200/50 flex flex-col lg:flex-row gap-3 z-10">
-                        {/* Search & AI Toggle Group */}
-                        <div className="flex-1 flex items-center gap-4 bg-white/50 rounded-2xl border border-slate-100 px-4 py-2 shadow-inner focus-within:ring-4 focus-within:ring-indigo-500/10 transition-all group/input">
+                    <div className="relative bg-white/80 backdrop-blur-md border border-white p-2 md:p-3 rounded-2xl md:rounded-[2rem] shadow-2xl shadow-slate-200/50 flex flex-col lg:flex-row gap-3 z-10">
+                        <div className="flex-1 flex items-center gap-2 md:gap-4 bg-white/50 rounded-xl md:rounded-2xl border border-slate-100 px-3 md:px-4 py-1.5 md:py-2 shadow-inner focus-within:ring-4 focus-within:ring-indigo-500/10 transition-all group/input text-xs md:text-sm">
                             <Search className={cn(
                                 "h-5 w-5 transition-colors duration-500",
                                 aiSearch && search ? "text-indigo-600" : "text-slate-400"
                             )} />
                             <Input
-                                placeholder={aiSearch ? "Describe your thesis (e.g. 'Vertical SaaS with high capital efficiency')..." : "Search by company name..."}
+                                placeholder={aiSearch ? "Describe your thesis..." : "Search company..."}
                                 value={search}
                                 onChange={(e) => setSearch(e.target.value)}
                                 onKeyDown={handleSearchKeyDown}
-                                className="flex-1 bg-transparent border-none shadow-none focus-visible:ring-0 text-slate-900 placeholder:text-slate-400 font-semibold h-12"
+                                className="flex-1 bg-transparent border-none shadow-none focus-visible:ring-0 text-slate-900 placeholder:text-slate-400 font-semibold h-10 md:h-12 text-sm md:text-base"
                             />
                             <Button
                                 size="icon"
@@ -339,17 +331,18 @@ export function CompaniesClient({ initialCompanies }: CompaniesClientProps) {
                             >
                                 <ArrowRight className="h-4 w-4" />
                             </Button>
-                            <div className="flex items-center gap-6 border-l pl-6 pr-2 h-8 my-auto border-slate-100">
+                            <div className="flex items-center gap-3 md:gap-6 border-l pl-3 md:pl-6 pr-1 md:pr-2 h-8 my-auto border-slate-100">
                                 <div className="flex flex-col items-center gap-1">
-                                    <div className="flex items-center gap-3">
+                                    <div className="flex items-center gap-2 md:gap-3">
                                         <Label
                                             htmlFor="ai-toggle-discovery"
                                             className={cn(
-                                                "text-[9px] font-black uppercase tracking-widest transition-colors cursor-pointer",
+                                                "text-[8px] md:text-[9px] font-black uppercase tracking-widest transition-colors cursor-pointer whitespace-nowrap",
                                                 aiSearch ? "text-indigo-600" : "text-slate-400"
                                             )}
                                         >
-                                            AI Intelligence
+                                            <span className="hidden xs:inline">AI Intelligence</span>
+                                            <span className="xs:hidden">AI</span>
                                         </Label>
                                         <div className="relative">
                                             {aiSearch && (
@@ -367,18 +360,16 @@ export function CompaniesClient({ initialCompanies }: CompaniesClientProps) {
                             </div>
                         </div>
 
-                        {/* Filter Group */}
-                        <div className="flex items-center gap-2">
-                            {/* Market Filter */}
+                        <div className="flex items-center gap-1 md:gap-2 overflow-x-auto pb-1 md:pb-0 scrollbar-hide">
                             <DropdownMenu>
                                 <DropdownMenuTrigger asChild>
-                                    <Button variant="ghost" className="h-12 px-5 hover:bg-white rounded-2xl flex flex-col items-start gap-0.5 group">
-                                        <span className="text-[10px] font-black text-slate-400 uppercase tracking-[0.1em] group-hover:text-indigo-400 transition-colors">Market</span>
-                                        <div className="flex items-center gap-1.5 text-slate-700">
-                                            <span className="text-sm font-bold">
+                                    <Button variant="ghost" className="h-10 md:h-12 px-3 md:px-5 hover:bg-white rounded-xl md:rounded-2xl flex flex-col items-start gap-0.5 group shrink-0">
+                                        <span className="text-[8px] md:text-[10px] font-black text-slate-400 uppercase tracking-[0.1em] group-hover:text-indigo-400 transition-colors">Market</span>
+                                        <div className="flex items-center gap-1 text-slate-700">
+                                            <span className="text-xs md:text-sm font-bold">
                                                 {selectedIndustries.length > 0 || selectedStages.length > 0
-                                                    ? `${selectedIndustries.length + selectedStages.length} Selected`
-                                                    : "All Markets"}
+                                                    ? `${selectedIndustries.length + selectedStages.length}`
+                                                    : "All"}
                                             </span>
                                             <Filter className="h-3 w-3 opacity-30" />
                                         </div>
@@ -422,13 +413,13 @@ export function CompaniesClient({ initialCompanies }: CompaniesClientProps) {
 
                             <div className="w-px h-8 bg-slate-200" />
 
-                            {/* Momentum Filter */}
+
                             <DropdownMenu>
                                 <DropdownMenuTrigger asChild>
-                                    <Button variant="ghost" className="h-12 px-5 hover:bg-white rounded-2xl flex flex-col items-start gap-0.5 group">
-                                        <span className="text-[10px] font-black text-slate-400 uppercase tracking-[0.1em] group-hover:text-amber-400 transition-colors">Momentum</span>
-                                        <div className="flex items-center gap-1.5 text-slate-700">
-                                            <span className="text-sm font-bold">{minSignal > 0 ? `${minSignal}+ Score` : "Any"}</span>
+                                    <Button variant="ghost" className="h-10 md:h-12 px-3 md:px-5 hover:bg-white rounded-xl md:rounded-2xl flex flex-col items-start gap-0.5 group shrink-0">
+                                        <span className="text-[8px] md:text-[10px] font-black text-slate-400 uppercase tracking-[0.1em] group-hover:text-amber-400 transition-colors">Momentum</span>
+                                        <div className="flex items-center gap-1 text-slate-700">
+                                            <span className="text-xs md:text-sm font-bold">{minSignal > 0 ? `${minSignal}+` : "Any"}</span>
                                             <Zap className="h-3 w-3 opacity-30" />
                                         </div>
                                     </Button>
@@ -461,13 +452,13 @@ export function CompaniesClient({ initialCompanies }: CompaniesClientProps) {
 
                             <div className="w-px h-8 bg-slate-200" />
 
-                            {/* Scale Filter */}
+
                             <DropdownMenu>
                                 <DropdownMenuTrigger asChild>
-                                    <Button variant="ghost" className="h-12 px-5 hover:bg-white rounded-2xl flex flex-col items-start gap-0.5 group">
-                                        <span className="text-[10px] font-black text-slate-400 uppercase tracking-[0.1em] group-hover:text-indigo-400 transition-colors">Scale</span>
-                                        <div className="flex items-center gap-1.5 text-slate-700">
-                                            <span className="text-sm font-bold">{minHeadcount > 0 ? `${minHeadcount.toLocaleString()}+ HC` : "Any Size"}</span>
+                                    <Button variant="ghost" className="h-10 md:h-12 px-3 md:px-5 hover:bg-white rounded-xl md:rounded-2xl flex flex-col items-start gap-0.5 group shrink-0">
+                                        <span className="text-[8px] md:text-[10px] font-black text-slate-400 uppercase tracking-[0.1em] group-hover:text-indigo-400 transition-colors">Scale</span>
+                                        <div className="flex items-center gap-1 text-slate-700">
+                                            <span className="text-xs md:text-sm font-bold">{minHeadcount > 0 ? `${minHeadcount.toLocaleString()}+` : "Any"}</span>
                                             <Trophy className="h-3 w-3 opacity-30" />
                                         </div>
                                     </Button>
@@ -500,285 +491,285 @@ export function CompaniesClient({ initialCompanies }: CompaniesClientProps) {
                 </div>
 
                 <div className="relative group">
-                    {/* Glassmorphism Background Accent */}
                     <div className="absolute -inset-4 bg-gradient-to-tr from-indigo-50/40 via-transparent to-indigo-50/40 rounded-[2.5rem] blur-2xl opacity-50 group-hover:opacity-100 transition-opacity duration-1000 -z-10" />
 
                     <div className="rounded-[2rem] border border-white bg-white/70 backdrop-blur-xl shadow-2xl shadow-slate-200/50 overflow-hidden">
-                        <Table>
-                            <TableHeader className="bg-slate-50/40">
-                                <TableRow className="hover:bg-transparent border-slate-100">
-                                    <TableHead className="py-5 pl-12 text-[11px] font-bold text-slate-400 uppercase tracking-widest cursor-pointer group/header" onClick={() => handleSort("name")}>
-                                        <div className="flex items-center group-hover/header:text-indigo-600 transition-colors">
-                                            Company
-                                            <ArrowUpDown className="ml-2 h-3 w-3 opacity-30" />
-                                        </div>
-                                    </TableHead>
-                                    <TableHead className="py-5 text-[11px] font-bold text-slate-400 uppercase tracking-widest">Market focus</TableHead>
-                                    <TableHead className="py-5 text-[11px] font-bold text-slate-400 uppercase tracking-widest">Founders</TableHead>
-                                    <TableHead className="py-5 text-[11px] font-bold text-slate-400 uppercase tracking-widest">Investors</TableHead>
-                                    <TableHead className="py-5 text-[11px] font-bold text-slate-400 uppercase tracking-widest text-center" onClick={() => handleSort("headcount")}>
-                                        <div className="flex items-center justify-center group-hover/header:text-indigo-600 transition-colors cursor-pointer">
-                                            Headcount
-                                            <ArrowUpDown className="ml-2 h-3 w-3 opacity-30" />
-                                        </div>
-                                    </TableHead>
-                                    <TableHead className="py-5 text-[11px] font-bold text-indigo-400 uppercase tracking-widest cursor-pointer group/header text-center" onClick={() => handleSort("match_score")}>
-                                        <div className="flex items-center justify-center group-hover/header:text-indigo-600 transition-colors">
-                                            Match
-                                            <Tooltip>
-                                                <TooltipTrigger asChild>
-                                                    <Info className="ml-1.5 h-3 w-3 text-slate-300" />
-                                                </TooltipTrigger>
-                                                <TooltipContent className="bg-slate-900 text-white border-none rounded-lg p-3 max-w-xs shadow-xl">
-                                                    <p className="text-xs font-semibold mb-1">How we calculate this:</p>
-                                                    <p className="text-[10px] text-slate-300 leading-relaxed font-normal">
-                                                        <span className="text-indigo-400 font-bold">Heuristic</span>: Real-time keyword alignment.<br />
-                                                        <span className="text-emerald-400 font-bold">AI Verified</span>: Deep technical confirmation.
-                                                    </p>
-                                                </TooltipContent>
-                                            </Tooltip>
-                                            <ArrowUpDown className="ml-2 h-3 w-3 opacity-30" />
-                                        </div>
-                                    </TableHead>
-                                    <TableHead className="py-5 text-center text-[11px] font-bold text-slate-400 uppercase tracking-widest pr-12" onClick={() => handleSort("signal_score")}>
-                                        <div className="flex items-center justify-center group-hover/header:text-indigo-600 transition-colors">
-                                            Signals
-                                            <ArrowUpDown className="ml-2 h-3 w-3 opacity-30" />
-                                        </div>
-                                    </TableHead>
-                                </TableRow>
-                            </TableHeader>
-                            <TableBody>
-                                {isAiSearching ? (
-                                    <TableRow>
-                                        <TableCell colSpan={8} className="h-96 text-center">
-                                            <div className="flex flex-col items-center justify-center gap-4">
-                                                <div className="relative h-20 w-20">
-                                                    <div className="absolute inset-0 border-4 border-indigo-100 rounded-full"></div>
-                                                    <div className="absolute inset-0 border-4 border-indigo-600 border-t-transparent rounded-full animate-spin"></div>
-                                                    <Sparkles className="absolute inset-0 m-auto h-8 w-8 text-indigo-600 animate-pulse" />
-                                                </div>
-                                                <div className="space-y-1">
-                                                    <p className="text-xl font-black text-slate-900 uppercase tracking-tighter">AI Reasoning Analysis</p>
-                                                    <p className="text-sm text-slate-400 font-medium">Processing semantic match against institutional dataset...</p>
-                                                </div>
+                        <div className="overflow-x-auto scrollbar-hide">
+                            <Table>
+                                <TableHeader className="bg-slate-50/40">
+                                    <TableRow className="hover:bg-transparent border-slate-100">
+                                        <TableHead className="py-5 pl-12 text-[11px] font-bold text-slate-400 uppercase tracking-widest cursor-pointer group/header" onClick={() => handleSort("name")}>
+                                            <div className="flex items-center group-hover/header:text-indigo-600 transition-colors">
+                                                Company
+                                                <ArrowUpDown className="ml-2 h-3 w-3 opacity-30" />
                                             </div>
-                                        </TableCell>
+                                        </TableHead>
+                                        <TableHead className="py-5 text-[11px] font-bold text-slate-400 uppercase tracking-widest">Market focus</TableHead>
+                                        <TableHead className="py-5 text-[11px] font-bold text-slate-400 uppercase tracking-widest">Founders</TableHead>
+                                        <TableHead className="py-5 text-[11px] font-bold text-slate-400 uppercase tracking-widest">Investors</TableHead>
+                                        <TableHead className="py-5 text-[11px] font-bold text-slate-400 uppercase tracking-widest text-center" onClick={() => handleSort("headcount")}>
+                                            <div className="flex items-center justify-center group-hover/header:text-indigo-600 transition-colors cursor-pointer">
+                                                Headcount
+                                                <ArrowUpDown className="ml-2 h-3 w-3 opacity-30" />
+                                            </div>
+                                        </TableHead>
+                                        <TableHead className="py-5 text-[11px] font-bold text-indigo-400 uppercase tracking-widest cursor-pointer group/header text-center" onClick={() => handleSort("match_score")}>
+                                            <div className="flex items-center justify-center group-hover/header:text-indigo-600 transition-colors">
+                                                Match
+                                                <Tooltip>
+                                                    <TooltipTrigger asChild>
+                                                        <Info className="ml-1.5 h-3 w-3 text-slate-300" />
+                                                    </TooltipTrigger>
+                                                    <TooltipContent className="bg-slate-900 text-white border-none rounded-lg p-3 max-w-xs shadow-xl">
+                                                        <p className="text-[10px] text-slate-300 leading-relaxed font-normal">
+                                                            <span className="text-indigo-400 font-bold">Heuristic</span>: Real-time keyword alignment.<br />
+                                                            <span className="text-emerald-400 font-bold">AI Verified</span>: Deep technical confirmation.
+                                                        </p>
+                                                    </TooltipContent>
+                                                </Tooltip>
+                                                <ArrowUpDown className="ml-2 h-3 w-3 opacity-30" />
+                                            </div>
+                                        </TableHead>
+                                        <TableHead className="py-5 text-center text-[11px] font-bold text-slate-400 uppercase tracking-widest pr-12" onClick={() => handleSort("signal_score")}>
+                                            <div className="flex items-center justify-center group-hover/header:text-indigo-600 transition-colors">
+                                                Signals
+                                                <ArrowUpDown className="ml-2 h-3 w-3 opacity-30" />
+                                            </div>
+                                        </TableHead>
                                     </TableRow>
-                                ) : paginatedCompanies.length > 0 ? (
-                                    paginatedCompanies.map((company) => (
-                                        <TableRow
-                                            key={company.id}
-                                            className={cn(
-                                                "hover:bg-indigo-50/30 transition-all duration-300 cursor-pointer group border-slate-50/60 relative",
-                                                navigatingId === company.id && "bg-indigo-50/50 border-indigo-200"
-                                            )}
-                                            onClick={() => {
-                                                if (navigatingId) return;
-                                                setNavigatingId(company.id);
-                                                router.push(`/companies/${company.id}`);
-                                            }}
-                                        >
-                                            <TableCell className="py-5 pl-12">
-                                                {navigatingId === company.id && (
-                                                    <div className="absolute inset-0 z-50 bg-white/60 backdrop-blur-[2px] flex items-center justify-center animate-in fade-in duration-300 rounded-2xl">
-                                                        <div className="flex items-center gap-3 px-6 py-3 bg-slate-900 rounded-full shadow-2xl scale-95 animate-in zoom-in-95 duration-300">
-                                                            <Loader2 className="h-4 w-4 text-indigo-400 animate-spin" />
-                                                            <span className="text-[10px] font-black text-white uppercase tracking-[0.2em] italic">Engaging Dossier</span>
-                                                        </div>
+                                </TableHeader>
+                                <TableBody>
+                                    {isAiSearching ? (
+                                        <TableRow>
+                                            <TableCell colSpan={8} className="h-96 text-center">
+                                                <div className="flex flex-col items-center justify-center gap-4">
+                                                    <div className="relative h-20 w-20">
+                                                        <div className="absolute inset-0 border-4 border-indigo-100 rounded-full"></div>
+                                                        <div className="absolute inset-0 border-4 border-indigo-600 border-t-transparent rounded-full animate-spin"></div>
+                                                        <Sparkles className="absolute inset-0 m-auto h-8 w-8 text-indigo-600 animate-pulse" />
                                                     </div>
-                                                )}
-                                                <div className="flex items-center gap-4">
-                                                    <div className="h-12 w-12 rounded-2xl border border-slate-100 bg-white p-2 flex items-center justify-center shrink-0 shadow-sm group-hover:shadow-md group-hover:border-indigo-100 transition-all duration-500">
-                                                        <img src={company.logo_url} alt={company.name} className="h-full w-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-500" />
-                                                    </div>
-                                                    <div className="space-y-0.5">
-                                                        <div className="flex items-center gap-2">
-                                                            <div className="font-bold text-slate-900 group-hover:text-indigo-700 transition-colors text-base tracking-tight">
-                                                                {company.name}
-                                                            </div>
-                                                        </div>
-                                                        <div className="text-xs font-medium text-slate-400 group-hover:text-slate-500 transition-colors truncate max-w-[220px]">
-                                                            {company.website.replace("https://", "").replace("www.", "")}
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </TableCell>
-                                            <TableCell className="py-5">
-                                                <Badge variant="outline" className="font-bold border-slate-200 text-slate-500 bg-slate-50/50 px-2.5 py-0.5 text-[10px] uppercase tracking-wider rounded-lg">
-                                                    {company.industry}
-                                                </Badge>
-                                            </TableCell>
-                                            <TableCell className="py-5">
-                                                {company.founders && company.founders.length > 0 ? (
-                                                    <Tooltip>
-                                                        <TooltipTrigger asChild>
-                                                            <div className="flex items-center gap-1.5 cursor-default w-fit">
-                                                                <span className="text-xs font-bold text-slate-700 truncate max-w-[100px]">
-                                                                    {company.founders[0].name.split(" ")[0]}
-                                                                </span>
-                                                                {company.founders.length > 1 && (
-                                                                    <span className="text-[10px] font-black text-slate-400 bg-slate-100 rounded-full px-1.5 py-0.5 shrink-0">
-                                                                        +{company.founders.length - 1}
-                                                                    </span>
-                                                                )}
-                                                            </div>
-                                                        </TooltipTrigger>
-                                                        <TooltipContent className="bg-slate-900 border-none rounded-lg p-3 shadow-xl max-w-[200px]">
-                                                            <div className="space-y-1">
-                                                                {company.founders.map((f, i) => (
-                                                                    <p key={i} className="text-[11px] font-bold text-white">{f.name}</p>
-                                                                ))}
-                                                            </div>
-                                                        </TooltipContent>
-                                                    </Tooltip>
-                                                ) : (
-                                                    <span className="text-slate-300">—</span>
-                                                )}
-                                            </TableCell>
-                                            <TableCell className="py-5">
-                                                {company.investors && company.investors.length > 0 ? (
-                                                    <Tooltip>
-                                                        <TooltipTrigger asChild>
-                                                            <div className="flex items-center gap-1.5 cursor-default w-fit">
-                                                                {/* Lead investor initial avatar */}
-                                                                <div className="h-6 w-6 rounded-lg bg-indigo-50 border border-indigo-100 flex items-center justify-center shrink-0">
-                                                                    <span className="text-[9px] font-black text-indigo-600 uppercase">
-                                                                        {company.investors[0].name.charAt(0)}
-                                                                    </span>
-                                                                </div>
-                                                                <span className="text-xs font-bold text-slate-700 truncate max-w-[90px]">
-                                                                    {company.investors[0].name}
-                                                                </span>
-                                                                {company.investors.length > 1 && (
-                                                                    <span className="text-[10px] font-black text-slate-400 bg-slate-100 rounded-full px-1.5 py-0.5 shrink-0">
-                                                                        +{company.investors.length - 1}
-                                                                    </span>
-                                                                )}
-                                                            </div>
-                                                        </TooltipTrigger>
-                                                        <TooltipContent className="bg-slate-900 border-none rounded-xl p-3 shadow-2xl max-w-[220px]">
-                                                            <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-2">All Investors</p>
-                                                            <div className="space-y-1.5">
-                                                                {company.investors.map((inv, i) => (
-                                                                    <div key={i} className="flex items-center gap-2">
-                                                                        <div className="h-5 w-5 rounded-md bg-white/10 flex items-center justify-center shrink-0">
-                                                                            <span className="text-[8px] font-black text-indigo-300 uppercase">{inv.name.charAt(0)}</span>
-                                                                        </div>
-                                                                        <p className="text-[11px] font-bold text-white truncate">{inv.name}</p>
-                                                                    </div>
-                                                                ))}
-                                                            </div>
-                                                        </TooltipContent>
-                                                    </Tooltip>
-                                                ) : (
-                                                    <span className="text-slate-300">—</span>
-                                                )}
-                                            </TableCell>
-                                            <TableCell className="py-5 text-center">
-                                                <div className="flex flex-col items-center">
-                                                    <span className="text-sm font-bold text-slate-700">
-                                                        {company.headcount ? company.headcount.toLocaleString() : "—"}
-                                                    </span>
-                                                    {company.headcount_growth !== undefined && (
-                                                        <span className={cn(
-                                                            "text-[9px] font-black tracking-tighter",
-                                                            company.headcount_growth > 0 ? "text-emerald-500" : "text-slate-400"
-                                                        )}>
-                                                            {company.headcount_growth > 0 ? `+${company.headcount_growth}%` : `${company.headcount_growth}%`}
-                                                        </span>
-                                                    )}
-                                                </div>
-                                            </TableCell>
-
-                                            <TableCell className="py-5">
-                                                <div className="flex flex-col items-center justify-center gap-1">
-                                                    {company.match_score !== null && company.match_score !== undefined ? (
-                                                        <>
-                                                            <div className={cn(
-                                                                "text-sm font-black tracking-tight",
-                                                                company.match_score >= 80 ? "text-emerald-600" :
-                                                                    company.match_score >= 60 ? "text-indigo-600" :
-                                                                        "text-slate-400"
-                                                            )}>
-                                                                {company.match_score}%
-                                                            </div>
-                                                            <div className="w-16 h-1 bg-slate-100 rounded-full overflow-hidden">
-                                                                <div
-                                                                    className={cn(
-                                                                        "h-full transition-all duration-1000",
-                                                                        company.match_score >= 80 ? "bg-emerald-500" :
-                                                                            company.match_score >= 60 ? "bg-indigo-500" :
-                                                                                "bg-slate-300"
-                                                                    )}
-                                                                    style={{ width: `${company.match_score}%` }}
-                                                                />
-                                                            </div>
-                                                        </>
-                                                    ) : (
-                                                        <Tooltip>
-                                                            <TooltipTrigger asChild>
-                                                                <span className="text-slate-200 text-lg font-bold cursor-default select-none">—</span>
-                                                            </TooltipTrigger>
-                                                            <TooltipContent className="bg-slate-900 border-none rounded-lg p-2 shadow-xl max-w-[160px] text-center">
-                                                                <p className="text-[10px] font-bold text-white">Click company to run AI Enrichment</p>
-                                                            </TooltipContent>
-                                                        </Tooltip>
-                                                    )}
-                                                </div>
-                                            </TableCell>
-
-                                            <TableCell className="py-5 pr-12">
-                                                <div className="flex flex-col items-center gap-1.5">
-                                                    <div className="text-lg font-black text-slate-900 leading-none tracking-tighter">
-                                                        {company.signal_score}
-                                                    </div>
-                                                    <div className="flex gap-0.5">
-                                                        {[...Array(5)].map((_, i) => (
-                                                            <div
-                                                                key={i}
-                                                                className={cn(
-                                                                    "h-0.5 w-3 rounded-full",
-                                                                    i < Math.floor(company.signal_score / 20) ? "bg-amber-400 shadow-[0_0_8px_rgba(251,191,36,0.5)]" : "bg-slate-100"
-                                                                )}
-                                                            />
-                                                        ))}
+                                                    <div className="space-y-1">
+                                                        <p className="text-xl font-black text-slate-900 uppercase tracking-tighter">AI Reasoning Analysis</p>
+                                                        <p className="text-sm text-slate-400 font-medium">Processing semantic match against institutional dataset...</p>
                                                     </div>
                                                 </div>
                                             </TableCell>
                                         </TableRow>
-                                    ))
-                                ) : (
-                                    <TableRow>
-                                        <TableCell colSpan={6} className="h-64 text-center">
-                                            <div className="flex flex-col items-center justify-center space-y-3">
-                                                <div className="p-4 bg-slate-50 rounded-full">
-                                                    <Search className="h-8 w-8 text-slate-300" />
-                                                </div>
-                                                <p className="text-slate-400 font-medium tracking-tight">No institutional matches found for this query.</p>
-                                                <Button
-                                                    variant="link"
-                                                    className="text-indigo-600 font-bold"
-                                                    onClick={() => {
-                                                        setSearch("");
-                                                        setSelectedStages([]);
-                                                        setSelectedIndustries([]);
-                                                    }}
-                                                >
-                                                    Reset all discovery filters
-                                                </Button>
-                                            </div>
-                                        </TableCell>
-                                    </TableRow>
-                                )}
-                            </TableBody>
-                        </Table>
-                    </div>
-                </div >
+                                    ) : paginatedCompanies.length > 0 ? (
+                                        paginatedCompanies.map((company) => (
+                                            <TableRow
+                                                key={company.id}
+                                                className={cn(
+                                                    "hover:bg-indigo-50/30 transition-all duration-300 cursor-pointer group border-slate-50/60 relative",
+                                                    navigatingId === company.id && "bg-indigo-50/50 border-indigo-200"
+                                                )}
+                                                onClick={() => {
+                                                    if (navigatingId) return;
+                                                    setNavigatingId(company.id);
+                                                    router.push(`/companies/${company.id}`);
+                                                }}
+                                            >
+                                                <TableCell className="py-5 pl-12">
+                                                    {navigatingId === company.id && (
+                                                        <div className="absolute inset-0 z-50 bg-white/60 backdrop-blur-[2px] flex items-center justify-center animate-in fade-in duration-300 rounded-2xl">
+                                                            <div className="flex items-center gap-3 px-6 py-3 bg-slate-900 rounded-full shadow-2xl scale-95 animate-in zoom-in-95 duration-300">
+                                                                <Loader2 className="h-4 w-4 text-indigo-400 animate-spin" />
+                                                                <span className="text-[10px] font-black text-white uppercase tracking-[0.2em] italic">Engaging Dossier</span>
+                                                            </div>
+                                                        </div>
+                                                    )}
+                                                    <div className="flex items-center gap-4">
+                                                        <div className="h-12 w-12 rounded-2xl border border-slate-100 bg-white p-2 flex items-center justify-center shrink-0 shadow-sm group-hover:shadow-md group-hover:border-indigo-100 transition-all duration-500">
+                                                            <img src={company.logo_url} alt={company.name} className="h-full w-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-500" />
+                                                        </div>
+                                                        <div className="space-y-0.5">
+                                                            <div className="flex items-center gap-2">
+                                                                <div className="font-bold text-slate-900 group-hover:text-indigo-700 transition-colors text-base tracking-tight">
+                                                                    {company.name}
+                                                                </div>
+                                                            </div>
+                                                            <div className="text-xs font-medium text-slate-400 group-hover:text-slate-500 transition-colors truncate max-w-[220px]">
+                                                                {company.website.replace("https://", "").replace("www.", "")}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </TableCell>
+                                                <TableCell className="py-5">
+                                                    <Badge variant="outline" className="font-bold border-slate-200 text-slate-500 bg-slate-50/50 px-2.5 py-0.5 text-[10px] uppercase tracking-wider rounded-lg">
+                                                        {company.industry}
+                                                    </Badge>
+                                                </TableCell>
+                                                <TableCell className="py-5">
+                                                    {company.founders && company.founders.length > 0 ? (
+                                                        <Tooltip>
+                                                            <TooltipTrigger asChild>
+                                                                <div className="flex items-center gap-1.5 cursor-default w-fit">
+                                                                    <span className="text-xs font-bold text-slate-700 truncate max-w-[100px]">
+                                                                        {company.founders[0].name.split(" ")[0]}
+                                                                    </span>
+                                                                    {company.founders.length > 1 && (
+                                                                        <span className="text-[10px] font-black text-slate-400 bg-slate-100 rounded-full px-1.5 py-0.5 shrink-0">
+                                                                            +{company.founders.length - 1}
+                                                                        </span>
+                                                                    )}
+                                                                </div>
+                                                            </TooltipTrigger>
+                                                            <TooltipContent className="bg-slate-900 border-none rounded-lg p-3 shadow-xl max-w-[200px]">
+                                                                <div className="space-y-1">
+                                                                    {company.founders.map((f, i) => (
+                                                                        <p key={i} className="text-[11px] font-bold text-white">{f.name}</p>
+                                                                    ))}
+                                                                </div>
+                                                            </TooltipContent>
+                                                        </Tooltip>
+                                                    ) : (
+                                                        <span className="text-slate-300">—</span>
+                                                    )}
+                                                </TableCell>
+                                                <TableCell className="py-5">
+                                                    {company.investors && company.investors.length > 0 ? (
+                                                        <Tooltip>
+                                                            <TooltipTrigger asChild>
+                                                                <div className="flex items-center gap-1.5 cursor-default w-fit">
 
-                <div className="flex items-center justify-between py-6 px-4 bg-white/50 backdrop-blur-sm rounded-3xl border border-white">
-                    <div className="text-[11px] font-bold text-slate-400 uppercase tracking-widest">
-                        Showing <span className="text-slate-900">{((page - 1) * itemsPerPage) + 1}—{Math.min(page * itemsPerPage, filteredCompanies.length)}</span> of <span className="text-slate-900">{filteredCompanies.length}</span> companies
+                                                                    <div className="h-6 w-6 rounded-lg bg-indigo-50 border border-indigo-100 flex items-center justify-center shrink-0">
+                                                                        <span className="text-[9px] font-black text-indigo-600 uppercase">
+                                                                            {company.investors[0].name.charAt(0)}
+                                                                        </span>
+                                                                    </div>
+                                                                    <span className="text-xs font-bold text-slate-700 truncate max-w-[90px]">
+                                                                        {company.investors[0].name}
+                                                                    </span>
+                                                                    {company.investors.length > 1 && (
+                                                                        <span className="text-[10px] font-black text-slate-400 bg-slate-100 rounded-full px-1.5 py-0.5 shrink-0">
+                                                                            +{company.investors.length - 1}
+                                                                        </span>
+                                                                    )}
+                                                                </div>
+                                                            </TooltipTrigger>
+                                                            <TooltipContent className="bg-slate-900 border-none rounded-xl p-3 shadow-2xl max-w-[220px]">
+                                                                <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-2">All Investors</p>
+                                                                <div className="space-y-1.5">
+                                                                    {company.investors.map((inv, i) => (
+                                                                        <div key={i} className="flex items-center gap-2">
+                                                                            <div className="h-5 w-5 rounded-md bg-white/10 flex items-center justify-center shrink-0">
+                                                                                <span className="text-[8px] font-black text-indigo-300 uppercase">{inv.name.charAt(0)}</span>
+                                                                            </div>
+                                                                            <p className="text-[11px] font-bold text-white truncate">{inv.name}</p>
+                                                                        </div>
+                                                                    ))}
+                                                                </div>
+                                                            </TooltipContent>
+                                                        </Tooltip>
+                                                    ) : (
+                                                        <span className="text-slate-300">—</span>
+                                                    )}
+                                                </TableCell>
+                                                <TableCell className="py-5 text-center">
+                                                    <div className="flex flex-col items-center">
+                                                        <span className="text-sm font-bold text-slate-700">
+                                                            {company.headcount ? company.headcount.toLocaleString() : "—"}
+                                                        </span>
+                                                        {company.headcount_growth !== undefined && (
+                                                            <span className={cn(
+                                                                "text-[9px] font-black tracking-tighter",
+                                                                company.headcount_growth > 0 ? "text-emerald-500" : "text-slate-400"
+                                                            )}>
+                                                                {company.headcount_growth > 0 ? `+${company.headcount_growth}%` : `${company.headcount_growth}%`}
+                                                            </span>
+                                                        )}
+                                                    </div>
+                                                </TableCell>
+
+                                                <TableCell className="py-5">
+                                                    <div className="flex flex-col items-center justify-center gap-1">
+                                                        {company.match_score !== null && company.match_score !== undefined ? (
+                                                            <>
+                                                                <div className={cn(
+                                                                    "text-sm font-black tracking-tight",
+                                                                    company.match_score >= 80 ? "text-emerald-600" :
+                                                                        company.match_score >= 60 ? "text-indigo-600" :
+                                                                            "text-slate-400"
+                                                                )}>
+                                                                    {company.match_score}%
+                                                                </div>
+                                                                <div className="w-16 h-1 bg-slate-100 rounded-full overflow-hidden">
+                                                                    <div
+                                                                        className={cn(
+                                                                            "h-full transition-all duration-1000",
+                                                                            company.match_score >= 80 ? "bg-emerald-500" :
+                                                                                company.match_score >= 60 ? "bg-indigo-500" :
+                                                                                    "bg-slate-300"
+                                                                        )}
+                                                                        style={{ width: `${company.match_score}%` }}
+                                                                    />
+                                                                </div>
+                                                            </>
+                                                        ) : (
+                                                            <Tooltip>
+                                                                <TooltipTrigger asChild>
+                                                                    <span className="text-slate-200 text-lg font-bold cursor-default select-none">—</span>
+                                                                </TooltipTrigger>
+                                                                <TooltipContent className="bg-slate-900 border-none rounded-lg p-2 shadow-xl max-w-[160px] text-center">
+                                                                    <p className="text-[10px] font-bold text-white">Click company to run AI Enrichment</p>
+                                                                </TooltipContent>
+                                                            </Tooltip>
+                                                        )}
+                                                    </div>
+                                                </TableCell>
+
+                                                <TableCell className="py-5 pr-12">
+                                                    <div className="flex flex-col items-center gap-1.5">
+                                                        <div className="text-lg font-black text-slate-900 leading-none tracking-tighter">
+                                                            {company.signal_score}
+                                                        </div>
+                                                        <div className="flex gap-0.5">
+                                                            {[...Array(5)].map((_, i) => (
+                                                                <div
+                                                                    key={i}
+                                                                    className={cn(
+                                                                        "h-0.5 w-3 rounded-full",
+                                                                        i < Math.floor(company.signal_score / 20) ? "bg-amber-400 shadow-[0_0_8px_rgba(251,191,36,0.5)]" : "bg-slate-100"
+                                                                    )}
+                                                                />
+                                                            ))}
+                                                        </div>
+                                                    </div>
+                                                </TableCell>
+                                            </TableRow>
+                                        ))
+                                    ) : (
+                                        <TableRow>
+                                            <TableCell colSpan={6} className="h-64 text-center">
+                                                <div className="flex flex-col items-center justify-center space-y-3">
+                                                    <div className="p-4 bg-slate-50 rounded-full">
+                                                        <Search className="h-8 w-8 text-slate-300" />
+                                                    </div>
+                                                    <p className="text-slate-400 font-medium tracking-tight">No institutional matches found for this query.</p>
+                                                    <Button
+                                                        variant="link"
+                                                        className="text-indigo-600 font-bold"
+                                                        onClick={() => {
+                                                            setSearch("");
+                                                            setSelectedStages([]);
+                                                            setSelectedIndustries([]);
+                                                        }}
+                                                    >
+                                                        Reset all discovery filters
+                                                    </Button>
+                                                </div>
+                                            </TableCell>
+                                        </TableRow>
+                                    )}
+                                </TableBody>
+                            </Table>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="flex flex-col sm:flex-row items-center justify-between py-6 px-6 md:px-8 bg-white/50 backdrop-blur-sm rounded-[2rem] border border-white gap-4">
+                    <div className="text-[10px] md:text-[11px] font-bold text-slate-400 uppercase tracking-widest text-center sm:text-left">
+                        Showing <span className="text-slate-900">{((page - 1) * itemsPerPage) + 1}—{Math.min(page * itemsPerPage, filteredCompanies.length)}</span> of <span className="text-slate-900">{filteredCompanies.length}</span>
                     </div>
                     <div className="flex items-center gap-3">
                         <Button
@@ -804,7 +795,7 @@ export function CompaniesClient({ initialCompanies }: CompaniesClientProps) {
                         </Button>
                     </div>
                 </div>
-            </div >
-        </TooltipProvider >
+            </div>
+        </TooltipProvider>
     );
 }

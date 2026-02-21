@@ -77,7 +77,7 @@ export function EnrichmentCard({ companyId, website }: EnrichmentCardProps) {
         }
     };
 
-    // No thesis — show premium locked state
+
     if (!thesisLoading && !userThesis) {
         return (
             <div className="h-[calc(100vh-130px)] min-h-[500px]">

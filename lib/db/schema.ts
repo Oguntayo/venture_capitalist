@@ -10,7 +10,7 @@ export const users = pgTable("users", {
 });
 
 export const companies = pgTable("companies", {
-    id: text("id").primaryKey(), // Using the string ID from JSON
+    id: text("id").primaryKey(),
     name: text("name").notNull(),
     website: text("website").notNull(),
     description: text("description").notNull(),

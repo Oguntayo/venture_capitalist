@@ -31,14 +31,14 @@ export function GlobalSearch() {
     const filteredCompanies = useMemo(() => {
         if (!query) return [];
 
-        // Mode 1: Exact Name Match (Always Active)
+
         const nameMatches = companies.filter(c =>
             c.name.toLowerCase().includes(query.toLowerCase())
         );
 
         if (!aiSearch) return nameMatches.slice(0, 5).map(c => ({ ...c, searchMode: 'exact' as const }));
 
-        // Mode 2: AI (Intent) Search (Only if active)
+
         const intentMatches = companies.filter(c => {
             const searchLower = query.toLowerCase();
             const keywords = searchLower.split(/[\s,.]+/).filter(word => word.length >= 2 && !["related", "companies"].includes(word));
@@ -47,7 +47,7 @@ export function GlobalSearch() {
             return keywords.some(word => companyText.includes(word));
         });
 
-        // Combine and dedup
+
         const combined = [...nameMatches];
         intentMatches.forEach(c => {
             if (!combined.find(rc => rc.id === c.id)) combined.push(c);
@@ -116,7 +116,7 @@ export function GlobalSearch() {
     }, [query]);
 
     useEffect(() => {
-        // Pre-fetch data on mount for responsiveness
+
         const fetchData = async () => {
             try {
                 const res = await fetch("/api/companies");

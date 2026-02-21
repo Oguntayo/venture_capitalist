@@ -131,11 +131,10 @@ export function ListsClient({ companies }: { companies: Company[] }) {
 
     return (
         <div className="space-y-12 animate-in fade-in duration-1000">
-            {/* Minimalist Header */}
             <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 px-4">
                 <div className="space-y-1">
-                    <h1 className="text-3xl font-black text-slate-900 tracking-tight uppercase italic">Lists</h1>
-                    <p className="text-slate-400 text-xs font-bold uppercase tracking-[0.2em]">Institutional Asset Collections</p>
+                    <h1 className="text-3xl font-black text-slate-900 tracking-tight uppercase italic">Saved Lists</h1>
+                    <p className="text-slate-400 text-xs font-bold uppercase tracking-[0.2em]">Asset Collections</p>
                 </div>
                 <Button
                     onClick={() => setIsCreateDialogOpen(true)}
@@ -156,7 +155,6 @@ export function ListsClient({ companies }: { companies: Company[] }) {
 
                         return (
                             <Card key={list.id} className="relative border-none bg-white shadow-2xl shadow-slate-200/50 rounded-[2.5rem] overflow-hidden flex flex-col h-[500px] hover:shadow-indigo-500/10 transition-all duration-700 group border border-slate-50">
-                                {/* Elegant Header Architecture */}
                                 <div className="p-8 pb-4 flex items-start justify-between">
                                     <div className="space-y-1 overflow-hidden">
                                         <h3 className="text-xl font-black text-slate-900 tracking-tighter truncate">{list.name}</h3>
@@ -165,7 +163,6 @@ export function ListsClient({ companies }: { companies: Company[] }) {
                                             {listCompanies.length > 0 && (
                                                 <div className="flex items-center gap-1 text-indigo-600">
                                                     <Zap className="h-2.5 w-2.5 fill-current" />
-                                                    <span className="text-[9px] font-black uppercase tracking-widest">{avgSignal} Momentum</span>
                                                 </div>
                                             )}
                                         </div>
@@ -213,7 +210,7 @@ export function ListsClient({ companies }: { companies: Company[] }) {
                                     </DropdownMenu>
                                 </div>
 
-                                {/* Clean Scrolling Repository */}
+
                                 <CardContent className="flex-1 p-0 flex flex-col overflow-hidden min-h-0">
                                     <ScrollArea className="flex-1 px-8 py-4 h-full min-h-0">
                                         <div className="space-y-4">
@@ -276,7 +273,7 @@ export function ListsClient({ companies }: { companies: Company[] }) {
                                         </div>
                                     </ScrollArea>
 
-                                    {/* Minimalist Footer */}
+
                                     <div className="px-10 py-6 border-t border-slate-50 flex items-center justify-between">
                                         <div className="flex items-center gap-2">
                                             <div className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse"></div>
@@ -286,7 +283,7 @@ export function ListsClient({ companies }: { companies: Company[] }) {
                                             href="/companies"
                                             className="text-[9px] font-black text-slate-400 hover:text-indigo-600 transition-colors uppercase tracking-widest italic flex items-center gap-1"
                                         >
-                                            Repository <ChevronRight className="h-2.5 w-2.5" />
+                                            Discover <ChevronRight className="h-2.5 w-2.5" />
                                         </Link>
                                     </div>
                                 </CardContent>
@@ -314,7 +311,7 @@ export function ListsClient({ companies }: { companies: Company[] }) {
                 )}
             </div>
 
-            {/* Standardized Institutional Dialogs */}
+
             <Dialog open={isCreateDialogOpen} onOpenChange={setIsCreateDialogOpen}>
                 <DialogContent className="sm:max-w-md rounded-[3rem] border border-slate-50 shadow-2xl p-12">
                     <DialogHeader className="items-center text-center">

@@ -23,7 +23,6 @@ export default async function CompanyDetailPage({ params }: { params: Promise<{ 
         notFound();
     }
 
-    // Map DB fields to the expected Company type
     const company: Company = {
         ...dbCompany,
         logo_url: dbCompany.logoUrl,
