@@ -126,8 +126,15 @@ export function GlobalSearch() {
                 console.error("Failed to pre-fetch companies for search", err);
             }
 
-            const savedLists = localStorage.getItem("vc-scout-lists");
-            if (savedLists) setLists(JSON.parse(savedLists));
+            try {
+                const resLists = await fetch("/api/lists");
+                if (resLists.ok) {
+                    const listsData = await resLists.json();
+                    setLists(listsData);
+                }
+            } catch (err) {
+                console.error("Failed to fetch lists for search", err);
+            }
 
             const savedWorkflows = localStorage.getItem("vc-scout-saved-searches");
             if (savedWorkflows) setSavedSearches(JSON.parse(savedWorkflows));

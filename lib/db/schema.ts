@@ -9,6 +9,15 @@ export const users = pgTable("users", {
     updatedAt: timestamp("updated_at").defaultNow().notNull(),
 });
 
+export const lists = pgTable("lists", {
+    id: uuid("id").defaultRandom().primaryKey(),
+    userId: uuid("user_id").notNull().references(() => users.id, { onDelete: 'cascade' }),
+    name: text("name").notNull(),
+    companies: jsonb("companies").default('[]').notNull(),
+    createdAt: timestamp("created_at").defaultNow().notNull(),
+    updatedAt: timestamp("updated_at").defaultNow().notNull(),
+});
+
 export const companies = pgTable("companies", {
     id: text("id").primaryKey(),
     name: text("name").notNull(),

@@ -93,7 +93,7 @@ export default function RegisterPage() {
                                 router.push("/auth/login");
                             }}
                             disabled={isNavigating}
-                            className="font-semibold text-indigo-600 hover:text-indigo-500 transition-colors inline-flex items-center"
+                            className="font-semibold text-indigo-600 hover:text-indigo-500 transition-colors inline-flex items-center cursor-pointer disabled:cursor-not-allowed"
                         >
                             {isNavigating ? <Loader2 className="mr-1 h-3 w-3 animate-spin" /> : null}
                             Sign In

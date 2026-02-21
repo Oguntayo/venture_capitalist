@@ -34,59 +34,74 @@ export function AddToListDropdown({ companyId, className, children }: AddToListD
     const [open, setOpen] = useState(false);
 
     useEffect(() => {
-        const loadLists = () => {
-            const savedLists = localStorage.getItem("vc-scout-lists");
-            if (savedLists) {
-                setLists(JSON.parse(savedLists));
+        const loadLists = async () => {
+            try {
+                const res = await fetch("/api/lists");
+                if (res.ok) {
+                    const data = await res.json();
+                    setLists(data);
+                }
+            } catch (err) {
+                console.error(err);
             }
         };
 
         if (open) {
             loadLists();
         }
-
-        const handleStorage = (e: StorageEvent) => {
-            if (e.key === "vc-scout-lists") {
-                loadLists();
-            }
-        };
-
-        window.addEventListener("storage", handleStorage);
-        return () => window.removeEventListener("storage", handleStorage);
     }, [open]);
 
-    const toggleCompanyInList = (listId: string) => {
-        const updatedLists = lists.map((list) => {
-            if (list.id === listId) {
-                const alreadyHas = list.companies.includes(companyId);
-                return {
-                    ...list,
-                    companies: alreadyHas
-                        ? list.companies.filter((id) => id !== companyId)
-                        : [...list.companies, companyId],
-                };
-            }
-            return list;
-        });
+    const toggleCompanyInList = async (listId: string) => {
+        const list = lists.find((l) => l.id === listId);
+        if (!list) return;
 
-        setLists(updatedLists);
-        localStorage.setItem("vc-scout-lists", JSON.stringify(updatedLists));
+        const alreadyHas = list.companies.includes(companyId);
+        const newCompanies = alreadyHas
+            ? list.companies.filter((id) => id !== companyId)
+            : [...list.companies, companyId];
+
+        setLists(lists.map(l => l.id === listId ? { ...l, companies: newCompanies } : l));
+
+        try {
+            await fetch(`/api/lists/${listId}`, {
+                method: "PUT",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ companies: newCompanies })
+            });
+        } catch (err) {
+            console.error(err);
+        }
     };
 
-    const createListAndAdd = () => {
+    const createListAndAdd = async () => {
         if (!newListName.trim()) return;
 
-        const newList: List = {
-            id: Math.random().toString(36).substr(2, 9),
-            name: newListName.trim(),
-            companies: [companyId],
-        };
+        try {
+            const res = await fetch("/api/lists", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ name: newListName.trim() })
+            });
 
-        const updatedLists = [...lists, newList];
-        setLists(updatedLists);
-        localStorage.setItem("vc-scout-lists", JSON.stringify(updatedLists));
-        setNewListName("");
-        setIsCreating(false);
+            if (res.ok) {
+                const newList = await res.json();
+
+                const addRes = await fetch(`/api/lists/${newList.id}`, {
+                    method: "PUT",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ companies: [companyId] })
+                });
+
+                if (addRes.ok) {
+                    const updatedList = await addRes.json();
+                    setLists([...lists, updatedList]);
+                    setNewListName("");
+                    setIsCreating(false);
+                }
+            }
+        } catch (err) {
+            console.error(err);
+        }
     };
 
     return (

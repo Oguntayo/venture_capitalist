@@ -24,44 +24,79 @@ export function SaveToListButton({ companyId, companyName }: SaveToListButtonPro
     const [newListLabel, setNewListLabel] = useState("");
 
     useEffect(() => {
-        const savedLists = localStorage.getItem("vc-scout-lists");
-        if (savedLists) {
-            setLists(JSON.parse(savedLists));
-        } else {
-            const defaultLists = [{ id: "default", name: "My Watchlist", companies: [] }];
-            setLists(defaultLists);
-            localStorage.setItem("vc-scout-lists", JSON.stringify(defaultLists));
-        }
+        const fetchLists = async () => {
+            try {
+                const res = await fetch("/api/lists");
+                if (res.ok) {
+                    const data = await res.json();
+                    if (data.length === 0) {
+                        const createRes = await fetch("/api/lists", {
+                            method: "POST",
+                            headers: { "Content-Type": "application/json" },
+                            body: JSON.stringify({ name: "My Watchlist" })
+                        });
+                        if (createRes.ok) {
+                            const newList = await createRes.json();
+                            setLists([newList]);
+                        }
+                    } else {
+                        setLists(data);
+                    }
+                }
+            } catch (err) {
+                console.error(err);
+            }
+        };
+        fetchLists();
     }, []);
 
-    const toggleCompanyInList = (listId: string) => {
-        const updatedLists = lists.map((list) => {
-            if (list.id === listId) {
-                const isPresent = list.companies.includes(companyId);
-                return {
-                    ...list,
-                    companies: isPresent
-                        ? list.companies.filter((id) => id !== companyId)
-                        : [...list.companies, companyId],
-                };
-            }
-            return list;
-        });
-        setLists(updatedLists);
-        localStorage.setItem("vc-scout-lists", JSON.stringify(updatedLists));
+    const toggleCompanyInList = async (listId: string) => {
+        const list = lists.find((l) => l.id === listId);
+        if (!list) return;
+
+        const isPresent = list.companies.includes(companyId);
+        const newCompanies = isPresent
+            ? list.companies.filter((id) => id !== companyId)
+            : [...list.companies, companyId];
+
+        setLists(lists.map(l => l.id === listId ? { ...l, companies: newCompanies } : l));
+
+        try {
+            await fetch(`/api/lists/${listId}`, {
+                method: "PUT",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ companies: newCompanies })
+            });
+        } catch (err) {
+            console.error(err);
+        }
     };
 
-    const createList = () => {
+    const createList = async () => {
         if (!newListLabel.trim()) return;
-        const newList = {
-            id: Math.random().toString(36).substr(2, 9),
-            name: newListLabel,
-            companies: [companyId],
-        };
-        const updatedLists = [...lists, newList];
-        setLists(updatedLists);
-        localStorage.setItem("vc-scout-lists", JSON.stringify(updatedLists));
-        setNewListLabel("");
+        try {
+            const res = await fetch("/api/lists", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ name: newListLabel })
+            });
+            if (res.ok) {
+                const newList = await res.json();
+                const addRes = await fetch(`/api/lists/${newList.id}`, {
+                    method: "PUT",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ companies: [companyId] })
+                });
+
+                if (addRes.ok) {
+                    const updatedList = await addRes.json();
+                    setLists([...lists, updatedList]);
+                    setNewListLabel("");
+                }
+            }
+        } catch (err) {
+            console.error(err);
+        }
     };
 
     return (

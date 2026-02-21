@@ -54,51 +54,87 @@ export function ListsClient({ companies }: { companies: Company[] }) {
     const [editingListId, setEditingListId] = useState<string | null>(null);
 
     useEffect(() => {
-        const savedLists = localStorage.getItem("vc-scout-lists");
-        if (savedLists) {
-            setLists(JSON.parse(savedLists));
-        }
+        const fetchLists = async () => {
+            try {
+                const res = await fetch("/api/lists");
+                if (res.ok) {
+                    const data = await res.json();
+                    setLists(data);
+                }
+            } catch (err) {
+                console.error("Failed to fetch lists", err);
+            }
+        };
+        fetchLists();
     }, []);
 
-    const saveLists = (updated: List[]) => {
-        setLists(updated);
-        localStorage.setItem("vc-scout-lists", JSON.stringify(updated));
-    };
-
-    const createList = () => {
+    const createList = async () => {
         if (!currentListName.trim()) return;
-        const newList: List = {
-            id: Math.random().toString(36).substr(2, 9),
-            name: currentListName.trim(),
-            companies: [],
-        };
-        saveLists([...lists, newList]);
-        setCurrentListName("");
-        setIsCreateDialogOpen(false);
-    };
-
-    const renameList = () => {
-        if (!currentListName.trim() || !editingListId) return;
-        const updated = lists.map(l => l.id === editingListId ? { ...l, name: currentListName.trim() } : l);
-        saveLists(updated);
-        setCurrentListName("");
-        setEditingListId(null);
-        setIsRenameDialogOpen(false);
-    };
-
-    const deleteList = (id: string) => {
-        const updated = lists.filter((l) => l.id !== id);
-        saveLists(updated);
-    };
-
-    const removeCompanyFromList = (listId: string, companyId: string) => {
-        const updated = lists.map(l => {
-            if (l.id === listId) {
-                return { ...l, companies: l.companies.filter(id => id !== companyId) };
+        try {
+            const res = await fetch("/api/lists", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ name: currentListName.trim() }),
+            });
+            if (res.ok) {
+                const newList = await res.json();
+                setLists([...lists, newList]);
+                setCurrentListName("");
+                setIsCreateDialogOpen(false);
             }
-            return l;
-        });
-        saveLists(updated);
+        } catch (err) {
+            console.error(err);
+        }
+    };
+
+    const renameList = async () => {
+        if (!currentListName.trim() || !editingListId) return;
+        try {
+            const res = await fetch(`/api/lists/${editingListId}`, {
+                method: "PUT",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ name: currentListName.trim() }),
+            });
+            if (res.ok) {
+                const updatedList = await res.json();
+                setLists(lists.map(l => l.id === editingListId ? updatedList : l));
+                setCurrentListName("");
+                setEditingListId(null);
+                setIsRenameDialogOpen(false);
+            }
+        } catch (err) {
+            console.error(err);
+        }
+    };
+
+    const deleteList = async (id: string) => {
+        try {
+            const res = await fetch(`/api/lists/${id}`, { method: "DELETE" });
+            if (res.ok) {
+                setLists(lists.filter((l) => l.id !== id));
+            }
+        } catch (err) {
+            console.error(err);
+        }
+    };
+
+    const removeCompanyFromList = async (listId: string, companyId: string) => {
+        const list = lists.find(l => l.id === listId);
+        if (!list) return;
+        const newCompanies = list.companies.filter(id => id !== companyId);
+        try {
+            const res = await fetch(`/api/lists/${listId}`, {
+                method: "PUT",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ companies: newCompanies }),
+            });
+            if (res.ok) {
+                const updatedList = await res.json();
+                setLists(lists.map(l => l.id === listId ? updatedList : l));
+            }
+        } catch (err) {
+            console.error(err);
+        }
     };
 
     const exportList = (list: List, format: "csv" | "json") => {
