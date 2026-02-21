@@ -13,6 +13,7 @@ export default function RegisterPage() {
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
+    const [isNavigating, setIsNavigating] = useState(false);
     const router = useRouter();
 
     const handleSubmit = async (e: React.FormEvent) => {
@@ -79,16 +80,24 @@ export default function RegisterPage() {
                         </div>
                         {error && <p className="text-sm font-medium text-rose-500">{error}</p>}
                         <Button className="w-full bg-slate-900 hover:bg-black text-white h-12 rounded-2xl font-black uppercase tracking-widest text-xs shadow-xl transition-all active:scale-95" type="submit" disabled={loading}>
-                            {loading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : "Initialize Identity"}
+                            {loading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : "Create account"}
                         </Button>
                     </form>
                 </CardContent>
                 <CardFooter className="flex flex-col space-y-4 border-t bg-slate-50/50 py-4">
                     <div className="text-sm text-center text-slate-500">
                         Already have an account?{" "}
-                        <Link href="/auth/login" className="font-semibold text-indigo-600 hover:text-indigo-500 transition-colors">
+                        <button
+                            onClick={() => {
+                                setIsNavigating(true);
+                                router.push("/auth/login");
+                            }}
+                            disabled={isNavigating}
+                            className="font-semibold text-indigo-600 hover:text-indigo-500 transition-colors inline-flex items-center"
+                        >
+                            {isNavigating ? <Loader2 className="mr-1 h-3 w-3 animate-spin" /> : null}
                             Sign In
-                        </Link>
+                        </button>
                     </div>
                 </CardFooter>
             </Card>

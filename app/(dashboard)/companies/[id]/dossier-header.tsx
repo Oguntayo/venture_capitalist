@@ -100,7 +100,7 @@ export function DossierHeader({ company }: DossierHeaderProps) {
                         </div>
                         <div className="flex items-center gap-2 bg-slate-50 px-4 py-2 rounded-xl border border-slate-100 shadow-sm">
                             <Users className="h-4 w-4 text-slate-400" />
-                            <span className="text-xs font-black text-slate-700 uppercase tracking-wide">{company.headcount || 'N/A'} Employees</span>
+                            <span className="text-xs font-black text-slate-700 uppercase tracking-wide">{company.headcount ?? 'N/A'} Employees</span>
                         </div>
                         <div className="flex items-center gap-2 bg-slate-50 px-4 py-2 rounded-xl border border-slate-100 shadow-sm">
                             <Calendar className="h-4 w-4 text-slate-400" />
@@ -145,7 +145,7 @@ export function DossierHeader({ company }: DossierHeaderProps) {
 
                     <div className="h-14 w-14 rounded-2xl bg-indigo-50 border border-indigo-100 flex flex-col items-center justify-center shadow-sm">
                         <span className="text-[10px] font-black text-indigo-400 leading-none uppercase tracking-tighter mb-0.5">Match</span>
-                        <span className="text-lg font-black text-indigo-700 leading-none">{enrichmentData?.match_score || '--'}</span>
+                        <span className="text-lg font-black text-indigo-700 leading-none">{enrichmentData?.match_score ?? '--'}</span>
                     </div>
                 </div>
             </div>
