@@ -35,7 +35,8 @@ import {
     Trophy,
     Info,
     Download,
-    Loader2
+    Loader2,
+    ArrowRight
 } from "lucide-react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { exportCompaniesToExcel } from "@/lib/export";
@@ -198,7 +199,7 @@ export function CompaniesClient({ initialCompanies }: CompaniesClientProps) {
                 if (valA > valB) return direction === "asc" ? 1 : -1;
                 return 0;
             });
-    }, [initialCompanies, enrichedScores, search, committedSearch, aiSearch, selectedStages, selectedIndustries, sortConfig]);
+    }, [initialCompanies, enrichedScores, search, committedSearch, aiSearch, selectedStages, selectedIndustries, sortConfig, minSignal, minHeadcount]);
 
     const paginatedCompanies = filteredCompanies.slice(
         (page - 1) * itemsPerPage,
@@ -241,6 +242,13 @@ export function CompaniesClient({ initialCompanies }: CompaniesClientProps) {
     const toggleIndustry = (industry: string) => {
         setSelectedIndustries((prev) =>
             prev.includes(industry) ? prev.filter((i) => i !== industry) : [...prev, industry]
+        );
+        handlePageChange(1, "reset");
+    };
+
+    const toggleStage = (stage: string) => {
+        setSelectedStages((prev) =>
+            prev.includes(stage) ? prev.filter((s) => s !== stage) : [...prev, stage]
         );
         handlePageChange(1, "reset");
     };
@@ -319,6 +327,18 @@ export function CompaniesClient({ initialCompanies }: CompaniesClientProps) {
                                 onKeyDown={handleSearchKeyDown}
                                 className="flex-1 bg-transparent border-none shadow-none focus-visible:ring-0 text-slate-900 placeholder:text-slate-400 font-semibold h-12"
                             />
+                            <Button
+                                size="icon"
+                                onClick={() => handleSearchKeyDown({ key: "Enter" } as React.KeyboardEvent)}
+                                className={cn(
+                                    "h-8 w-8 rounded-lg transition-all duration-500 shrink-0",
+                                    aiSearch && search
+                                        ? "bg-indigo-600 hover:bg-indigo-700 text-white shadow-lg shadow-indigo-200"
+                                        : "bg-slate-100 text-slate-400 hover:bg-slate-200"
+                                )}
+                            >
+                                <ArrowRight className="h-4 w-4" />
+                            </Button>
                             <div className="flex items-center gap-6 border-l pl-6 pr-2 h-8 my-auto border-slate-100">
                                 <div className="flex flex-col items-center gap-1">
                                     <div className="flex items-center gap-3">
