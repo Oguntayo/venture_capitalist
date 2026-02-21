@@ -2,7 +2,7 @@ import { promises as fs } from "fs";
 import path from "path";
 import { Company } from "@/lib/types";
 import { DashboardLayout } from "@/components/layout/dashboard-layout";
-import { ListsClient } from "@/app/lists/lists-client";
+import { ListsClient } from "./lists-client";
 
 export default async function ListsPage() {
     const filePath = path.join(process.cwd(), "data", "companies.json");

@@ -9,15 +9,15 @@ import {
     Bookmark,
     LogOut,
     Activity,
-    BarChart3,
     Sparkles,
     ChevronDown,
     ChevronRight,
-    Briefcase
 } from "lucide-react";
 import { signOut } from "next-auth/react";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { Loader2 } from "lucide-react";
 
 const mainItems = [
     { name: "Companies", href: "/companies", icon: Search },
@@ -25,14 +25,22 @@ const mainItems = [
     { name: "Saved Searches", href: "/saved", icon: Bookmark },
 ];
 
-const analyticItems = [
-    { name: "Performance", href: "/performance", icon: BarChart3 },
-];
-
 export function Sidebar() {
     const pathname = usePathname();
+    const router = useRouter();
     const [isDiscoveryOpen, setIsDiscoveryOpen] = useState(true);
-    const [isAnalyticsOpen, setIsAnalyticsOpen] = useState(true);
+    const [navigatingHref, setNavigatingHref] = useState<string | null>(null);
+
+    // Reset navigating state when pathname changes (navigation finished)
+    useEffect(() => {
+        setNavigatingHref(null);
+    }, [pathname]);
+
+    const handleNavigate = (href: string) => {
+        if (pathname === href) return;
+        setNavigatingHref(href);
+        router.push(href);
+    };
 
     return (
         <div className="flex h-screen w-64 flex-col border-r bg-white shadow-xl shadow-slate-200/50 z-20">
@@ -50,7 +58,7 @@ export function Sidebar() {
                 <div className="space-y-1">
                     <button
                         onClick={() => setIsDiscoveryOpen(!isDiscoveryOpen)}
-                        className="flex items-center justify-between w-full px-3 mb-2 text-xs font-bold text-slate-400 uppercase tracking-widest hover:text-slate-600 transition-colors"
+                        className="flex items-center justify-between w-full px-3 mb-2 text-xs font-bold text-slate-400 uppercase tracking-widest hover:text-slate-600 transition-colors cursor-pointer"
                     >
                         Discovery
                         {isDiscoveryOpen ? <ChevronDown className="h-3 w-3" /> : <ChevronRight className="h-3 w-3" />}
@@ -59,20 +67,29 @@ export function Sidebar() {
                         <div className="space-y-1">
                             {mainItems.map((item) => {
                                 const isActive = pathname === item.href;
+                                const isNavigating = navigatingHref === item.href;
                                 return (
-                                    <Link
+                                    <button
                                         key={item.href}
-                                        href={item.href}
+                                        onClick={() => handleNavigate(item.href)}
+                                        disabled={navigatingHref !== null}
                                         className={cn(
-                                            "flex items-center px-3 py-2.5 text-sm font-semibold rounded-xl transition-all duration-200 group",
+                                            "flex items-center w-full px-3 py-2.5 text-sm font-semibold rounded-xl transition-all duration-200 group text-left cursor-pointer",
                                             isActive
                                                 ? "bg-indigo-600 text-white shadow-lg shadow-indigo-100"
-                                                : "text-slate-600 hover:bg-slate-50 hover:text-indigo-600"
+                                                : "text-slate-600 hover:bg-slate-50 hover:text-indigo-600",
+                                            navigatingHref !== null && !isNavigating && "opacity-50 grayscale-[0.5]"
                                         )}
                                     >
-                                        <item.icon className={cn("mr-3 h-5 w-5 transition-colors", isActive ? "text-white" : "text-slate-400 group-hover:text-indigo-600")} />
+                                        <div className="relative mr-3 h-5 w-5 flex items-center justify-center">
+                                            {isNavigating ? (
+                                                <Loader2 className={cn("h-4 w-4 animate-spin", isActive ? "text-white" : "text-indigo-600")} />
+                                            ) : (
+                                                <item.icon className={cn("h-5 w-5 transition-colors", isActive ? "text-white" : "text-slate-400 group-hover:text-indigo-600")} />
+                                            )}
+                                        </div>
                                         {item.name}
-                                    </Link>
+                                    </button>
                                 );
                             })}
                         </div>
@@ -84,51 +101,26 @@ export function Sidebar() {
                     <div className="px-3 mb-2 text-xs font-bold text-slate-400 uppercase tracking-widest">
                         Strategy
                     </div>
-                    <Link
-                        href="/thesis"
+                    <button
+                        onClick={() => handleNavigate("/thesis")}
+                        disabled={navigatingHref !== null}
                         className={cn(
-                            "flex items-center px-3 py-2.5 text-sm font-semibold rounded-xl transition-all duration-200 group",
+                            "flex items-center w-full px-3 py-2.5 text-sm font-semibold rounded-xl transition-all duration-200 group text-left cursor-pointer",
                             pathname === "/thesis"
                                 ? "bg-indigo-600 text-white shadow-lg shadow-indigo-100"
-                                : "text-slate-600 hover:bg-slate-50 hover:text-indigo-600"
+                                : "text-slate-600 hover:bg-slate-50 hover:text-indigo-600",
+                            navigatingHref !== null && navigatingHref !== "/thesis" && "opacity-50 grayscale-[0.5]"
                         )}
                     >
-                        <Sparkles className={cn("mr-3 h-5 w-5 transition-colors", pathname === "/thesis" ? "text-white" : "text-slate-400 group-hover:text-indigo-600")} />
-                        My Thesis
-                    </Link>
-                </div>
-
-                {/* Analytics Section */}
-                <div className="space-y-1">
-                    <button
-                        onClick={() => setIsAnalyticsOpen(!isAnalyticsOpen)}
-                        className="flex items-center justify-between w-full px-3 mb-2 text-xs font-bold text-slate-400 uppercase tracking-widest hover:text-slate-600 transition-colors"
-                    >
-                        Analytics
-                        {isAnalyticsOpen ? <ChevronDown className="h-3 w-3" /> : <ChevronRight className="h-3 w-3" />}
-                    </button>
-                    {isAnalyticsOpen && (
-                        <div className="space-y-1">
-                            {analyticItems.map((item) => {
-                                const isActive = pathname === item.href;
-                                return (
-                                    <Link
-                                        key={item.href}
-                                        href={item.href}
-                                        className={cn(
-                                            "flex items-center px-3 py-2.5 text-sm font-semibold rounded-xl transition-all duration-200 group",
-                                            isActive
-                                                ? "bg-indigo-600 text-white shadow-lg shadow-indigo-100"
-                                                : "text-slate-600 hover:bg-slate-50 hover:text-indigo-600"
-                                        )}
-                                    >
-                                        <item.icon className={cn("mr-3 h-5 w-5 transition-colors", isActive ? "text-white" : "text-slate-400 group-hover:text-indigo-600")} />
-                                        {item.name}
-                                    </Link>
-                                );
-                            })}
+                        <div className="relative mr-3 h-5 w-5 flex items-center justify-center">
+                            {navigatingHref === "/thesis" ? (
+                                <Loader2 className={cn("h-4 w-4 animate-spin", pathname === "/thesis" ? "text-white" : "text-indigo-600")} />
+                            ) : (
+                                <Sparkles className={cn("h-5 w-5 transition-colors", pathname === "/thesis" ? "text-white" : "text-slate-400 group-hover:text-indigo-600")} />
+                            )}
                         </div>
-                    )}
+                        My Thesis
+                    </button>
                 </div>
             </div>
 

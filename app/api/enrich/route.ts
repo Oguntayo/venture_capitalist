@@ -18,35 +18,74 @@ export async function POST(req: Request) {
             return NextResponse.json({ error: "Website URL is required" }, { status: 400 });
         }
 
-        let pageText = "";
-        try {
-            // Basic fetch to get some content. Many sites block simple fetch, 
-            // but we'll try to get meta tags or at least the home page text.
-            const response = await fetch(website, {
-                headers: {
-                    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
-                },
-                next: { revalidate: 3600 }
-            });
+        // Run scraping and thesis fetching in parallel to reduce latency
+        const [pageTextResult, userThesisResult] = await Promise.all([
+            (async () => {
+                try {
+                    // Try standard fetch first
+                    const response = await fetch(website, {
+                        headers: {
+                            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
+                        },
+                        next: { revalidate: 3600 }
+                    });
 
-            if (response.ok) {
-                const html = await response.text();
-                // Extract basic text from HTML (very roughly)
-                pageText = html.replace(/<[^>]*>?/gm, ' ').substring(0, 4000);
-            }
-        } catch (e) {
-            console.error("Scraping failed, falling back to model knowledge", e);
-        }
+                    if (response.ok) {
+                        const html = await response.text();
+                        return html.replace(/<[^>]*>?/gm, ' ').substring(0, 4000);
+                    }
+                } catch (e: any) {
+                    console.error("Standard scraping failed, attempting TLS-resilient fallback...", e.message);
 
-        // Fetch user thesis
-        const session = await getServerSession(authOptions);
-        let userThesis = "";
-        if (session?.user?.email) {
-            const user = await db.query.users.findFirst({
-                where: eq(users.email, session.user.email),
-            });
-            userThesis = user?.investmentThesis || "";
-        }
+                    // Fallback for TLS errors (common for startups with misconfigured SSL)
+                    if (e.message.includes('certificate') || e.message.includes('fetch failed')) {
+                        try {
+                            const https = await import('https');
+                            const agent = new https.Agent({ rejectUnauthorized: false });
+                            const result = await new Promise<string>((resolve, reject) => {
+                                const req = https.get(website, {
+                                    agent,
+                                    headers: {
+                                        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
+                                    }
+                                }, (res) => {
+                                    let data = '';
+                                    res.on('data', chunk => data += chunk);
+                                    res.on('end', () => resolve(data));
+                                });
+                                req.on('error', reject);
+                                req.setTimeout(5000, () => {
+                                    req.destroy();
+                                    reject(new Error('Timeout'));
+                                });
+                            });
+                            return result.replace(/<[^>]*>?/gm, ' ').substring(0, 4000);
+                        } catch (fallbackError) {
+                            console.error("TLS Fallback scraping failed:", fallbackError);
+                        }
+                    }
+                }
+                return "";
+            })(),
+            (async () => {
+                try {
+                    const session = await getServerSession(authOptions);
+                    if (session?.user?.email) {
+                        const user = await db.query.users.findFirst({
+                            where: eq(users.email, session.user.email),
+                        });
+                        return user?.investmentThesis || "";
+                    }
+                    return "";
+                } catch (e) {
+                    console.error("Thesis fetch failed", e);
+                    return "";
+                }
+            })()
+        ]);
+
+        const pageText = pageTextResult;
+        const userThesis = userThesisResult;
 
         const prompt = `
       You are a VC Discovery Agent. Analyze the following content from the website of a company (${website}):

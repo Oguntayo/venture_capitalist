@@ -112,7 +112,7 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
                         </div>
                     </div>
                 </header>
-                <main className="flex-1 overflow-y-auto px-8 py-8 h-full bg-slate-50/50">
+                <main className="flex-1 overflow-y-auto px-8 py-8 h-full bg-slate-50/50 isolate will-change-scroll transform-gpu antialiased">
                     <div className="mx-auto max-w-7xl">
                         {children}
                     </div>

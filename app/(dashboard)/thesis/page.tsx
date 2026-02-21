@@ -135,32 +135,6 @@ export default function ThesisPage() {
                             </CardContent>
                         </Card>
 
-                        <Card className="border-none shadow-xl rounded-[2rem] bg-white border border-slate-100 p-2">
-                            <CardHeader className="pb-2">
-                                <div className="flex items-center gap-2 mb-2">
-                                    <Info className="h-4 w-4 text-slate-400" />
-                                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">How it works</span>
-                                </div>
-                                <CardTitle className="text-lg font-bold text-slate-900 leading-tight">The "Lens" Effect</CardTitle>
-                            </CardHeader>
-                            <CardContent className="space-y-4 pt-2">
-                                <p className="text-sm text-slate-600 leading-relaxed">
-                                    Your thesis is injected into our **Heuristic Discovery Engine** in real-time. Every company in the directory is ranked against these parameters.
-                                </p>
-                                <div className="p-4 bg-slate-50 rounded-2xl border border-slate-100 space-y-3">
-                                    <div className="flex items-center gap-2">
-                                        <Badge className="bg-emerald-100 text-emerald-700 border-none">Deep Search</Badge>
-                                        <ArrowRight className="h-3 w-3 text-slate-300" />
-                                        <span className="text-xs font-bold text-slate-700">Auto-Sorting</span>
-                                    </div>
-                                    <div className="flex items-center gap-2">
-                                        <Badge className="bg-indigo-100 text-indigo-700 border-none">Enrichment</Badge>
-                                        <ArrowRight className="h-3 w-3 text-slate-300" />
-                                        <span className="text-xs font-bold text-slate-700">Semantic Matching</span>
-                                    </div>
-                                </div>
-                            </CardContent>
-                        </Card>
                     </div>
                 </div>
             </div>

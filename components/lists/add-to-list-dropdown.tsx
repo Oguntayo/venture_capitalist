@@ -24,21 +24,35 @@ interface List {
 interface AddToListDropdownProps {
     companyId: string;
     className?: string;
+    children?: React.ReactNode;
 }
 
-export function AddToListDropdown({ companyId, className }: AddToListDropdownProps) {
+export function AddToListDropdown({ companyId, className, children }: AddToListDropdownProps) {
     const [lists, setLists] = useState<List[]>([]);
     const [isCreating, setIsCreating] = useState(false);
     const [newListName, setNewListName] = useState("");
     const [open, setOpen] = useState(false);
 
     useEffect(() => {
-        if (open) {
+        const loadLists = () => {
             const savedLists = localStorage.getItem("vc-scout-lists");
             if (savedLists) {
                 setLists(JSON.parse(savedLists));
             }
+        };
+
+        if (open) {
+            loadLists();
         }
+
+        const handleStorage = (e: StorageEvent) => {
+            if (e.key === "vc-scout-lists") {
+                loadLists();
+            }
+        };
+
+        window.addEventListener("storage", handleStorage);
+        return () => window.removeEventListener("storage", handleStorage);
     }, [open]);
 
     const toggleCompanyInList = (listId: string) => {
@@ -78,14 +92,18 @@ export function AddToListDropdown({ companyId, className }: AddToListDropdownPro
     return (
         <DropdownMenu open={open} onOpenChange={setOpen}>
             <DropdownMenuTrigger asChild>
-                <Button
-                    variant="ghost"
-                    size="icon"
-                    className={cn("h-8 w-8 text-slate-400 hover:text-indigo-600 rounded-lg transition-colors", className)}
-                    onClick={(e) => e.stopPropagation()}
-                >
-                    <Plus className="h-4 w-4" />
-                </Button>
+                {children ? (
+                    children
+                ) : (
+                    <Button
+                        variant="ghost"
+                        size="icon"
+                        className={cn("h-8 w-8 text-slate-400 hover:text-indigo-600 rounded-lg transition-colors", className)}
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        <Plus className="h-4 w-4" />
+                    </Button>
+                )}
             </DropdownMenuTrigger>
             <DropdownMenuContent
                 align="end"

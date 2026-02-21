@@ -33,9 +33,12 @@ import {
     Sparkles,
     Zap,
     Trophy,
-    Info
+    Info,
+    Download,
+    Loader2
 } from "lucide-react";
 import { useSearchParams, useRouter } from "next/navigation";
+import { exportCompaniesToExcel } from "@/lib/export";
 import {
     Dialog,
     DialogContent,
@@ -83,6 +86,7 @@ export function CompaniesClient({ initialCompanies }: CompaniesClientProps) {
 
     // Per-company enriched scores — only populated after explicit enrichment
     const [enrichedScores, setEnrichedScores] = useState<Record<string, number>>({});
+    const [pagingDirection, setPagingDirection] = useState<"prev" | "next" | "reset" | null>(null);
 
     // Load enriched scores from localStorage on mount
     useEffect(() => {
@@ -199,6 +203,8 @@ export function CompaniesClient({ initialCompanies }: CompaniesClientProps) {
         page * itemsPerPage
     );
 
+    const [navigatingId, setNavigatingId] = useState<string | null>(null);
+
     const handleSearchKeyDown = (e: React.KeyboardEvent) => {
         if (e.key === "Enter" && aiSearch) {
             if (!search) {
@@ -230,18 +236,20 @@ export function CompaniesClient({ initialCompanies }: CompaniesClientProps) {
         });
     };
 
-    const toggleStage = (stage: string) => {
-        setSelectedStages((prev) =>
-            prev.includes(stage) ? prev.filter((s) => s !== stage) : [...prev, stage]
-        );
-        setPage(1);
-    };
-
     const toggleIndustry = (industry: string) => {
         setSelectedIndustries((prev) =>
             prev.includes(industry) ? prev.filter((i) => i !== industry) : [...prev, industry]
         );
-        setPage(1);
+        handlePageChange(1, "reset");
+    };
+
+    const handlePageChange = (newPage: number, direction: "prev" | "next" | "reset") => {
+        setPagingDirection(direction);
+        setTimeout(() => {
+            setPage(newPage);
+            setPagingDirection(null);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }, 600);
     };
 
     return (
@@ -286,6 +294,7 @@ export function CompaniesClient({ initialCompanies }: CompaniesClientProps) {
                             </DialogFooter>
                         </DialogContent>
                     </Dialog>
+
                 </div>
 
                 {/* Discovery Toolbar */}
@@ -476,7 +485,7 @@ export function CompaniesClient({ initialCompanies }: CompaniesClientProps) {
                         <Table>
                             <TableHeader className="bg-slate-50/40">
                                 <TableRow className="hover:bg-transparent border-slate-100">
-                                    <TableHead className="py-5 pl-8 text-[11px] font-bold text-slate-400 uppercase tracking-widest cursor-pointer group/header" onClick={() => handleSort("name")}>
+                                    <TableHead className="py-5 pl-12 text-[11px] font-bold text-slate-400 uppercase tracking-widest cursor-pointer group/header" onClick={() => handleSort("name")}>
                                         <div className="flex items-center group-hover/header:text-indigo-600 transition-colors">
                                             Company
                                             <ArrowUpDown className="ml-2 h-3 w-3 opacity-30" />
@@ -509,13 +518,12 @@ export function CompaniesClient({ initialCompanies }: CompaniesClientProps) {
                                             <ArrowUpDown className="ml-2 h-3 w-3 opacity-30" />
                                         </div>
                                     </TableHead>
-                                    <TableHead className="py-5 text-[11px] font-bold text-slate-400 uppercase tracking-widest cursor-pointer group/header text-center" onClick={() => handleSort("signal_score")}>
+                                    <TableHead className="py-5 text-center text-[11px] font-bold text-slate-400 uppercase tracking-widest pr-12" onClick={() => handleSort("signal_score")}>
                                         <div className="flex items-center justify-center group-hover/header:text-indigo-600 transition-colors">
                                             Signals
                                             <ArrowUpDown className="ml-2 h-3 w-3 opacity-30" />
                                         </div>
                                     </TableHead>
-                                    <TableHead className="py-5 pr-8 w-[100px]"></TableHead>
                                 </TableRow>
                             </TableHeader>
                             <TableBody>
@@ -539,17 +547,34 @@ export function CompaniesClient({ initialCompanies }: CompaniesClientProps) {
                                     paginatedCompanies.map((company) => (
                                         <TableRow
                                             key={company.id}
-                                            className="hover:bg-indigo-50/30 transition-all duration-300 cursor-pointer group border-slate-50/60"
-                                            onClick={() => router.push(`/companies/${company.id}`)}
+                                            className={cn(
+                                                "hover:bg-indigo-50/30 transition-all duration-300 cursor-pointer group border-slate-50/60 relative",
+                                                navigatingId === company.id && "bg-indigo-50/50 border-indigo-200"
+                                            )}
+                                            onClick={() => {
+                                                if (navigatingId) return;
+                                                setNavigatingId(company.id);
+                                                router.push(`/companies/${company.id}`);
+                                            }}
                                         >
-                                            <TableCell className="py-5 pl-8">
+                                            <TableCell className="py-5 pl-12">
+                                                {navigatingId === company.id && (
+                                                    <div className="absolute inset-0 z-50 bg-white/60 backdrop-blur-[2px] flex items-center justify-center animate-in fade-in duration-300 rounded-2xl">
+                                                        <div className="flex items-center gap-3 px-6 py-3 bg-slate-900 rounded-full shadow-2xl scale-95 animate-in zoom-in-95 duration-300">
+                                                            <Loader2 className="h-4 w-4 text-indigo-400 animate-spin" />
+                                                            <span className="text-[10px] font-black text-white uppercase tracking-[0.2em] italic">Engaging Dossier</span>
+                                                        </div>
+                                                    </div>
+                                                )}
                                                 <div className="flex items-center gap-4">
                                                     <div className="h-12 w-12 rounded-2xl border border-slate-100 bg-white p-2 flex items-center justify-center shrink-0 shadow-sm group-hover:shadow-md group-hover:border-indigo-100 transition-all duration-500">
                                                         <img src={company.logo_url} alt={company.name} className="h-full w-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-500" />
                                                     </div>
                                                     <div className="space-y-0.5">
-                                                        <div className="font-bold text-slate-900 group-hover:text-indigo-700 transition-colors text-base tracking-tight">
-                                                            {company.name}
+                                                        <div className="flex items-center gap-2">
+                                                            <div className="font-bold text-slate-900 group-hover:text-indigo-700 transition-colors text-base tracking-tight">
+                                                                {company.name}
+                                                            </div>
                                                         </div>
                                                         <div className="text-xs font-medium text-slate-400 group-hover:text-slate-500 transition-colors truncate max-w-[220px]">
                                                             {company.website.replace("https://", "").replace("www.", "")}
@@ -681,7 +706,7 @@ export function CompaniesClient({ initialCompanies }: CompaniesClientProps) {
                                                 </div>
                                             </TableCell>
 
-                                            <TableCell className="py-5">
+                                            <TableCell className="py-5 pr-12">
                                                 <div className="flex flex-col items-center gap-1.5">
                                                     <div className="text-lg font-black text-slate-900 leading-none tracking-tighter">
                                                         {company.signal_score}
@@ -697,11 +722,6 @@ export function CompaniesClient({ initialCompanies }: CompaniesClientProps) {
                                                             />
                                                         ))}
                                                     </div>
-                                                </div>
-                                            </TableCell>
-                                            <TableCell className="py-5 pr-8" onClick={(e) => e.stopPropagation()}>
-                                                <div className="flex justify-end opacity-0 group-hover:opacity-100 transition-all translate-x-4 group-hover:translate-x-0">
-                                                    <AddToListDropdown companyId={company.id} />
                                                 </div>
                                             </TableCell>
                                         </TableRow>
@@ -742,11 +762,11 @@ export function CompaniesClient({ initialCompanies }: CompaniesClientProps) {
                         <Button
                             variant="outline"
                             size="sm"
-                            onClick={() => setPage((p) => Math.max(1, p - 1))}
-                            disabled={page === 1}
-                            className="h-10 w-10 p-0 border-slate-200 bg-white rounded-xl shadow-sm hover:border-indigo-200 transition-all disabled:opacity-30"
+                            onClick={() => handlePageChange(Math.max(1, page - 1), "prev")}
+                            disabled={page === 1 || pagingDirection !== null}
+                            className="h-10 w-10 p-0 border-slate-200 bg-white rounded-xl shadow-sm hover:border-indigo-200 transition-all disabled:opacity-30 cursor-pointer"
                         >
-                            <ChevronLeft className="h-5 w-5" />
+                            {pagingDirection === "prev" ? <Loader2 className="h-4 w-4 animate-spin text-indigo-600" /> : <ChevronLeft className="h-5 w-5" />}
                         </Button>
                         <div className="text-xs font-bold text-slate-700 bg-white border border-slate-100 px-4 py-2 rounded-xl shadow-sm">
                             {page} <span className="text-slate-300 mx-1">/</span> {totalPages}
@@ -754,11 +774,11 @@ export function CompaniesClient({ initialCompanies }: CompaniesClientProps) {
                         <Button
                             variant="outline"
                             size="sm"
-                            onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
-                            disabled={page === totalPages}
-                            className="h-10 w-10 p-0 border-slate-200 bg-white rounded-xl shadow-sm hover:border-indigo-200 transition-all disabled:opacity-30"
+                            onClick={() => handlePageChange(Math.min(totalPages, page + 1), "next")}
+                            disabled={page === totalPages || pagingDirection !== null}
+                            className="h-10 w-10 p-0 border-slate-200 bg-white rounded-xl shadow-sm hover:border-indigo-200 transition-all disabled:opacity-30 cursor-pointer"
                         >
-                            <ChevronRight className="h-5 w-5" />
+                            {pagingDirection === "next" ? <Loader2 className="h-4 w-4 animate-spin text-indigo-600" /> : <ChevronRight className="h-5 w-5" />}
                         </Button>
                     </div>
                 </div>

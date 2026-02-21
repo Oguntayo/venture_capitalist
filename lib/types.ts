@@ -19,6 +19,7 @@ export interface Company {
     headcount_growth?: number; // percentage
     social_links?: { linkedin?: string; twitter?: string; crunchbase?: string };
     signals?: { type: string; value: string; importance: "high" | "medium" | "low" }[];
+    userNotes?: string;
 }
 
 export interface EnrichmentData {

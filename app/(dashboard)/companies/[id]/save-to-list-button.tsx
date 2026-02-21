@@ -67,8 +67,8 @@ export function SaveToListButton({ companyId, companyName }: SaveToListButtonPro
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
-                <Button variant="outline" className="border-slate-200">
-                    <ListPlus className="mr-2 h-4 w-4" />
+                <Button variant="outline" className="border-slate-200 rounded-2xl px-6 py-6 font-black uppercase tracking-widest text-[10px] hover:bg-slate-50 transition-all shadow-sm">
+                    <ListPlus className="mr-2 h-4 w-4 text-indigo-500" />
                     Add to List
                 </Button>
             </DropdownMenuTrigger>
