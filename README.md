@@ -55,3 +55,6 @@ Access the platform at [http://localhost:3000](http://localhost:3000).
 - **Database**: Neon db
 - **Styling**: CSS + Tailwind 
 - **AI Model**: OpenAI GPT-4o
+
+
+**You can acces the live demo** at https://venturecapitalist-4ty6izlr7-oguntayos-projects.vercel.app/companies
