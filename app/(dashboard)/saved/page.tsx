@@ -16,6 +16,7 @@ interface SavedSearch {
         stages: string[];
         industries: string[];
     };
+    isAi?: boolean;
 }
 
 export default function SavedSearchesPage() {
@@ -78,7 +79,7 @@ export default function SavedSearchesPage() {
                                         </div>
                                     </div>
                                     <Button asChild className="w-full bg-white text-indigo-600 border border-indigo-100 hover:bg-indigo-50 shadow-none mt-2">
-                                        <Link href={`/companies?q=${encodeURIComponent(search.query)}&stages=${search.filters.stages.join(",")}&industries=${search.filters.industries.join(",")}`}>
+                                        <Link href={`/companies?q=${encodeURIComponent(search.query)}&stages=${search.filters.stages.join(",")}&industries=${search.filters.industries.join(",")}${search.isAi ? "&ai=true" : ""}`}>
                                             Run Search
                                             <ArrowRight className="ml-2 h-4 w-4" />
                                         </Link>

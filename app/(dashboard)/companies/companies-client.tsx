@@ -77,7 +77,7 @@ export function CompaniesClient({ initialCompanies }: CompaniesClientProps) {
 
     const [minSignal, setMinSignal] = useState<number>(0);
     const [minHeadcount, setMinHeadcount] = useState<number>(0);
-    const [aiSearch, setAiSearch] = useState(false);
+    const [aiSearch, setAiSearch] = useState(searchParams.get("ai") === "true");
     const [committedSearch, setCommittedSearch] = useState(searchParams.get("q") || "");
 
     const [saveName, setSaveName] = useState("");
@@ -122,11 +122,12 @@ export function CompaniesClient({ initialCompanies }: CompaniesClientProps) {
         return () => window.removeEventListener("storage", handleStorage);
     }, []);
 
-    const updateUrl = useCallback((q: string, stages: string[], industries: string[]) => {
+    const updateUrl = useCallback((q: string, stages: string[], industries: string[], ai: boolean) => {
         const params = new URLSearchParams();
         if (q) params.set("q", q);
         if (stages.length) params.set("stages", stages.join(","));
         if (industries.length) params.set("industries", industries.join(","));
+        if (ai) params.set("ai", "true");
 
         const queryString = params.toString();
         router.replace(`/companies${queryString ? `?${queryString}` : ""}`, { scroll: false });
@@ -137,7 +138,7 @@ export function CompaniesClient({ initialCompanies }: CompaniesClientProps) {
         if (aiSearch) return; // Dedicated Enter handler for AI mode
 
         const timer = setTimeout(() => {
-            updateUrl(search, selectedStages, selectedIndustries);
+            updateUrl(search, selectedStages, selectedIndustries, aiSearch);
         }, 800);
         return () => clearTimeout(timer);
     }, [search, aiSearch, selectedStages, selectedIndustries, updateUrl]);
@@ -151,7 +152,8 @@ export function CompaniesClient({ initialCompanies }: CompaniesClientProps) {
             filters: {
                 stages: selectedStages,
                 industries: selectedIndustries,
-            }
+            },
+            isAi: aiSearch
         };
         const existing = JSON.parse(localStorage.getItem("vc-scout-saved-searches") || "[]");
         localStorage.setItem("vc-scout-saved-searches", JSON.stringify([...existing, newSearch]));
@@ -217,11 +219,11 @@ export function CompaniesClient({ initialCompanies }: CompaniesClientProps) {
                 setTimeout(() => {
                     setIsAiSearching(false);
                     setCommittedSearch(search);
-                    updateUrl(search, selectedStages, selectedIndustries);
+                    updateUrl(search, selectedStages, selectedIndustries, true);
                 }, 1200);
             }
         } else if (e.key === "Enter") {
-            updateUrl(search, selectedStages, selectedIndustries);
+            updateUrl(search, selectedStages, selectedIndustries, aiSearch);
         }
     };
 

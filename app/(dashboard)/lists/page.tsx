@@ -12,12 +12,7 @@ export default async function ListsPage() {
     return (
         <DashboardLayout>
             <div className="space-y-6">
-                <div>
-                    <h1 className="text-3xl font-bold tracking-tight text-slate-900">Custom Lists</h1>
-                    <p className="text-slate-500 mt-1">
-                        Manage your curated collections of companies and export your data.
-                    </p>
-                </div>
+
 
                 <ListsClient companies={companies} />
             </div>
